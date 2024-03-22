@@ -1,1 +1,1 @@
-# MagnaPower
+# MangaPower
