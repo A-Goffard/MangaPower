@@ -5,7 +5,15 @@
 		<h2>AVATAR</h2>
 		<h2>CARDS</h2>
 		<h2>STATS</h2>
-	</div>	
+	</div>
+	
+	<div id="app">
+    <vue-slick-carousel :options="carouselOptions">
+      <div v-for="(card, index) in cards" :key="index">
+        <img :src="card.images.small" alt="Pokemon Card" />
+      </div>
+    </vue-slick-carousel>
+  </div>
 	
 	</template>
 	
@@ -28,4 +36,5 @@
 	
 	
 	<script setup>
+	
 	</script>
