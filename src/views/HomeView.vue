@@ -1,4 +1,7 @@
 <template>
+  
+  <div class="mainDivHome">
+    <!-- <img src="/public/autumn-night-illuminated-lantern-tree-yellow-leaf-generated-by-ai.jpg" alt=""> -->
 <div class="hamburger-menu">
     <!-- Hamburger Icon -->
     <div class="hamburger-icon" @click="toggleMenu">
@@ -15,6 +18,10 @@
       </ul>
     </div>
   </div>
+  <div>hola hola</div>
+</div>
+
+
 </template>
 
 <script>
@@ -39,7 +46,16 @@ export default {
 </script>
 
 <style>
+
+
+.mainDivHome {
+  height: 100vh;
+  
+  background-image: url('/public/autumn-night-illuminated-lantern-tree-yellow-leaf-generated-by-ai.jpg');
+}
+
 .hamburger-menu {
+
   position: relative;
   width: 100%;
 }
