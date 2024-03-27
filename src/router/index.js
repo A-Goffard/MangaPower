@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import DetailCard from '../views/DetailCard.vue'
-import Galery from '../views/Galery.vue'
+import Gallery from '../views/Gallery.vue'
 import GameView from '../views/GameView.vue'
 import LogingView from '../views/LogingView.vue'
 import PersonalFile from '../views/PersonalFile.vue'
@@ -26,9 +26,9 @@ const routes = [
     component: DetailCard
   },
   {
-    path: '/galery',
-    name: 'Galery',
-    component: Galery
+    path: '/gallery',
+    name: 'Gallery',
+    component: Gallery
   },
   {
     path: '/game',
