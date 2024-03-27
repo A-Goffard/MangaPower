@@ -1,6 +1,6 @@
 <template>
 	<div class="carousel-container">
-	  <button class="prev-button" @click="slideLeft">Previous</button>
+	 
 	  <div class="carousel" ref="carousel">
 		<div v-for="(pokemon, index) in pokemons" :key="index" class="pokemon-card">
 		  <img :src="pokemon.image" :alt="pokemon.name" class="pokemon-image">
@@ -8,6 +8,7 @@
 		  <div><strong>Abilities:</strong> {{ pokemon.abilities }}</div>
 		</div>
 	  </div>
+	  <button class="prev-button" @click="slideLeft">Previous</button>
 	  <button class="next-button" @click="slideRight">Next</button>
 	</div>
   </template>
@@ -81,7 +82,7 @@
   
   <style scoped>
   .carousel-container {
-	width: 80%;
+	width: 20%;
 	margin: 20px auto;
 	overflow: hidden;
 	position: relative;
@@ -93,9 +94,9 @@
   }
   
   .pokemon-card {
-	border: 1px solid #09b568;
+	border: 3px solid #09b568;
 	padding: 20px;
-	border-radius: 5px;
+	border-radius: 10px;
 	text-align: center;
 	width: 40rem;
   }
@@ -109,15 +110,14 @@
   }
   
   .prev-button, .next-button {
-	position: absolute;
-	top: 90%;
+	
 	background-color: rgba(226, 16, 16, 0.5);
-	border: none;
+	border-radius: 2rem;
 	cursor: pointer;
+	width: 10rem;
+	height: 4rem; 
   }
 
-  .next-button {
-	right: 0;
-  }
+ 
   </style>
   
