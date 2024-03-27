@@ -12,10 +12,10 @@
 
 .containerStats{
     width: 100%;
-    height: 40rem;
-    border: 0.1rem solid red;
+    height: 80rem;
     background-image: url('/public/images/Pokedex.jpeg');
     background-repeat: no-repeat;
+    background-size: cover;
     
 }
 
