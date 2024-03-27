@@ -10,9 +10,11 @@ import HelloWorld from './components/HelloWorld.vue'
     <router-link to="/register">Register</router-link> |
     <router-link to="/personal">Personal Profile</router-link> |
     <router-link to="/stats">Stats</router-link> |
-    <router-link to="/gallery">Gallery</router-link> |
     <router-link to="/game">Game</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/about">About</router-link> |
+    <Router-Link to="/personalfile">PersonalFile</Router-Link> |
+    <Router-Link to="/gallery">Gallery</Router-Link> |
+    <Router-Link to="/detailcard">DetailCard</Router-Link> |    
   </nav>
   
   <router-view/>
