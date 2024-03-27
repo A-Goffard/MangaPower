@@ -1,6 +1,6 @@
 <template>
     <div>
-      <h1>DETAIL CARD</h1>
+      <h1>LOGING</h1>
     </div>
   </template>
   

@@ -1,6 +1,6 @@
 <template>
     <div>
-      <h1>DETAIL CARD</h1>
+      <h1>GAME</h1>
     </div>
   </template>
   
