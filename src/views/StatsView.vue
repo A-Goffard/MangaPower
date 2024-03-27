@@ -1,19 +1,16 @@
 <template>
-  <div>
-    <h1>STATS</h1>
-  </div>
+
+  <StatsForUser />
+
 </template>
 
 <script setup>
-  import { defineProps } from 'vue';
 
-  const props = defineProps({
-    fitxa: {
-      type: Object,
-      required: true
-    }
-  });
+import StatsForUser from '../components/StatsForUser.vue'
+
 </script>
+
+
 
 <style scoped>
 
