@@ -1,6 +1,9 @@
 <template>
   <div class="general-container">
     <h1>REGISTER</h1>
+    <div class="container-medium">
+
+    
     <div class="input-container">
       <div class="log-lines"><span>Name </span><input type="text" id="name"></div>
       <div class="log-lines"><span>Birthdate </span><input type="date" id="birthdate"></div>
@@ -17,11 +20,14 @@
     </div>
     <div class="avatars">
       <div class="avatar">
-        <img src="/public/" alt="">
+        <img src="avatar/l.png" alt="">
+        <span>Pokemon Trainer</span>
       </div>
       <div class="avatar">
-
+        <img src="pokemon/bulbasaur.png" alt="">
+        <span>Pokemon</span>
       </div>
+    </div>
     </div>
   </div>
 </template>
@@ -94,5 +100,29 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+  .avatars {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 40rem;
+  }
+  .container-medium{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  .avatar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: min-content;
+    padding: 1rem;
+    margin: 1rem;
+    background-color: rgb(255, 255, 255, 0.65);
+    border-radius: 0.5rem;
   }
 </style>
