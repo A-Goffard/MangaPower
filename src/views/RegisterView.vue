@@ -1,7 +1,7 @@
 <template>
   <div class="general-container">
     <h1>REGISTER</h1>
-    <article>
+    <div class="input-container">
       <div class="log-lines"><span>Name </span><input type="text" id="name"></div>
       <div class="log-lines"><span>Birthdate </span><input type="date" id="birthdate"></div>
       <div class="log-lines"><span>Mail </span><input type="email" id="mail"></div>
@@ -14,7 +14,15 @@
         <span> By checking this box, I declare that I have read and expressly accepted <a href="#"><i>terms and conditions</i></a> as well as <a href="#"><i>privacy and confidentiality policy</i></a>. </span>
       </div>
       <button id="register" class="desactivado">Register</button>
-    </article>
+    </div>
+    <div class="avatars">
+      <div class="avatar">
+        <img src="/public/" alt="">
+      </div>
+      <div class="avatar">
+
+      </div>
+    </div>
   </div>
 </template>
 
@@ -40,7 +48,7 @@
     background-repeat: no-repeat; 
 
   }
-  article {
+  .input-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
