@@ -54,7 +54,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url('/public/backgrounds/water-background.png'); 
+    background-image: url('/public/backgrounds/primary-background.jpg'); 
     background-size: cover; 
     background-repeat: no-repeat; 
 
@@ -68,6 +68,7 @@
     padding: 1rem;
     background-color: rgb(255, 255, 255, 0.65);
     border-radius: 0.5rem;
+    margin: 1rem;
   }
   .checkbox-div {
     margin: 0.5rem;
@@ -129,5 +130,8 @@
     margin: 1rem;
     background-color: rgb(255, 255, 255, 0.65);
     border-radius: 0.5rem;
+  }
+    h1{
+    color: white;
   }
 </style>

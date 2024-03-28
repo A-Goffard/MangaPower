@@ -4,7 +4,6 @@
     <article>
       <div class="log-lines"><span>UserName </span><input type="text" id="userName"></div>
       <div class="log-lines"><span>Password </span><input type="password" id="password"></div>
-      <div class="log-lines"><span>Password </span><input type="password" id="passwordComprobation"></div>
       <div class="checkbox-div">
         <input type="checkbox" id="myCheckbox">
         <label for="myCheckbox" class="custom-checkbox"></label>
@@ -49,7 +48,7 @@ const gotoRegister = () => {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url('/public/backgrounds/water-background.png'); 
+    background-image: url('/public/backgrounds/primary-background.jpg'); 
     background-size: cover; 
     background-repeat: no-repeat; 
 
@@ -63,6 +62,7 @@ const gotoRegister = () => {
     padding: 1rem;
     background-color: rgb(255, 255, 255, 0.65);
     border-radius: 0.5rem;
+    margin: 1rem;
   }
   .checkbox-div {
     margin: 0.5rem;
@@ -100,5 +100,11 @@ const gotoRegister = () => {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+  h1{
+    color: white;
+  }
+  p{
+    margin: 0;
   }
 </style>
