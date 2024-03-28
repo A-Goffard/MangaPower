@@ -2,9 +2,6 @@
   <div class="general-container">
     <h1>LOGING</h1>
     <article>
-      <div class="log-lines"><span>Name </span><input type="text" id="name"></div>
-      <div class="log-lines"><span>Birthdate </span><input type="date" id="birthdate"></div>
-      <div class="log-lines"><span>Mail </span><input type="email" id="mail"></div>
       <div class="log-lines"><span>UserName </span><input type="text" id="userName"></div>
       <div class="log-lines"><span>Password </span><input type="password" id="password"></div>
       <div class="log-lines"><span>Password </span><input type="password" id="passwordComprobation"></div>
@@ -13,12 +10,23 @@
         <label for="myCheckbox" class="custom-checkbox"></label>
         <span> By checking this box, I declare that I have read and expressly accepted <a href="#"><i>terms and conditions</i></a> as well as <a href="#"><i>privacy and confidentiality policy</i></a>. </span>
       </div>
-      <button id="register" class="desactivado">Register</button>
+      <button id="loging" class="disabled">Loging</button>
+    
+      <p>If you don't have an account, create one by clicking here </p>
+      <button id="register" @click="gotoRegister">Register</button>
     </article>
   </div>
 </template>
 
 <script setup>
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+const gotoRegister = () => {
+  router.push('/register');
+};
+
   import { defineProps } from 'vue';
 
   const props = defineProps({
@@ -30,6 +38,12 @@
 </script>
   
 <style scoped>
+  button {
+    margin: 0.5rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 0.5rem;
+    background-color: red;
+  }
   .general-container{
     display: flex;
     flex-direction: column;

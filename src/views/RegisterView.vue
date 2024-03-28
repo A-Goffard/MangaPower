@@ -3,7 +3,6 @@
     <h1>REGISTER</h1>
     <div class="container-medium">
 
-    
     <div class="input-container">
       <div class="log-lines"><span>Name </span><input type="text" id="name"></div>
       <div class="log-lines"><span>Birthdate </span><input type="date" id="birthdate"></div>
@@ -44,6 +43,12 @@
 </script>
   
 <style scoped>
+  button {
+    margin: 0.5rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 0.5rem;
+    background-color: red;
+  }
   .general-container{
     display: flex;
     flex-direction: column;
