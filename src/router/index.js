@@ -7,6 +7,7 @@ import LogingView from '../views/LogingView.vue'
 import PersonalFile from '../views/PersonalFile.vue'
 import RegisterView from '../views/RegisterView.vue'
 import StatsView from '../views/StatsView.vue'
+import LogingPrueba from '../views/LogingPrueba.vue'
 
 
 const routes = [
@@ -39,6 +40,11 @@ const routes = [
     path: '/loging',
     name: 'LogingView',
     component: LogingView
+  },
+  {
+    path: '/prueba',
+    name: 'LogingPrueba',
+    component: LogingPrueba
   },
   {
     path: '/personal',

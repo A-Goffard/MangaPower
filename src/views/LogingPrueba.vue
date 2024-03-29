@@ -4,14 +4,33 @@
     <div class="container-medium">
 
     <div class="input-container">
-      <div class="log-lines"><span>Name </span><input type="text" id="name"></div>
-      <div class="log-lines"><span>Birthdate </span><input type="date" id="birthdate"></div>
-      <div class="log-lines"><span>Mail </span><input type="email" id="mail"></div>
-      <div class="log-lines"><span>UserName </span><input type="text" id="userName"></div>
-      <div class="log-lines"><span>Password </span><input type="password" id="password"></div>
-      <div class="log-lines"><span>Password </span><input type="password" id="passwordComprobation"></div>
+      <div class="log-lines"><span>Name </span><input type="text" id="name" v-model="inputName"></div>
+      <div class="log-lines"><span>Birthdate </span><input type="date" id="birthdate" v-model="inputDate"></div>
+      <div class="log-lines"><span>Mail </span><input type="email" id="mail" v-model="inputMail"></div>
+      <div class="log-lines"><span>UserName </span><input type="text" id="userName" v-model="inputUserName"></div>
+      <div class="log-lines"><span>Password </span><input type="password" id="password" v-model="inputPassword"></div>
+      <div class="log-lines"><span>Password </span><input type="password" id="passwordComprobation" v-model="inputPasswordComprobation"></div>
+      <div class="log-lines"><span>Pokemon Trainer </span>
+        <select v-model="pokemonTrainer">
+        <option value="Azumi.png">Azumi</option>
+        <option value="Kansaki.png">Kansaki</option>
+        <option value="Koruko.png">Koruko</option>
+        <option value="Kumiko.png">Kumiko</option>
+        <option value="Minato.png">Minato</option>
+        </select>
+      </div>
+      
+      <div class="log-lines"><span>Pokemon </span>
+        <select v-model="pokemon">
+        <option value="bulbasaur.png">Bulbasaur</option>
+        <option value="charmander.png">Charmander</option>
+        <option value="squirtle.png">Squirtle</option>
+        </select>
+      </div>
+      
+      
       <div class="checkbox-div">
-        <input type="checkbox" id="myCheckbox">
+        <input type="checkbox" id="myCheckbox" v-model="agree">
         <label for="myCheckbox" class="custom-checkbox"></label>
         <span> By checking this box, I declare that I have read and expressly accepted <a href="#"><i>terms and conditions</i></a> as well as <a href="#"><i>privacy and confidentiality policy</i></a>. </span>
       </div>
@@ -20,11 +39,12 @@
     <div class="avatars">
       <div class="avatar">
         <img src="avatar/l.png" alt="">
-        <span>Pokemon Trainer</span>
+        <h3>{{ pokemonTrainer }}</h3>
+
       </div>
       <div class="avatar">
         <img src="pokemon/bulbasaur.png" alt="">
-        <span>Pokemon</span>
+        <h3>{{ pokemon }}</h3>
       </div>
     </div>
     </div>
@@ -32,17 +52,36 @@
 </template>
 
 <script setup>
-/*   import { defineProps } from 'vue';
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
-  const props = defineProps({
-    fitxa: {
-      type: Object,
-      required: true
-    }
-  }); */
+let inputName = ref('');
+let inputDate = ref('');
+let inputMail = ref('');
+let inputUserName = ref('');
+let inputPassword = ref('');
+let inputPasswordComprobation = ref('');
+let agree = ref(true);
+let pokemonTrainer = ref('Minato');
+
+
+const router = useRouter();
+
 </script>
   
 <style scoped>
+h3{
+  margin: 0.5rem;
+}
+select{
+  border-radius: 0.5rem;
+  padding: 0.2rem 1rem;
+  background-color: #e6c7ac;
+}
+select option{
+  text-align: left;
+  background-color: #e6c7ac;
+}
   button {
     margin: 0.5rem;
     padding: 0.3rem 0.8rem;

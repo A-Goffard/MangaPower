@@ -26,14 +26,14 @@ const gotoRegister = () => {
   router.push('/register');
 };
 
-  import { defineProps } from 'vue';
+/*   import { defineProps } from 'vue';
 
   const props = defineProps({
     fitxa: {
       type: Object,
       required: true
     }
-  });
+  }); */
 </script>
   
 <style scoped>

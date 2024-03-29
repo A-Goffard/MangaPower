@@ -12,6 +12,7 @@ import HelloWorld from './components/HelloWorld.vue'
     <router-link to="/stats">Stats</router-link> |
     <router-link to="/gallery">Gallery</router-link> |
     <router-link to="/game">Game</router-link> |
+    <router-link to="/prueba">Pruebas</router-link> |
     <router-link to="/about">About</router-link>
   </nav>
   
