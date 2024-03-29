@@ -11,20 +11,21 @@
       <div class="log-lines"><span>Password </span><input type="password" id="password" v-model="inputPassword"></div>
       <div class="log-lines"><span>Password </span><input type="password" id="passwordComprobation" v-model="inputPasswordComprobation"></div>
       <div class="log-lines"><span>Pokemon Trainer </span>
-        <select v-model="pokemonTrainer">
-        <option value="Azumi.png">Azumi</option>
-        <option value="Kansaki.png">Kansaki</option>
-        <option value="Koruko.png">Koruko</option>
-        <option value="Kumiko.png">Kumiko</option>
-        <option value="Minato.png">Minato</option>
+        <select v-model="pokemonTrainer" @change="updateAvatar">
+        <option value="Azumi">Azumi</option>
+        <option value="Kansaki">Kansaki</option>
+        <option value="Koruko">Koruko</option>
+        <option value="Kumiko">Kumiko</option>
+        <option value="Minato">Minato</option>
         </select>
       </div>
       
       <div class="log-lines"><span>Pokemon </span>
-        <select v-model="pokemon">
-        <option value="bulbasaur.png">Bulbasaur</option>
-        <option value="charmander.png">Charmander</option>
-        <option value="squirtle.png">Squirtle</option>
+        <select v-model="pokemon" @change="updatePokemonImage">
+        <option value="Bulbasaur">Bulbasaur</option>
+        <option value="Charmander">Charmander</option>
+        <option value="Squirtle">Squirtle</option>
+        <option value="Pikachu">Pikachu</option>
         </select>
       </div>
       
@@ -38,12 +39,12 @@
     </div>
     <div class="avatars">
       <div class="avatar">
-        <img src="avatar/l.png" alt="">
+        <img :src="avatarImagePath" alt="">
         <h3>{{ pokemonTrainer }}</h3>
 
       </div>
       <div class="avatar">
-        <img src="pokemon/bulbasaur.png" alt="">
+        <img :src="pokemonImagePath" alt="">
         <h3>{{ pokemon }}</h3>
       </div>
     </div>
@@ -63,10 +64,42 @@ let inputPassword = ref('');
 let inputPasswordComprobation = ref('');
 let agree = ref(true);
 let pokemonTrainer = ref('Minato');
-
+let pokemon = ref('Bulbasaur');
 
 const router = useRouter();
 
+// Definir las rutas de las imágenes asociadas a cada opción
+const avatarImages = {
+  Azumi: 'avatar/Azumi.png',
+  Kansaki: 'avatar/Kansaki.png',
+  Koruko: 'avatar/Koruko.png',
+  Kumiko: 'avatar/Kumiko.png',
+  Minato: 'avatar/Minato.png',
+
+  // Agrega el resto de opciones con sus rutas de imagen asociadas
+};
+
+const pokemonImages = {
+  Bulbasaur: 'pokemon/Bulbasaur.png',
+  Charmander: 'pokemon/Charmander.png',
+  Squirtle: 'pokemon/Squirtle.png',
+  Pikachu: 'pokemon/Pikachu.png',
+  // Agrega el resto de opciones con sus rutas de imagen asociadas
+};
+
+// Actualizar la imagen del avatar cuando cambia la selección
+const updateAvatar = () => {
+  avatarImagePath.value = avatarImages[pokemonTrainer.value];
+};
+
+// Actualizar la imagen del Pokémon cuando cambia la selección
+const updatePokemonImage = () => {
+  pokemonImagePath.value = pokemonImages[pokemon.value];
+};
+
+// Rutas de las imágenes iniciales
+const avatarImagePath = ref(avatarImages[pokemonTrainer.value]);
+const pokemonImagePath = ref(pokemonImages[pokemon.value]);
 </script>
   
 <style scoped>
@@ -169,6 +202,10 @@ select option{
     margin: 1rem;
     background-color: rgb(255, 255, 255, 0.65);
     border-radius: 0.5rem;
+  }
+  img{
+    max-width: 20rem;
+    height: auto;
   }
     h1{
     color: white;
