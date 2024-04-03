@@ -5,11 +5,11 @@
       <div class="log-lines"><span>Email </span><input type="email" id="email" placeholder=" Enter email" v-model="email"></div>
       <div class="log-lines"><span>Password </span><input type="password" id="password" placeholder=" Enter Password" v-model="password"></div>
       <div class="checkbox-div">
-        <input type="checkbox" id="myCheckbox">
+        <input type="checkbox" id="myCheckbox" v-model="agree">
         <label for="myCheckbox" class="custom-checkbox"></label>
         <span> By checking this box, I declare that I have read and expressly accepted <a href="#"><i>terms and conditions</i></a> as well as <a href="#"><i>privacy and confidentiality policy</i></a>. </span>
       </div>
-      <button @click.prevent="authUser" type="submit" id="loging" class="disabled">Loging</button>
+      <button @click.prevent="authUser" type="submit" id="loging" class="disabled" :disabled="!agree">Loging</button>
     
       <p>If you don't have an account, create one by clicking here </p>
       <button id="register" @click="gotoRegister">Register</button>
@@ -29,6 +29,7 @@ const gotoRegister = () => {
 };
 let email = ref("")
 let password = ref ("")
+let agree = ref(false); // Inicializar el checkbox como no marcado
 
 const authUser = () => {
 const auth = getAuth()
