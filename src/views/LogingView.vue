@@ -2,14 +2,14 @@
   <div class="general-container">
     <h1>LOGING</h1>
     <article>
-      <div class="log-lines"><span>UserName </span><input type="text" id="userName"></div>
-      <div class="log-lines"><span>Password </span><input type="password" id="password"></div>
+      <div class="log-lines"><span>Email </span><input type="email" id="email" placeholder=" Enter email" v-model="email"></div>
+      <div class="log-lines"><span>Password </span><input type="password" id="password" placeholder=" Enter Password" v-model="password"></div>
       <div class="checkbox-div">
         <input type="checkbox" id="myCheckbox">
         <label for="myCheckbox" class="custom-checkbox"></label>
         <span> By checking this box, I declare that I have read and expressly accepted <a href="#"><i>terms and conditions</i></a> as well as <a href="#"><i>privacy and confidentiality policy</i></a>. </span>
       </div>
-      <button id="loging" class="disabled">Loging</button>
+      <button @click.prevent="authUser" type="submit" id="loging" class="disabled">Loging</button>
     
       <p>If you don't have an account, create one by clicking here </p>
       <button id="register" @click="gotoRegister">Register</button>
@@ -19,21 +19,28 @@
 
 <script setup>
 import { useRouter } from 'vue-router';
+import {ref} from 'vue'
+import {getAuth, signInWithEmailAndPassword} from 'firebase/auth'
 
 const router = useRouter();
 
 const gotoRegister = () => {
   router.push('/register');
 };
+let email = ref("")
+let password = ref ("")
 
-/*   import { defineProps } from 'vue';
+const authUser = () => {
+const auth = getAuth()
+signInWithEmailAndPassword (auth, email.value, password.value).then(()=> {
+    alert("Éxito!")
+})
+.catch((error) => {
+    alert("Kaka, algo ha ido mal...Éste es el error: " + error.message)
+})
 
-  const props = defineProps({
-    fitxa: {
-      type: Object,
-      required: true
-    }
-  }); */
+}
+
 </script>
   
 <style scoped>
