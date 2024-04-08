@@ -21,8 +21,13 @@ const routes = [
   name: 'StatsView',
   component: StatsView
   },
-  {
+  /* {
     path: '/detailcard',
+    name: 'DetailCard',
+    component: DetailCard
+  }, */
+  {
+    path: '/detailcard/:id',
     name: 'DetailCard',
     component: DetailCard
   },

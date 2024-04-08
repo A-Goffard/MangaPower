@@ -79,9 +79,11 @@ export default {
 
     onMounted(initCarousel);
 
-    const goToDetail = (pokemonId) => {
-      router.push({ name: 'DetailCard', params: { id: pokemonId } });
-    };
+    const goToDetail = (pokemon) => {
+  router.push({ name: 'DetailCard', params: { id: pokemon.id } });
+};
+
+ 
 
     return {
       carousel,
