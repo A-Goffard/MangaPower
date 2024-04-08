@@ -12,6 +12,7 @@ import HelloWorld from './components/HelloWorld.vue'
     <router-link to="/stats">Stats</router-link> |
     <router-link to="/gallery">Gallery</router-link> |
     <router-link to="/game">Game</router-link> |
+<!--     <router-link to="/prueba">Pruebas</router-link> | -->
     <router-link to="/about">About</router-link>
   </nav>
   
@@ -19,6 +20,11 @@ import HelloWorld from './components/HelloWorld.vue'
 </template>
 
 <style>
+*{
+  margin: 0;
+  padding: 0;
+  
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
@@ -36,5 +42,8 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #42b983;
+}
+h1{
+  margin: 1rem;
 }
 </style>
