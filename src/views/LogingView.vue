@@ -9,7 +9,8 @@
         <label for="myCheckbox" class="custom-checkbox"></label>
         <span> By checking this box, I declare that I have read and expressly accepted <a href="#"><i>terms and conditions</i></a> as well as <a href="#"><i>privacy and confidentiality policy</i></a>. </span>
       </div>
-      <button @click.prevent="authUser" type="submit" id="loging" class="disabled" :disabled="!agree">Loging</button>
+<!--       <button @click.prevent="authUser" type="submit" id="loging" class="disabled" :disabled="!agree">Loging</button>
+ -->      <button @click.prevent="guardarDatos" type="submit" id="loging" class="disabled" :disabled="!agree">Loging</button>
     
       <p>If you don't have an account, create one by clicking here </p>
       <button id="register" @click="gotoRegister">Register</button>
@@ -27,7 +28,7 @@ const router = useRouter();
 const gotoRegister = () => {
   router.push('/register');
 };
-let email = ref("")
+/* let email = ref("")
 let password = ref ("")
 let agree = ref(false); // Inicializar el checkbox como no marcado
 
@@ -40,8 +41,11 @@ signInWithEmailAndPassword (auth, email.value, password.value).then(()=> {
     alert("Kaka, algo ha ido mal...Éste es el error: " + error.message)
 })
 
-}
-
+} */
+const guardarDatos = () => {
+  const login = [inputMail.value, inputPassword.value];
+  localStorage.setItem("datosstring", JSON.stringify(login));
+};
 </script>
   
 <style scoped>

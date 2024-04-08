@@ -116,8 +116,8 @@ const avatarImagePath = ref(avatarImages[pokemonTrainer.value]);
 const pokemonImagePath = ref(pokemonImages[pokemon.value]);
 
 const send = () => {
-  const datos = [inputName.value, inputDate.value, inputMail.value, inputUserName.value, inputPassword.value, pokemonTrainer.value, pokemon.value];
-  localStorage.setItem("datosstring", JSON.stringify(datos));
+  const personalFileData = [inputName.value, inputDate.value, inputMail.value, inputUserName.value, inputPassword.value, pokemonTrainer.value, pokemon.value];
+  localStorage.setItem("personalFileData", JSON.stringify(personalFileData));
 };
 
 </script>
