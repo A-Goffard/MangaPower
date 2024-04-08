@@ -7,9 +7,8 @@ const datosEjemplo = {
   inputPasswordComprobation: "12345678",
   pokemonTrainer: "Minato",
   pokemon: "Bulbasaur"
-};
-
-const datosEjemplo2 = {
+},
+{
   inputName: "Maka",
   inputDate: "1990-01-01", 
   inputMail: "makatxu@hotmail.com",
