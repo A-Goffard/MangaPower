@@ -10,7 +10,7 @@ import router from './router'
 
 
 const firebaseConfig = {
-    apiKey: process.env.VUE_APP_GOOGLE_API_KEY,
+    apiKey: "AIzaSyA5O43r43Re_Xs_GI4I32XXVBVJUQYaFDs",
     authDomain: "login-vue-mangapower.firebaseapp.com",
     projectId: "login-vue-mangapower",
     storageBucket: "login-vue-mangapower.appspot.com",
