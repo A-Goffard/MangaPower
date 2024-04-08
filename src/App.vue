@@ -8,7 +8,6 @@ import HelloWorld from './components/HelloWorld.vue'
     <router-link to="/">Home</router-link> |
     <router-link to="/loging">Loging</router-link> |
     <router-link to="/register">Register</router-link> |
-    <router-link to="/personal">Personal Profile</router-link> |
     <router-link to="/stats">Stats</router-link> |
     <router-link to="/game">Game</router-link> |
     <router-link to="/about">About</router-link> |

@@ -47,33 +47,28 @@ const guardarDatos = () => {
   localStorage.setItem("datoslogin", JSON.stringify(login));
   proveLogin();
 };
-
+const gotoPersonalPage = () => {
+  router.push('/personalfile');
+};
 const proveLogin = () => {
   const login = [email.value, password.value];
   const register = localStorage.getItem('personalFileData');
   const registerDates = JSON.parse(register);
   if (!registerDates) {
-    console.log('No hay datos almacenados.');
-    return;
+    alert('No hay ningún usuario con esos datos')
+    gotoRegister();
   }
   else if(email.value === registerDates[2] && password.value === registerDates[4]){
-  console.log(login);
-  console.log(email.value);
-  const gotoPersonalPage = () => {
-  router.push('/personalfile');
-};
+
 gotoPersonalPage();
-  alert('va?')
+  alert('Correct Loging')
 } else{
-  alert('no va')
-  const gotoRegister = () => {
-  router.push('/register');
+  alert('Incorrect data or unregistered user')
+  gotoRegister();
 };
-gotoRegister();
-}
-
 
 }
+
 
 </script>
   
