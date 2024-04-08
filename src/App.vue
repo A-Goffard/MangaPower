@@ -10,15 +10,22 @@ import HelloWorld from './components/HelloWorld.vue'
     <router-link to="/register">Register</router-link> |
     <router-link to="/personal">Personal Profile</router-link> |
     <router-link to="/stats">Stats</router-link> |
-    <router-link to="/gallery">Gallery</router-link> |
     <router-link to="/game">Game</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/about">About</router-link> |
+    <Router-Link to="/personalfile">PersonalFile</Router-Link> |
+    <Router-Link to="/gallery">Gallery</Router-Link> |
+    <Router-Link to="/detailcard">DetailCard</Router-Link> |    
   </nav>
   
   <router-view/>
 </template>
 
 <style>
+*{
+  margin: 0;
+  padding: 0;
+  
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
@@ -36,5 +43,8 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #42b983;
+}
+h1{
+  margin: 1rem;
 }
 </style>
