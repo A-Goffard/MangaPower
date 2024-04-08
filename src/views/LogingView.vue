@@ -9,7 +9,8 @@
         <label for="myCheckbox" class="custom-checkbox"></label>
         <span> By checking this box, I declare that I have read and expressly accepted <a href="#"><i>terms and conditions</i></a> as well as <a href="#"><i>privacy and confidentiality policy</i></a>. </span>
       </div>
-      <button @click.prevent="authUser" type="submit" id="loging" class="disabled" :disabled="!agree">Loging</button>
+<!--       <button @click.prevent="authUser" type="submit" id="loging" class="disabled" :disabled="!agree">Loging</button>
+ -->      <button @click.prevent="guardarDatos" type="submit" id="loging" class="disabled" :disabled="!agree">Loging</button>
     
       <p>If you don't have an account, create one by clicking here </p>
       <button id="register" @click="gotoRegister">Register</button>
@@ -20,17 +21,17 @@
 <script setup>
 import { useRouter } from 'vue-router';
 import {ref} from 'vue'
-import {getAuth, signInWithEmailAndPassword} from 'firebase/auth'
+/* import {getAuth, signInWithEmailAndPassword} from 'firebase/auth' */
 
 const router = useRouter();
 
 const gotoRegister = () => {
   router.push('/register');
 };
-let email = ref("")
-let password = ref ("")
-let agree = ref(false); // Inicializar el checkbox como no marcado
-
+ const email = ref("")
+ const password = ref ("")
+ const agree = ref(false); // Inicializar el checkbox como no marcado
+/*
 const authUser = () => {
 const auth = getAuth()
 signInWithEmailAndPassword (auth, email.value, password.value).then(()=> {
@@ -39,6 +40,38 @@ signInWithEmailAndPassword (auth, email.value, password.value).then(()=> {
 .catch((error) => {
     alert("Kaka, algo ha ido mal...Éste es el error: " + error.message)
 })
+
+} */
+const guardarDatos = () => {
+  const login = [email.value, password.value];
+  localStorage.setItem("datoslogin", JSON.stringify(login));
+  proveLogin();
+};
+
+const proveLogin = () => {
+  const login = [email.value, password.value];
+  const register = localStorage.getItem('personalFileData');
+  const registerDates = JSON.parse(register);
+  if (!registerDates) {
+    console.log('No hay datos almacenados.');
+    return;
+  }
+  else if(email.value === registerDates[2] && password.value === registerDates[4]){
+  console.log(login);
+  console.log(email.value);
+  const gotoPersonalPage = () => {
+  router.push('/personalfile');
+};
+gotoPersonalPage();
+  alert('va?')
+} else{
+  alert('no va')
+  const gotoRegister = () => {
+  router.push('/register');
+};
+gotoRegister();
+}
+
 
 }
 
@@ -52,6 +85,7 @@ signInWithEmailAndPassword (auth, email.value, password.value).then(()=> {
     background-color: red;
   }
   .general-container{
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;

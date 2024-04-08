@@ -116,8 +116,8 @@ const avatarImagePath = ref(avatarImages[pokemonTrainer.value]);
 const pokemonImagePath = ref(pokemonImages[pokemon.value]);
 
 const send = () => {
-  const datos = [inputName.value, inputDate.value, inputMail.value, inputUserName.value, inputPassword.value, pokemonTrainer.value, pokemon.value];
-  localStorage.setItem("datosstring", JSON.stringify(datos));
+  const personalFileData = [inputName.value, inputDate.value, inputMail.value, inputUserName.value, inputPassword.value, pokemonTrainer.value, pokemon.value];
+  localStorage.setItem("personalFileData", JSON.stringify(personalFileData));
 };
 
 </script>
@@ -142,6 +142,7 @@ button {
   background-color: red;
 }
 .general-container {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -200,10 +201,10 @@ input {
 }
 .avatars {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  max-width: 40rem;
+
 }
 .container-medium {
   display: flex;
