@@ -47,7 +47,7 @@ const routes = [
     component: LogingPrueba
   }, */
   {
-    path: '/personal',
+    path: '/personalfile',
     name: 'PersonalFile',
     component: PersonalFile
   },
