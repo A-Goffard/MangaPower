@@ -44,7 +44,7 @@ signInWithEmailAndPassword (auth, email.value, password.value).then(()=> {
 } */
 const guardarDatos = () => {
   const login = [inputMail.value, inputPassword.value];
-  localStorage.setItem("datosstring", JSON.stringify(login));
+  localStorage.setItem("datoslogin", JSON.stringify(login));
 };
 </script>
   

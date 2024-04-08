@@ -1,0 +1,24 @@
+const datosEjemplo = {
+  inputName: "Pepe",
+  inputDate: "1990-01-01", 
+  inputMail: "alkarinkwa@hotmail.com",
+  inputUserName: "PepeChan",
+  inputPassword: "12345678",
+  inputPasswordComprobation: "12345678",
+  pokemonTrainer: "Minato",
+  pokemon: "Bulbasaur"
+};
+
+const datosEjemplo2 = {
+  inputName: "Maka",
+  inputDate: "1990-01-01", 
+  inputMail: "makatxu@hotmail.com",
+  inputUserName: "MakaChan",
+  inputPassword: "12345678",
+  inputPasswordComprobation: "12345678",
+  pokemonTrainer: "Azumi",
+  pokemon: "Charmander"
+};
+
+
+API -  https://pokeapi.co/api/v2/pokemon?offset=0&limit=151
