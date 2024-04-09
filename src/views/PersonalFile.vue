@@ -16,6 +16,9 @@
         <button class="next-button" @click="slideRight">Next</button>
       </div>
       <h2>STATS</h2>
+      
+
+
     </div>
   </div>
 </template>
@@ -71,7 +74,7 @@ import axios from 'axios';
     };
 
     const initCarousel = async () => {
-      const pokemonIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      const pokemonIds = [1, 20, 3, 4, 5, 6, 7, 8, 9, 10];
       await Promise.all(pokemonIds.map(async id => await getPokemonData(id)));
     };
 

@@ -1,25 +1,25 @@
 <template>
-  <div>
     <h1>DETAIL CARD</h1>
-    <div v-if="pokemon">
-      <div>
-        <strong>ID:</strong> {{ pokemon.id }}
-      </div>
+    <div class="container1">
+      <div v-if="pokemon">
+       <div class="id">
+        <h2><strong>ID:</strong></h2>{{ pokemon.id }}
+       </div>
 
-      <div>
-        <strong>Name:</strong> {{ pokemon.name }}
-      </div>
+       <div class="name">
+        <h2><strong>Name:</strong></h2>{{ pokemon.name }}
+       </div>
 
-      <div>
-        <strong>Abilities:</strong> {{ pokemon.abilities }}
-      </div>
+       <div class="ability">
+        <h2><strong>Abilities:</strong></h2>{{ pokemon.abilities }}
+        </div>
 
-      <div>
-        <strong>Image:</strong> <img :src="pokemon.image" :alt="pokemon.name">
-      </div>
+         <div class="image">
+          <img :src="pokemon.image" :alt="pokemon.name">
+         </div>
       <!-- Mostrar más detalles de la carta aquí -->
+      </div>
     </div>
-  </div>
 </template>
 
 <script setup>
@@ -53,4 +53,24 @@ onMounted(() => {
 h1 {
   text-align: center;
 }
+.container1{
+  background-image: url('/public/images/plantilla_psiquico 2.png');
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+}
+.id{
+  background-color: blueviolet;
+}
+.name{
+  background-color: aquamarine;
+}
+.ability{
+  background-color: blue;
+}
+
+img{
+  height: 30rem;
+}
+
 </style>
