@@ -1,12 +1,16 @@
 <template>
-  <div>
-    <h1>STATS</h1>
-  </div>
+
+  <StatsForUser />
+
 </template>
 
 <script setup>
 
+import StatsForUser from '../components/StatsForUser.vue'
+
 </script>
+
+
 
 <style scoped>
 

@@ -142,6 +142,7 @@ button {
   background-color: red;
 }
 .general-container {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -200,10 +201,10 @@ input {
 }
 .avatars {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  max-width: 40rem;
+
 }
 .container-medium {
   display: flex;
