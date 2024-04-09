@@ -7,6 +7,7 @@ import LogingView from '../views/LogingView.vue'
 import PersonalFile from '../views/PersonalFile.vue'
 import RegisterView from '../views/RegisterView.vue'
 import StatsView from '../views/StatsView.vue'
+import CardStore from '../views/CardStore.vue'
 /* import LogingPrueba from '../views/LogingPrueba.vue' */
 
 
@@ -25,6 +26,11 @@ const routes = [
     path: '/detailcard',
     name: 'DetailCard',
     component: DetailCard
+  },
+  {
+    path: '/cardstore',
+    name: 'CardStore',
+    component: CardStore
   },
   {
     path: '/gallery',
