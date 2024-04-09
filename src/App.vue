@@ -14,7 +14,8 @@ import HelloWorld from './components/HelloWorld.vue'
     <router-link to="/about">About</router-link> |
     <Router-Link to="/personalfile">PersonalFile</Router-Link> |
     <Router-Link to="/gallery">Gallery</Router-Link> |
-    <Router-Link to="/detailcard">DetailCard</Router-Link> |    
+    <Router-Link to="/detailcard">DetailCard</Router-Link> |  
+    <Router-Link to="/cardstore">CardStore</Router-Link> |  
   </nav>
   
   <router-view/>
