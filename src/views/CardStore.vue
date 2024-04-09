@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>Types backgrounds</h1>
-        <Cards/>
+        <Cards />
     </div>
   </template>
   
