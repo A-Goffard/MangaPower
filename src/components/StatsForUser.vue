@@ -29,21 +29,25 @@
 }
 
 .informationStats{
-    width: 33rem;
-    height: 18rem;
-    border: 0.1rem solid red;
-    position: absolute;
+   /*  width: 33rem;
+    height: 18rem; */
+    /* position: absolute;
     left: 36%;
-    top: 40%;
+    top: 40%; */
     color: white;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    border: 0.1rem solid black;
+    /* flex-direction: column; */
     justify-content: space-between;
     
 }
 .informationStats h3{
     margin: 0.5rem;
 }
+
+
 
 
 
