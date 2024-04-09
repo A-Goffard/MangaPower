@@ -16,10 +16,10 @@
         <button class="next-button" @click="slideRight">Next</button>
       </div>
       <h2>STATS</h2>
-        <div class="graphic">
-          <img src="Pokedex.jpeg" alt="graphic">
-        </div>
-  
+      <!-- Aquí agregamos el gráfico SVG -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bar-chart" viewBox="0 0 16 16" @click="goToStatsPage">
+        <path d="M4 11H2v3h2zm5-4H7v7h2zm5-5v12h-2V2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1z"/>
+      </svg>
     </div>
   </div>
 </template>
@@ -29,60 +29,64 @@ import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import axios from 'axios';
 
-    const carousel = ref(null);
-    const position = ref(0);
-    const cardWidth = 200; // Ancho de cada tarjeta de Pokémon
-    const pokemons = ref([]);
-    const router = useRouter();
+const carousel = ref(null);
+const position = ref(0);
+const cardWidth = 200; // Ancho de cada tarjeta de Pokémon
+const pokemons = ref([]);
+const router = useRouter();
 
-    const slideLeft = () => {
-      position.value += cardWidth;
-      if (position.value > 0) {
-        position.value = -(pokemons.value.length - 1) * cardWidth;
-      }
-      carousel.value.style.transform = `translateX(${position.value}px)`;
+const slideLeft = () => {
+  position.value += cardWidth;
+  if (position.value > 0) {
+    position.value = -(pokemons.value.length - 1) * cardWidth;
+  }
+  carousel.value.style.transform = `translateX(${position.value}px)`;
+};
+
+const slideRight = () => {
+  position.value -= cardWidth;
+  if (position.value < -(pokemons.value.length * cardWidth)) {
+    position.value = 0;
+  }
+  carousel.value.style.transform = `translateX(${position.value}px)`;
+};
+
+const fetchPokemonData = async (pokemonId) => {
+  try {
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching Pokemon data:', error);
+  }
+};
+
+const getPokemonData = async (pokemonId) => {
+  const data = await fetchPokemonData(pokemonId);
+  if (data) {
+    const pokemon = {
+      id: data.id,
+      name: data.name.toUpperCase(),
+      image: data.sprites.front_default,
+      abilities: data.abilities.map(ability => ability.ability.name).join(', ')
     };
+    pokemons.value.push(pokemon);
+  }
+};
 
-    const slideRight = () => {
-      position.value -= cardWidth;
-      if (position.value < -(pokemons.value.length * cardWidth)) {
-        position.value = 0;
-      }
-      carousel.value.style.transform = `translateX(${position.value}px)`;
-    };
+const initCarousel = async () => {
+  const pokemonIds = [1, 20, 3, 4, 5, 6, 7, 8, 9, 10];
+  await Promise.all(pokemonIds.map(async id => await getPokemonData(id)));
+};
 
-    const fetchPokemonData = async (pokemonId) => {
-      try {
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
-        const data = await response.json();
-        return data;
-      } catch (error) {
-        console.error('Error fetching Pokemon data:', error);
-      }
-    };
+onMounted(initCarousel);
 
-    const getPokemonData = async (pokemonId) => {
-      const data = await fetchPokemonData(pokemonId);
-      if (data) {
-        const pokemon = {
-          id: data.id,
-          name: data.name.toUpperCase(),
-          image: data.sprites.front_default,
-          abilities: data.abilities.map(ability => ability.ability.name).join(', ')
-        };
-        pokemons.value.push(pokemon);
-      }
-    };
-
-    const initCarousel = async () => {
-      const pokemonIds = [1, 20, 3, 4, 5, 6, 7, 8, 9, 10];
-      await Promise.all(pokemonIds.map(async id => await getPokemonData(id)));
-    };
-
-    onMounted(initCarousel);
-
-    const goToDetail = (pokemonId) => {
+const goToDetail = (pokemonId) => {
   router.push({ name: 'DetailCard', params: { id: pokemonId } });
+};
+
+const goToStatsPage = () => {
+  router.push({ name: 'StatsView' });
 };
 
 </script>
@@ -136,10 +140,11 @@ h2 {
   width: 10rem;
   height: 4rem;
 }
-.graphic{
-  background-color: chocolate;
+
+svg {
   width: 20rem;
-  height: 20rem;
+  height: 10rem;
+  cursor: pointer;
 }
 
 </style>
