@@ -63,6 +63,7 @@ export default {
       <Router-Link to="/personalfile">PersonalFile</Router-Link> |
       <Router-Link to="/gallery">Gallery</Router-Link> |
       <Router-Link to="/detailcard">DetailCard</Router-Link> |
+      <Router-Link to="/cardstore">CardStore</Router-Link> |
 
     </div>
   </nav>
