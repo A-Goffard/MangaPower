@@ -21,7 +21,7 @@
 .containerStats{
     width: 100%;
     height: 60rem;
-    background-image: url('/public/images/1366_2000.jpg');
+    background-image: url('/public/images/Batalla_Pokemon.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
