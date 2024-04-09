@@ -16,9 +16,11 @@
         <button class="next-button" @click="slideRight">Next</button>
       </div>
       <h2>STATS</h2>
-      
 
-
+      <!--  <router-link :to="{ name: 'Stats' }">
+        <img src="/public/images/estadistica.jpg" alt="Descripción de la imagen">
+      </router-link>
+  -->
     </div>
   </div>
 </template>
