@@ -22,28 +22,31 @@
   </div>
 </template>
 
-
 <script setup>
-import { onMounted, ref } from 'vue';
-import { useRoute } from 'vue-router'; // Importa useRoute desde vue-router
+import axios from 'axios';
+import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
 
 const pokemon = ref(null);
-const route = useRoute(); // Utiliza useRoute para acceder a la ruta actual
+const route = useRoute();
 
-
-console.log(route.params.id); // Accede al parámetro 'id' de la ruta actual
-console.log(route.query.page); // Accede al parámetro de consulta 'page'
-console.log(route.name); 
+const fetchPokemonData = async (pokemonId) => {
+  try {
+    const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
+    pokemon.value = {
+      id: response.data.id,
+      name: response.data.name,
+      abilities: response.data.abilities.map(ability => ability.ability.name).join(', '),
+      image: response.data.sprites.front_default
+    };
+  } catch (error) {
+    console.error('Error fetching Pokémon data:', error);
+  }
+};
 
 onMounted(() => {
-  const pokemonData = JSON.parse(route.params.pokemon);
-  pokemon.value = {
-    id: pokemonData.id,
-    name: pokemonData.name,
-    image: pokemonData.image
-  };
+  fetchPokemonData(route.params.id);
 });
-
 </script>
 
 <style scoped>

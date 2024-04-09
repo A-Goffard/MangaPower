@@ -20,13 +20,11 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
+import axios from 'axios';
 
-export default {
-  name: 'PokemonCarousel',
-  setup() {
     const carousel = ref(null);
     const position = ref(0);
     const cardWidth = 200; // Ancho de cada tarjeta de Pokémon
@@ -79,22 +77,10 @@ export default {
 
     onMounted(initCarousel);
 
-    const goToDetail = (pokemon) => {
-  router.push({ name: 'DetailCard', params: { id: pokemon.id } });
+    const goToDetail = (pokemonId) => {
+  router.push({ name: 'DetailCard', params: { id: pokemonId } });
 };
 
- 
-
-    return {
-      carousel,
-      position,
-      slideLeft,
-      slideRight,
-      pokemons,
-      goToDetail
-    };
-  }
-};
 </script>
 
 <style scoped>
