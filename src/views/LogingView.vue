@@ -21,17 +21,17 @@
 <script setup>
 import { useRouter } from 'vue-router';
 import {ref} from 'vue'
-import {getAuth, signInWithEmailAndPassword} from 'firebase/auth'
+/* import {getAuth, signInWithEmailAndPassword} from 'firebase/auth' */
 
 const router = useRouter();
 
 const gotoRegister = () => {
   router.push('/register');
 };
-/* let email = ref("")
-let password = ref ("")
-let agree = ref(false); // Inicializar el checkbox como no marcado
-
+ const email = ref("")
+ const password = ref ("")
+ const agree = ref(false); // Inicializar el checkbox como no marcado
+/*
 const authUser = () => {
 const auth = getAuth()
 signInWithEmailAndPassword (auth, email.value, password.value).then(()=> {
@@ -43,9 +43,38 @@ signInWithEmailAndPassword (auth, email.value, password.value).then(()=> {
 
 } */
 const guardarDatos = () => {
-  const login = [inputMail.value, inputPassword.value];
-  localStorage.setItem("datosstring", JSON.stringify(login));
+  const login = [email.value, password.value];
+  localStorage.setItem("datoslogin", JSON.stringify(login));
+  proveLogin();
 };
+
+const proveLogin = () => {
+  const login = [email.value, password.value];
+  const register = localStorage.getItem('personalFileData');
+  const registerDates = JSON.parse(register);
+  if (!registerDates) {
+    console.log('No hay datos almacenados.');
+    return;
+  }
+  else if(email.value === registerDates[2] && password.value === registerDates[4]){
+  console.log(login);
+  console.log(email.value);
+  const gotoPersonalPage = () => {
+  router.push('/personalfile');
+};
+gotoPersonalPage();
+  alert('va?')
+} else{
+  alert('no va')
+  const gotoRegister = () => {
+  router.push('/register');
+};
+gotoRegister();
+}
+
+
+}
+
 </script>
   
 <style scoped>
@@ -56,6 +85,7 @@ const guardarDatos = () => {
     background-color: red;
   }
   .general-container{
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
