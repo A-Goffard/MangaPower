@@ -16,11 +16,10 @@
         <button class="next-button" @click="slideRight">Next</button>
       </div>
       <h2>STATS</h2>
-
-      <!--  <router-link :to="{ name: 'Stats' }">
-        <img src="/public/images/estadistica.jpg" alt="Descripción de la imagen">
-      </router-link>
-  -->
+        <div class="graphic">
+          <img src="Pokedex.jpeg" alt="graphic">
+        </div>
+  
     </div>
   </div>
 </template>
@@ -137,4 +136,10 @@ h2 {
   width: 10rem;
   height: 4rem;
 }
+.graphic{
+  background-color: chocolate;
+  width: 20rem;
+  height: 20rem;
+}
+
 </style>
