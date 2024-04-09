@@ -16,17 +16,20 @@
         <button class="next-button" @click="slideRight">Next</button>
       </div>
       <h2>STATS</h2>
+
+      <!--  <router-link :to="{ name: 'Stats' }">
+        <img src="/public/images/estadistica.jpg" alt="Descripción de la imagen">
+      </router-link>
+  -->
     </div>
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
+import axios from 'axios';
 
-export default {
-  name: 'PokemonCarousel',
-  setup() {
     const carousel = ref(null);
     const position = ref(0);
     const cardWidth = 200; // Ancho de cada tarjeta de Pokémon
@@ -73,26 +76,16 @@ export default {
     };
 
     const initCarousel = async () => {
-      const pokemonIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      const pokemonIds = [1, 20, 3, 4, 5, 6, 7, 8, 9, 10];
       await Promise.all(pokemonIds.map(async id => await getPokemonData(id)));
     };
 
     onMounted(initCarousel);
 
     const goToDetail = (pokemonId) => {
-      router.push({ name: 'DetailCard', params: { id: pokemonId } });
-    };
-
-    return {
-      carousel,
-      position,
-      slideLeft,
-      slideRight,
-      pokemons,
-      goToDetail
-    };
-  }
+  router.push({ name: 'DetailCard', params: { id: pokemonId } });
 };
+
 </script>
 
 <style scoped>
