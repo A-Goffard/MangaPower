@@ -68,6 +68,7 @@
 </template>
 
 <script setup>
+import { Alert } from 'bootstrap';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
@@ -115,10 +116,66 @@ const updatePokemonImage = () => {
 const avatarImagePath = ref(avatarImages[pokemonTrainer.value]);
 const pokemonImagePath = ref(pokemonImages[pokemon.value]);
 
-const send = () => {
-  const personalFileData = [inputName.value, inputDate.value, inputMail.value, inputUserName.value, inputPassword.value, pokemonTrainer.value, pokemon.value];
-  localStorage.setItem("personalFileData", JSON.stringify(personalFileData));
+const gotoPersonalPage = () => {
+  router.push('/personalfile');
 };
+
+
+
+const send = () => {
+  const limitYear = 1920; 
+  const inputYear = parseInt(inputDate.value.split('/')[0]);
+
+  console.log(inputDate.value); // Verificar el valor de inputDate
+  console.log(inputYear); // Verificar el valor de inputYear
+
+  let personalFileData = {};
+
+  if(localStorage.getItem("personalFileData")) {
+    personalFileData = JSON.parse(localStorage.getItem("personalFileData"));
+  }
+
+  if(inputMail.value === personalFileData[inputUserName.value]?.email ||
+      inputUserName.value === personalFileData[inputUserName.value]?.username ||
+      inputPassword.value !== inputPasswordComprobation.value ||
+      inputYear < limitYear) {
+    // Realiza todas las comprobaciones al mismo tiempo y muestra los mensajes de error correspondientes
+    if(inputMail.value === personalFileData[inputUserName.value]?.email) {
+      alert('There is already a user with that email');
+      inputMail.value = '';
+    }
+    if(inputUserName.value === personalFileData[inputUserName.value]?.username) {
+      alert('That username already exists');
+      inputUserName.value = '';
+    }
+    if(inputPassword.value !== inputPasswordComprobation.value) {
+      alert('Passwords do not match');
+      inputPassword.value = '';
+      inputPasswordComprobation.value = '';
+    }
+    if(inputYear < limitYear) {
+      alert("Don't overdo it with age...");
+      inputDate.value = '';
+    }
+  } else {
+    // Si todas las comprobaciones son exitosas, agrega el nuevo usuario a la lista
+    alert('Correct Loging');
+    const newUser = {
+      name: inputName.value,
+      birthdate: inputDate.value,
+      email: inputMail.value,
+      username: inputUserName.value,
+      password: inputPassword.value,
+      pokemonTrainer: pokemonTrainer.value,
+      pokemon: pokemon.value
+    };
+    personalFileData[inputUserName.value] = newUser;
+    localStorage.setItem("personalFileData", JSON.stringify(personalFileData));
+    gotoPersonalPage();
+  }
+};
+
+
 
 </script>
   
