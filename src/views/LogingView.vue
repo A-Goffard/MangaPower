@@ -43,7 +43,7 @@ signInWithEmailAndPassword (auth, email.value, password.value).then(()=> {
 
 } */
 const guardarDatos = () => {
-  const login = [email.value, password.value];
+  const login = [email.value, password.value]; 
   localStorage.setItem("datoslogin", JSON.stringify(login));
   proveLogin();
 };
@@ -51,24 +51,25 @@ const gotoPersonalPage = () => {
   router.push('/personalfile');
 };
 const proveLogin = () => {
-  const login = [email.value, password.value];
-  const register = localStorage.getItem('personalFileData');
-  const registerDates = JSON.parse(register);
-  if (!registerDates) {
-    alert('No hay ningún usuario con esos datos')
+  const datosRegistered = JSON.parse(localStorage.getItem('personalFileData'));
+  const emailRegistered = datosRegistered.email;
+  const passwordRegistered = datosRegistered.password;
+
+  const datosLogin = JSON.parse(localStorage.getItem('datoslogin'));
+  const emailLogin = datosLogin.email;
+  const passwordLogin = datosLogin.password;
+
+    if (!datosRegistered) {
+    alert('No hay ningún usuario registrado');
+    gotoRegister();
+  } else if (emailLogin === emailRegistered && passwordLogin === passwordRegistered) {
+    gotoPersonalPage();
+    alert('Inicio de sesión correcto');
+  } else {
+    alert('Datos incorrectos o usuario no registrado');
     gotoRegister();
   }
-  else if(email.value === registerDates[2] && password.value === registerDates[4]){
-
-gotoPersonalPage();
-  alert('Correct Loging')
-} else{
-  alert('Incorrect data or unregistered user')
-  gotoRegister();
 };
-
-}
-
 
 </script>
   
