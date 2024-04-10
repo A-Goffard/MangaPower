@@ -68,7 +68,7 @@ import axios from 'axios';
         const pokemon = {
           id: data.id,
           name: data.name.toUpperCase(),
-          image: data.sprites.front_default,
+          image:data.sprites.other['official-artwork'].front_default,     
           abilities: data.abilities.map(ability => ability.ability.name).join(', ')
         };
         pokemons.value.push(pokemon);

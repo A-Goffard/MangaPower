@@ -37,7 +37,7 @@ const fetchPokemonData = async (pokemonId) => {
       id: response.data.id,
       name: response.data.name,
       abilities: response.data.abilities.map(ability => ability.ability.name).join(', '),
-      image: response.data.sprites.front_default
+      image: response.data.sprites.other['official-artwork'].front_default, 
     };
   } catch (error) {
     console.error('Error fetching Pokémon data:', error);
