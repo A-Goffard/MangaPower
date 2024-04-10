@@ -51,9 +51,10 @@ const gotoPersonalPage = () => {
   router.push('/personalfile');
 };
 const proveLogin = () => {
-  const datosRegistered = JSON.parse(localStorage.getItem('personalFileData'));
-  const emailRegistered = datosRegistered.email;
-  const passwordRegistered = datosRegistered.password;
+const datosRegistered = JSON.parse(localStorage.getItem('personalFileData'));
+const emailRegistered = datosRegistered.email;
+const passwordRegistered = datosRegistered.password;
+alert(emailRegistered + ' ' + passwordRegistered);
 
   const datosLogin = JSON.parse(localStorage.getItem('datoslogin'));
   const emailLogin = datosLogin.email;
