@@ -10,8 +10,16 @@
         <h2><strong>Name:</strong></h2>{{ pokemon.name }}
        </div>
 
+      <!--  <div class="type">
+        <h2><strong>Type:</strong></h2>{{ pokemon.types.0.type.name }}
+        </div>
+ -->
        <div class="ability">
         <h2><strong>Abilities:</strong></h2>{{ pokemon.abilities }}
+        </div>
+
+        <div class="base_experience">
+        <h2><strong>Base experience:</strong></h2>{{ pokemon.base_experience }}
         </div>
 
          <div class="image">
@@ -38,6 +46,8 @@ const fetchPokemonData = async (pokemonId) => {
       name: response.data.name,
       abilities: response.data.abilities.map(ability => ability.ability.name).join(', '),
       image: response.data.sprites.other['official-artwork'].front_default, 
+      base_experience: response.data.base_experience,
+     /*  types: response.data.types.0.type.name, */
     };
   } catch (error) {
     console.error('Error fetching Pokémon data:', error);
