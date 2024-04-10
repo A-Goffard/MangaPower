@@ -18,6 +18,7 @@ onMounted(() => {
             datasets:[
                 {
                     label: "Estadísticas del jugador",
+                    backgroundColor: "rgb(0,0,0)",
                     data: [10, 4, 6]
                 }
             ]

@@ -9,7 +9,7 @@
 <script setup>
 
 import StatsForUser from '../components/StatsForUser.vue'
-/* import GraphicStats from '../components/GraphicStats' */
+import GraphicStats from '../components/GraphicStats'
 
 </script>
 
