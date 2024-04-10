@@ -16,7 +16,8 @@ export default {
         { label: 'Stats', color: '#000000' },
         { label: 'Gallery', color: '#000000' },
         { label: 'Game', color: '#000000' },
-        { label: 'About', color: '#000000' }
+        { label: 'About', color: '#000000' },
+        { label: 'CardStore', color: '#000000' }
         // Add more menu items as needed
       ]
     };
@@ -62,6 +63,7 @@ export default {
       <Router-Link to="/personalfile">PersonalFile</Router-Link> |
       <Router-Link to="/gallery">Gallery</Router-Link> |
       <Router-Link to="/detailcard">DetailCard</Router-Link> |
+      <Router-Link to="/cardstore">CardStore</Router-Link> |
 
     </div>
   </nav>

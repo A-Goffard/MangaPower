@@ -61,18 +61,18 @@ const fetchPokemonData = async (pokemonId) => {
   }
 };
 
-const getPokemonData = async (pokemonId) => {
-  const data = await fetchPokemonData(pokemonId);
-  if (data) {
-    const pokemon = {
-      id: data.id,
-      name: data.name.toUpperCase(),
-      image: data.sprites.front_default,
-      abilities: data.abilities.map(ability => ability.ability.name).join(', ')
+    const getPokemonData = async (pokemonId) => {
+      const data = await fetchPokemonData(pokemonId);
+      if (data) {
+        const pokemon = {
+          id: data.id,
+          name: data.name.toUpperCase(),
+          image:data.sprites.other['official-artwork'].front_default,     
+          abilities: data.abilities.map(ability => ability.ability.name).join(', ')
+        };
+        pokemons.value.push(pokemon);
+      }
     };
-    pokemons.value.push(pokemon);
-  }
-};
 
 const initCarousel = async () => {
   const pokemonIds = [1, 20, 3, 4, 5, 6, 7, 8, 9, 10];
