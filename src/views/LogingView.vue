@@ -1,26 +1,18 @@
 <template>
   <div class="general-container">
-    <h1>LOGIN</h1>
+    <h1>LOGING</h1>
     <article>
-      <div class="log-lines">
-        <span>Email</span>
-        <input type="email" id="email" placeholder="Enter email" v-model="email">
-      </div>
-      <div class="log-lines">
-        <span>Password</span>
-        <input type="password" id="password" placeholder="Enter Password" v-model="password">
-      </div>
+      <div class="log-lines"><span>Email </span><input type="email" id="email" placeholder=" Enter email" v-model="email"></div>
+      <div class="log-lines"><span>Password </span><input type="password" id="password" placeholder=" Enter Password" v-model="password"></div>
       <div class="checkbox-div">
         <input type="checkbox" id="myCheckbox" v-model="agree">
         <label for="myCheckbox" class="custom-checkbox"></label>
-        <span>
-          By checking this box, I declare that I have read and expressly accepted 
-          <a href="#"><i>terms and conditions</i></a> as well as 
-          <a href="#"><i>privacy and confidentiality policy</i></a>.
-        </span>
+        <span> By checking this box, I declare that I have read and expressly accepted <a href="#"><i>terms and conditions</i></a> as well as <a href="#"><i>privacy and confidentiality policy</i></a>. </span>
       </div>
-      <button @click.prevent="guardarDatos" type="submit" id="login" :disabled="!agree">Login</button>
-      <p>If you don't have an account, create one by clicking here</p>
+<!--       <button @click.prevent="authUser" type="submit" id="loging" class="disabled" :disabled="!agree">Loging</button>
+ -->      <button @click.prevent="guardarDatos" type="submit" id="loging" class="disabled" :disabled="!agree">Loging</button>
+    
+      <p>If you don't have an account, create one by clicking here </p>
       <button id="register" @click="gotoRegister">Register</button>
     </article>
   </div>
@@ -28,58 +20,58 @@
 
 <script setup>
 import { useRouter } from 'vue-router';
-import { ref } from 'vue';
+import {ref} from 'vue'
+/* import {getAuth, signInWithEmailAndPassword} from 'firebase/auth' */
 
 const router = useRouter();
-const email = ref("");
-const password = ref("");
-const agree = ref(false);
 
 const gotoRegister = () => {
   router.push('/register');
 };
+ const email = ref("")
+ const password = ref ("")
+ const agree = ref(false); // Inicializar el checkbox como no marcado
+/*
+const authUser = () => {
+const auth = getAuth()
+signInWithEmailAndPassword (auth, email.value, password.value).then(()=> {
+    alert("Éxito!")
+})
+.catch((error) => {
+    alert("Kaka, algo ha ido mal...Éste es el error: " + error.message)
+})
 
+} */
 const guardarDatos = () => {
-  const login = {
-    email: email.value,
-    password: password.value
-  };
+  const login = [email.value, password.value]; 
   localStorage.setItem("datoslogin", JSON.stringify(login));
   proveLogin();
 };
-
 const gotoPersonalPage = () => {
   router.push('/personalfile');
 };
-
 const proveLogin = () => {
-  const datosRegistradosJSON = localStorage.getItem('personalFileData');
+  const datosRegistered = JSON.parse(localStorage.getItem('personalFileData'));
+  const emailRegistered = datosRegistered.email;
+  const passwordRegistered = datosRegistered.password;
 
-  if (!datosRegistradosJSON) {
+  const datosLogin = JSON.parse(localStorage.getItem('datoslogin'));
+  const emailLogin = datosLogin.email;
+  const passwordLogin = datosLogin.password;
+
+    if (!datosRegistered) {
     alert('No hay ningún usuario registrado');
     gotoRegister();
-    return;
+  } else if (emailLogin === emailRegistered && passwordLogin === passwordRegistered) {
+    gotoPersonalPage();
+    alert('Inicio de sesión correcto');
+  } else {
+    alert('Datos incorrectos o usuario no registrado');
+    gotoRegister();
   }
-
-  const datosRegistrados = JSON.parse(datosRegistradosJSON);
-  const emailLogin = email.value;
-  const passwordLogin = password.value;
-
-  for (const usuario in datosRegistrados) {
-    const usuarioRegistrado = datosRegistrados[usuario];
-
-    if (usuarioRegistrado.email === emailLogin && usuarioRegistrado.password === passwordLogin) {
-      alert('¡Inicio de sesión exitoso!');
-      gotoPersonalPage();
-      return;
-    }
-  }
-
-  alert('Datos incorrectos o usuario no registrado');
-  gotoRegister();
 };
-</script>
 
+</script>
   
 <style scoped>
   button {
