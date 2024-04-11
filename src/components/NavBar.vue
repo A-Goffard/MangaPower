@@ -72,7 +72,7 @@ export default {
   </nav>
 </template>
 
-<style>
+<style scoped>
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
