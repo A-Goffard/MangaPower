@@ -25,62 +25,54 @@ export default {
 };
 
 
+
 </script>
 
 <template>
 
-    <nav>
-      <div class="main-nav-div">
-  
-  
-        <!--Hamburger menu ------------------------------------------------ -->
-        <div class="hamburger-menu">
-          <!-- Hamburger Icon -->
-          <div class="menu-icon" @click="toggleMenu">
+  <nav>
+    <div class="main-nav-div">
+
+
+      <!--Hamburger menu ------------------------------------------------ -->
+      <div class="hamburger-menu">
+        <!-- Hamburger Icon -->
+        <div class="menu-icon" @click="toggleMenu">
           <img src="/public/Logos/pxfuel__6_-removebg-preview.png" alt="Menu Icon">
         </div>
-  
-  
-          <!-- Menu Items -->
-          <div class="menu-items" :class="{ 'open': isMenuOpen }">
-            <!-- Your menu items go here -->
-            <ul>
-              <li v-for="(item, index) in menuItems" :key="index" :style="{ color: item.color }">{{ item.label }}</li>
-            </ul>
-          </div>
+
+
+        <!-- Menu Items -->
+        <div class="menu-items" :class="{ 'open': isMenuOpen }">
+          <!-- Your menu items go here -->
+          <ul>
+            <li v-for="(item, index) in menuItems" :key="index" :style="{ color: item.color }">{{ item.label }}</li>
+          </ul>
         </div>
-  
-       <!-- Old routes --------------------------------------->
-  
-        <router-link to="/">Home</router-link> |
-        <router-link to="/loging">Loging</router-link> |
-        <router-link to="/register">Register</router-link> |
-        <router-link to="/personal">Personal Profile</router-link> |
-        <router-link to="/stats">Stats</router-link> |
-        <router-link to="/game">Game</router-link> |
-        <router-link to="/about">About</router-link> |
-        <Router-Link to="/personalfile">PersonalFile</Router-Link> |
-        <Router-Link to="/gallery">Gallery</Router-Link> |
-        <Router-Link to="/detailcard">DetailCard</Router-Link> |
-        <Router-Link to="/cardstore">CardStore</Router-Link> |
-  
       </div>
-      <div class="hamburger-icon2">
-  
-      </div>
-    </nav>
-  
-    <router-view />
-  </template>
+
+      <!-- Old routes --------------------------------------->
+
+      <router-link to="/">Home</router-link> |
+      <router-link to="/loging">Loging</router-link> |
+      <router-link to="/register">Register</router-link> |
+      <router-link to="/personal">Personal Profile</router-link> |
+      <router-link to="/stats">Stats</router-link> |
+      <router-link to="/game">Game</router-link> |
+      <router-link to="/about">About</router-link> |
+      <Router-Link to="/personalfile">PersonalFile</Router-Link> |
+      <Router-Link to="/gallery">Gallery</Router-Link> |
+      <Router-Link to="/detailcard">DetailCard</Router-Link> |
+      <Router-Link to="/cardstore">CardStore</Router-Link> |
+
+    </div>
+    <div class="hamburger-icon2">
+
+    </div>
+  </nav>
+</template>
 
 <style>
-
-/*
-* {
-  margin: 0;
-  padding: 0;
-
-}
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -90,7 +82,6 @@ export default {
 
 .main-nav-div {
   display: flex;
-
 }
 
 nav {
@@ -110,7 +101,7 @@ nav a.router-link-exact-active {
 h1 {
   margin: 1rem;
 }
-*/
+
 
 /* Hamburger menu ------------------------- */
 
