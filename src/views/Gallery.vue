@@ -31,13 +31,15 @@
   };
   
   const slideRight = () => {
-	position.value -= cardWidth;
-	if (position.value < -(pokemons.value.length * cardWidth)) {
-	  position.value = 0;
-	}
-	carousel.value.style.transform = `translateX(${position.value}px)`;
-  };
-  
+  if (carousel.value) {
+    position.value -= cardWidth;
+    if (position.value < -(pokemons.value.length * cardWidth)) {
+      position.value = 0;
+    }
+    carousel.value.style.transform = `translateX(${position.value}px)`;
+  }
+};
+
   const fetchPokemonData = async (pokemonId) => {
 	try {
 	  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);

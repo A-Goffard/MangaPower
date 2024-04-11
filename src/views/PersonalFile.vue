@@ -53,7 +53,6 @@ const slideRight = () => {
     carousel.value.style.transform = `translateX(${position.value}px)`;
   }
 };
-
 const fetchPokemonData = async (pokemonId) => {
   try {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
