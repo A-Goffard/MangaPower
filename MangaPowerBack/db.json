@@ -1,0 +1,96 @@
+{
+  "usuarios": [
+    {
+      "id": "1",
+      "name": "Aintzane",
+      "birthdate": "1999-11-11",
+      "email": "alkarinkwa@hotmail.com",
+      "password": "123",
+      "pokemon": "Bulbasaur",
+      "pokemonTrainer": "Minato",
+      "username": "Alky",
+      "pokemonLevel": "1",
+      "trainerLevel": "1",
+      "win": 0,
+      "lose": 0,
+      "plays": 0,
+      "winedCardsNumber": 0,
+      "winedCards": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    {
+      "id": "1",
+      "name": "Tina",
+      "birthdate": "1990-11-11",
+      "email": "tinikwa@hotmail.com",
+      "password": "123",
+      "pokemon": "Pikachu",
+      "pokemonTrainer": "Minato",
+      "username": "Tina",
+      "pokemonLevel": "1",
+      "trainerLevel": "1",
+      "win": 0,
+      "lose": 0,
+      "plays": 0,
+      "winedCardsNumber": 0,
+      "winedCards": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    {
+      "id": "XXX",
+      "name": "kruetytg",
+      "birthdate": "1999-11-21",
+      "email": "dfgfzd@,ktmjgnhfgb",
+      "password": "123",
+      "pokemon": "Bulbasaur",
+      "pokemonTrainer": "Minato",
+      "username": "LOL",
+      "pokemonLevel": "1",
+      "trainerLevel": "1",
+      "win": 0,
+      "lose": 0,
+      "plays": 0,
+      "winedCardsNumber": 0,
+      "winedCards": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    {
+      "id": "XXX",
+      "name": "Poper",
+      "birthdate": "1996-02-12",
+      "email": "poper@hotmail.com",
+      "password": "123",
+      "pokemon": "Pikachu",
+      "pokemonTrainer": "Kansaki",
+      "username": "Popy",
+      "pokemonLevel": "1",
+      "trainerLevel": "1",
+      "win": 0,
+      "lose": 0,
+      "plays": 0,
+      "winedCardsNumber": 0,
+      "winedCards": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
+    }
+  ]
+}

@@ -68,7 +68,6 @@
 </template>
 
 <script setup>
-import { Alert } from 'bootstrap';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
@@ -102,6 +101,33 @@ const pokemonImages = {
   // Agrega el resto de opciones con sus rutas de imagen asociadas
 };
 
+
+
+/* Para conectar con el backend */
+
+
+const url="http://localhost:3000/usuarios"
+
+fetch(url)
+  .then((resp) => resp.json()) 
+  .then(function(data) {
+    console.log(data);
+    data.forEach(function(usuario) {
+      console.log(usuario);
+      // Aquí puedes hacer lo que necesites con cada usuario
+    });
+  })
+  .catch(function(error) {
+    console.error('Error en la solicitud:', error);
+  });
+
+
+
+
+
+
+
+
 // Actualizar la imagen del avatar cuando cambia la selección
 const updateAvatar = () => {
   avatarImagePath.value = avatarImages[pokemonTrainer.value];
@@ -121,58 +147,86 @@ const gotoPersonalPage = () => {
 };
 
 
-
 const send = () => {
   const limitYear = 1920; 
-  const inputYear = parseInt(inputDate.value.split('/')[0]);
+  const inputYear = parseInt(inputDate.value.split('-')[0]);
+
+
+  const datos = {
+      id: "XXX",
+      name: inputName.value,
+      birthdate: inputDate.value,
+      email: inputMail.value,
+      password: inputPassword.value,
+      pokemon: pokemon.value,
+      pokemonTrainer: pokemonTrainer.value,
+      username: inputUserName.value,
+      pokemonLevel: "1",
+      trainerLevel: "1",
+      win: 0,
+      lose: 0,
+      plays: 0,
+      winedCardsNumber: 0,
+      winedCards: ["1", "2", "3", "4", "5"]
+    };
+    
 
   console.log(inputDate.value); // Verificar el valor de inputDate
   console.log(inputYear); // Verificar el valor de inputYear
 
-  let personalFileData = {};
+  let usuarios = {};
 
-  if(localStorage.getItem("personalFileData")) {
-    personalFileData = JSON.parse(localStorage.getItem("personalFileData"));
+  if (localStorage.getItem("usuarios")) {
+    usuarios = JSON.parse(localStorage.getItem("usuarios"));
   }
 
-  if(inputMail.value === personalFileData[inputUserName.value]?.email ||
-      inputUserName.value === personalFileData[inputUserName.value]?.username ||
+  if (inputMail.value === usuarios[inputUserName.value]?.email ||
+      inputUserName.value === usuarios[inputUserName.value]?.username ||
       inputPassword.value !== inputPasswordComprobation.value ||
       inputYear < limitYear) {
     // Realiza todas las comprobaciones al mismo tiempo y muestra los mensajes de error correspondientes
-    if(inputMail.value === personalFileData[inputUserName.value]?.email) {
+    if (inputMail.value === usuarios[inputUserName.value]?.email) {
       alert('There is already a user with that email');
       inputMail.value = '';
     }
-    if(inputUserName.value === personalFileData[inputUserName.value]?.username) {
+    if (inputUserName.value === usuarios[inputUserName.value]?.username) {
       alert('That username already exists');
       inputUserName.value = '';
     }
-    if(inputPassword.value !== inputPasswordComprobation.value) {
+    if (inputPassword.value !== inputPasswordComprobation.value) {
       alert('Passwords do not match');
       inputPassword.value = '';
       inputPasswordComprobation.value = '';
     }
-    if(inputYear < limitYear) {
+    if (inputYear < limitYear) {
       alert("Don't overdo it with age...");
       inputDate.value = '';
     }
   } else {
     // Si todas las comprobaciones son exitosas, agrega el nuevo usuario a la lista
     alert('Correct Loging');
-    const newUser = {
-      name: inputName.value,
-      birthdate: inputDate.value,
-      email: inputMail.value,
-      username: inputUserName.value,
-      password: inputPassword.value,
-      pokemonTrainer: pokemonTrainer.value,
-      pokemon: pokemon.value
-    };
-    personalFileData[inputUserName.value] = newUser;
-    localStorage.setItem("personalFileData", JSON.stringify(personalFileData));
+
+    usuarios[inputUserName.value] = datos;
+    localStorage.setItem("usuarios", JSON.stringify(usuarios));
     gotoPersonalPage();
   }
+
+  console.log(datos); // Asegurarse de que 'datos' esté definido antes de su uso
+
+  const url2 = "http://localhost:3000/usuarios"; // Definir la URL de la solicitud aquí
+
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(datos),
+  };
+
+  fetch(url2, options)
+    .then(response => response.json())
+    .then(json => console.log(json))
+    .catch(error => console.error('Error en la solicitud:', error));
 };
 
 
