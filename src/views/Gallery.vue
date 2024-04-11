@@ -1,7 +1,8 @@
 <template>
-	<div class="carousel-container">
+	<div class="carousel-container" @mouseover="stopAutoSlide" @mouseleave="startAutoSlide">
 	  <div class="carousel" ref="carousel">
 		<div v-for="(pokemon, index) in pokemons" :key="index" class="pokemon-card">
+		  <h2>POKEMON CARDS</h2>
 		  <img :src="pokemon.image" :alt="pokemon.name" class="pokemon-image">
 		  <div><strong>Name:</strong> {{ pokemon.name }}</div>
 		  <div><strong>Abilities:</strong> {{ pokemon.abilities }}</div>
@@ -19,6 +20,7 @@
   const position = ref(0);
   const cardWidth = 200; // Ancho de cada tarjeta de Pokémon
   const pokemons = ref([]);
+  let autoSlideInterval = null;
   
   const slideLeft = () => {
 	position.value += cardWidth;
@@ -46,24 +48,39 @@
 	}
   };
   
-  const getPokemonData = async (pokemonId) => {
-	const data = await fetchPokemonData(pokemonId);
-	if (data) {
-	  const pokemon = {
-		name: data.name.toUpperCase(),
-		image: data.sprites.front_default,
-		abilities: data.abilities.map(ability => ability.ability.name).join(', ')
-	  };
-	  pokemons.value.push(pokemon);
+  const getAllPokemons = async () => {
+	const allPokemons = [];
+	const totalPokemons = 898; // Este es el número total de Pokémon en la PokéAPI al momento de escribir esto
+  
+	for (let i = 1; i <= totalPokemons; i++) {
+	  const pokemonData = await fetchPokemonData(i);
+	  if (pokemonData) {
+		const pokemon = {
+		  name: pokemonData.name.toUpperCase(),
+		  image: pokemonData.sprites.other['official-artwork'].front_default,
+		  abilities: pokemonData.abilities.map(ability => ability.ability.name).join(', ')
+		};
+		allPokemons.push(pokemon);
+	  }
 	}
+  
+	return allPokemons;
   };
   
-  const initCarousel = async () => {
-	const pokemonIds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; // IDs de los Pokémon que quieres mostrar
-	await Promise.all(pokemonIds.map(async id => await getPokemonData(id)));
+  onMounted(async () => {
+	pokemons.value = await getAllPokemons();
+	startAutoSlide();
+  });
+  
+  const startAutoSlide = () => {
+	autoSlideInterval = setInterval(() => {
+	  slideRight();
+	}, 2000); // Cambia el valor 3000 por el intervalo de tiempo deseado en milisegundos (en este caso, 3 segundos)
   };
   
-  onMounted(initCarousel);
+  const stopAutoSlide = () => {
+	clearInterval(autoSlideInterval);
+  };
   </script>
   
   <style scoped>
@@ -81,18 +98,15 @@
   
   .pokemon-card {
 	border: 3px solid #09b568;
-	padding: 20px;
+	padding: 30px;
 	border-radius: 10px;
 	text-align: center;
-	width: 40rem;
+	width: 20rem;
   }
   
   .pokemon-image {
-	width: 20rem;
-	height: 20rem;
-	border-radius: 50%;
-	object-fit: cover;
-	background-color: red;
+	width: 15rem;
+	height: 14rem;
   }
   
   .prev-button,
