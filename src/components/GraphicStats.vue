@@ -1,5 +1,8 @@
 <template>
-    <canvas id="graphic" width="400" height="400"></canvas>
+
+    <div class="container_graphic">
+        <canvas id="graphic" width="100%" height="100%"></canvas>
+    </div>
 </template>
 
 <script setup>
@@ -19,7 +22,7 @@ onMounted(() => {
                 {
                     label: "Estadísticas del jugador",
                     backgroundColor: "rgb(0,0,0)",
-                    data: [10, 4, 6]
+                    data: [7, 4, 6]
                 }
             ]
         }
@@ -28,5 +31,12 @@ onMounted(() => {
 </script>
 
 <style>
+
+.container_graphic{
+    width: 40rem;
+    height: 40rem;
+    margin: 0 auto;
+}
+
 </style>
 
