@@ -120,8 +120,6 @@ const gotoPersonalPage = () => {
   router.push('/personalfile');
 };
 
-
-
 const send = () => {
   const limitYear = 1920; 
   const inputYear = parseInt(inputDate.value.split('/')[0]);
