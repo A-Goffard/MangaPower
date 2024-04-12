@@ -111,9 +111,9 @@ const url="http://localhost:3000/usuarios"
 fetch(url)
   .then((resp) => resp.json()) 
   .then(function(data) {
-    console.log(data);
+/*     console.log(data); */
     data.forEach(function(usuario) {
-      console.log(usuario);
+/*       console.log(usuario); */
       // Aquí puedes hacer lo que necesites con cada usuario
     });
   })
