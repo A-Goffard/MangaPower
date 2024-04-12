@@ -149,7 +149,8 @@ const gotoPersonalPage = () => {
 
 const send = () => {
   const limitYear = 1920; 
-  const inputYear = parseInt(inputDate.value.split('-')[0]);
+  const inputYear = new Date(inputDate.value).getFullYear();
+  const currentYear = new Date().getFullYear();
 
   // Obtener todos los usuarios del servidor
   fetch("http://localhost:3000/usuarios")
@@ -190,7 +191,7 @@ const send = () => {
       if (inputMail.value === usuarios.find(u => u.email === inputMail.value)?.email ||
         inputUserName.value === usuarios.find(u => u.username === inputUserName.value)?.username ||
         inputPassword.value !== inputPasswordComprobation.value ||
-        inputYear < limitYear) {
+        inputYear < limitYear || inputYear >= currentYear || inputDate.value.length < 4 || inputDate.value === "" || inputDate.value === Nan) {
         // Realiza todas las comprobaciones al mismo tiempo y muestra los mensajes de error correspondientes
         if (inputMail.value === usuarios.find(u => u.email === inputMail.value)?.email) {
           alert('There is already a user with that email');
@@ -205,14 +206,45 @@ const send = () => {
           inputPassword.value = '';
           inputPasswordComprobation.value = '';
         }
-        if (inputYear < limitYear) {
+        if (inputYear < limitYear ) {
           alert("Don't overdo it with age...");
           inputDate.value = '';
+        } 
+
+        // Validar que todos los campos estén completos
+/*         if (!inputName.value || !inputDate.value || !inputMail.value || !inputUserName.value || !inputPassword.value || !inputPasswordComprobation.value) {
+          alert('Please fill in all fields');
+
+        } */
+
+        // Validar que el año de nacimiento sea válido
+        if (inputYear >= currentYear ) {
+          alert('When do you live?');
+          inputDate.value = '';
         }
-        if (!inputDate.value || inputDate.value.length < 8) {
-        alert("Insert valid date");
-        return;
+
+        // Validar que el año de nacimiento sea válido
+        if (inputDate.value.length < 4 ) {
+          alert('Is thas the real birthdate?');
+          inputDate.value = '';
+
         }
+
+        // Validar que el año de nacimiento sea válido
+        if (inputDate.value === ""  ) {
+          alert('Please enter a birthdate');
+          inputDate.value = '';
+
+        }
+
+        // Validar que el año de nacimiento sea válido
+        if ( inputDate.value === Nan) {
+          alert('Please enter a valid birth year');
+          inputDate.value = '';
+
+        }
+
+
       } else {
         // Si todas las comprobaciones son exitosas, agrega el nuevo usuario a la lista
         alert('Correct Loging');
