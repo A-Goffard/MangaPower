@@ -4,16 +4,17 @@ export default {
     return {
       isMenuOpen: false,
       menuItems: [
-        { label: 'Menu Item 1', color: '#000000' },
-        { label: 'login', color: '#000000' },
-        { label: 'Register', color: '#000000' },
-        { label: 'Personal Profile', color: '#000000' },
-        { label: 'Stats', color: '#000000' },
-        { label: 'Gallery', color: '#000000' },
-        { label: 'Game', color: '#000000' },
-        { label: 'About', color: '#000000' },
-        { label: 'CardStore', color: '#000000' }
-        // Add more menu items as needed
+        { label: 'Menu Item 1', color: '#000000', route: '/' },
+        { label: 'login', route: '/loging', color: '#000000' },
+        { label: 'Register', route: '/register', color: '#000000' },
+        { label: 'Personal Profile', route: '/personal', color: '#000000' },
+        { label: 'Stats', route: '/stats', color: '#000000' },
+        { label: 'Gallery', route: '/gallery', color: '#000000' },
+        { label: 'Game', route: '/game', color: '#000000' },
+        { label: 'About', route: '/about', color: '#000000' },
+        { label: 'CardStore', route: '/cardstore', color: '#000000' },
+        { label: 'PersonalFile', route: '/personalfile', color: '#000000' },
+        { label: 'DetailCard', route: '/detailcard', color: '#000000' }
       ]
     };
   },
@@ -23,36 +24,29 @@ export default {
     }
   }
 };
-
-
-
 </script>
 
 <template>
-
   <nav>
     <div class="main-nav-div">
-
-
-      <!--Hamburger menu ------------------------------------------------ -->
+      <!-- Hamburger menu ------------------------------------------------ -->
       <div class="hamburger-menu">
         <!-- Hamburger Icon -->
         <div class="menu-icon" @click="toggleMenu">
           <img src="/public/Logos/pxfuel__6_-removebg-preview.png" alt="Menu Icon">
         </div>
 
-
         <!-- Menu Items -->
         <div class="menu-items" :class="{ 'open': isMenuOpen }">
-          <!-- Your menu items go here -->
           <ul>
-            <li v-for="(item, index) in menuItems" :key="index" :style="{ color: item.color }">{{ item.label }}</li>
+            <li v-for="(item, index) in menuItems" :key="index" :style="{ color: item.color }">
+              <router-link :to="item.route">{{ item.label }}</router-link>
+            </li>
           </ul>
         </div>
       </div>
 
       <!-- Old routes --------------------------------------->
-
       <router-link to="/">Home</router-link> |
       <router-link to="/loging">Loging</router-link> |
       <router-link to="/register">Register</router-link> |
@@ -60,15 +54,13 @@ export default {
       <router-link to="/stats">Stats</router-link> |
       <router-link to="/game">Game</router-link> |
       <router-link to="/about">About</router-link> |
-      <Router-Link to="/personalfile">PersonalFile</Router-Link> |
-      <Router-Link to="/gallery">Gallery</Router-Link> |
-      <Router-Link to="/detailcard">DetailCard</Router-Link> |
-      <Router-Link to="/cardstore">CardStore</Router-Link> |
+      <router-link to="/personalfile">PersonalFile</router-link> |
+      <router-link to="/gallery">Gallery</router-link> |
+      <router-link to="/detailcard">DetailCard</router-link> |
+      <router-link to="/cardstore">CardStore</router-link>
 
     </div>
-    <div class="hamburger-icon2">
-
-    </div>
+    <div class="hamburger-icon2"></div>
   </nav>
 </template>
 
