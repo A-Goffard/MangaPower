@@ -2,22 +2,22 @@
   
   <div class="mainDivHome">
     <!-- <img src="/public/autumn-night-illuminated-lantern-tree-yellow-leaf-generated-by-ai.jpg" alt=""> -->
-<div class="hamburger-menu">
+<!-- <div class="hamburger-menu"> -->
     <!-- Hamburger Icon -->
-    <div class="hamburger-icon" @click="toggleMenu">
+<!--     <div class="hamburger-icon" @click="toggleMenu">
       <div></div>
       <div></div>
       <div></div>
-    </div>
+    </div> -->
 
     <!-- Menu Items -->
-    <div class="menu-items" :class="{ 'open': isMenuOpen }">
+    <!-- <div class="menu-items" :class="{ 'open': isMenuOpen }"> -->
       <!-- Your menu items go here -->
-      <ul>
+<!--       <ul>
         <li v-for="(item, index) in menuItems" :key="index" :style="{ color: item.color }">{{ item.label }}</li>
       </ul>
-    </div>
-  </div>
+    </div> -->
+  <!-- </div> -->
   <div style="font-size: xx-large;">hola hola</div>
 </div>
 
@@ -25,7 +25,7 @@
 </template>
 
 <script>
-export default {
+/* export default {
   data() {
     return {
       isMenuOpen: false,
@@ -47,7 +47,7 @@ export default {
       this.isMenuOpen = !this.isMenuOpen;
     }
   }
-};
+}; */
 </script>
 
 <style>
@@ -59,7 +59,7 @@ export default {
   background-image: url('/public/autumn-night-illuminated-lantern-tree-yellow-leaf-generated-by-ai.jpg');
 }
 
-.hamburger-menu {
+/* .hamburger-menu {
 
   position: relative;
   width: 100%;
@@ -74,7 +74,7 @@ export default {
 .hamburger-icon div {
   width: 100%;
   height: 20px;
-  background-color: blueviolet;
+  background-color: black;
   margin: 5px 0;
   transition: all 0.3s ease;
   border-radius: 10px;
@@ -107,6 +107,6 @@ export default {
   padding: 8px 0;
   cursor: pointer;
 }
-
+ */
 
 </style>

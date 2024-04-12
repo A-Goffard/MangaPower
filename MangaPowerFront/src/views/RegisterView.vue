@@ -101,6 +101,33 @@ const pokemonImages = {
   // Agrega el resto de opciones con sus rutas de imagen asociadas
 };
 
+
+
+/* Para conectar con el backend */
+
+
+const url="http://localhost:3000/usuarios"
+
+fetch(url)
+  .then((resp) => resp.json()) 
+  .then(function(data) {
+    console.log(data);
+    data.forEach(function(usuario) {
+      console.log(usuario);
+      // Aquí puedes hacer lo que necesites con cada usuario
+    });
+  })
+  .catch(function(error) {
+    console.error('Error en la solicitud:', error);
+  });
+
+
+
+
+
+
+
+
 // Actualizar la imagen del avatar cuando cambia la selección
 const updateAvatar = () => {
   avatarImagePath.value = avatarImages[pokemonTrainer.value];
@@ -115,10 +142,96 @@ const updatePokemonImage = () => {
 const avatarImagePath = ref(avatarImages[pokemonTrainer.value]);
 const pokemonImagePath = ref(pokemonImages[pokemon.value]);
 
-const send = () => {
-  const personalFileData = [inputName.value, inputDate.value, inputMail.value, inputUserName.value, inputPassword.value, pokemonTrainer.value, pokemon.value];
-  localStorage.setItem("personalFileData", JSON.stringify(personalFileData));
+const gotoPersonalPage = () => {
+  router.push('/personalfile');
 };
+
+
+const send = () => {
+  const limitYear = 1920; 
+  const inputYear = parseInt(inputDate.value.split('-')[0]);
+
+  // Obtener todos los usuarios del servidor
+  fetch("http://localhost:3000/usuarios")
+    .then(response => response.json())
+    .then(usuarios => {
+      // Función para obtener el próximo ID disponible
+      const getNextId = () => {
+        // Obtener el ID máximo actual
+        const maxId = usuarios.reduce((max, usuario) => {
+          const id = parseInt(usuario.id);
+          return id > max ? id : max;
+        }, 0);
+        // Incrementar el ID máximo en 1 para obtener el próximo ID disponible
+        return (maxId + 1).toString();
+      };
+
+      const datos = {
+        id: getNextId(), // Obtener el próximo ID disponible
+        name: inputName.value,
+        birthdate: inputDate.value,
+        email: inputMail.value,
+        password: inputPassword.value,
+        pokemon: pokemon.value,
+        pokemonTrainer: pokemonTrainer.value,
+        username: inputUserName.value,
+        pokemonLevel: "1",
+        trainerLevel: "1",
+        win: 0,
+        lose: 0,
+        plays: 0,
+        winedCardsNumber: 0,
+        winedCards: ["1", "2", "3", "4", "5"]
+      };
+
+      console.log(inputDate.value); // Verificar el valor de inputDate
+      console.log(inputYear); // Verificar el valor de inputYear
+
+      if (inputMail.value === usuarios.find(u => u.email === inputMail.value)?.email ||
+        inputUserName.value === usuarios.find(u => u.username === inputUserName.value)?.username ||
+        inputPassword.value !== inputPasswordComprobation.value ||
+        inputYear < limitYear) {
+        // Realiza todas las comprobaciones al mismo tiempo y muestra los mensajes de error correspondientes
+        if (inputMail.value === usuarios.find(u => u.email === inputMail.value)?.email) {
+          alert('There is already a user with that email');
+          inputMail.value = '';
+        }
+        if (inputUserName.value === usuarios.find(u => u.username === inputUserName.value)?.username) {
+          alert('That username already exists');
+          inputUserName.value = '';
+        }
+        if (inputPassword.value !== inputPasswordComprobation.value) {
+          alert('Passwords do not match');
+          inputPassword.value = '';
+          inputPasswordComprobation.value = '';
+        }
+        if (inputYear < limitYear) {
+          alert("Don't overdo it with age...");
+          inputDate.value = '';
+        }
+      } else {
+        // Si todas las comprobaciones son exitosas, agrega el nuevo usuario a la lista
+        alert('Correct Loging');
+
+        // Guardar el nuevo usuario en la base de datos
+        fetch("http://localhost:3000/usuarios", {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(datos),
+        })
+        .then(response => response.json())
+        .then(() => {
+          gotoPersonalPage();
+        })
+        .catch(error => console.error('Error en la solicitud:', error));
+      }
+    })
+    .catch(error => console.error('Error en la solicitud:', error));
+};
+
+
 
 </script>
   
@@ -142,6 +255,7 @@ button {
   background-color: red;
 }
 .general-container {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -200,10 +314,10 @@ input {
 }
 .avatars {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  max-width: 40rem;
+
 }
 .container-medium {
   display: flex;
