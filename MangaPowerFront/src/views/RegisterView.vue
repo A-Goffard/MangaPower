@@ -151,81 +151,83 @@ const send = () => {
   const limitYear = 1920; 
   const inputYear = parseInt(inputDate.value.split('-')[0]);
 
-
-  const datos = {
-      id: "XXX",
-      name: inputName.value,
-      birthdate: inputDate.value,
-      email: inputMail.value,
-      password: inputPassword.value,
-      pokemon: pokemon.value,
-      pokemonTrainer: pokemonTrainer.value,
-      username: inputUserName.value,
-      pokemonLevel: "1",
-      trainerLevel: "1",
-      win: 0,
-      lose: 0,
-      plays: 0,
-      winedCardsNumber: 0,
-      winedCards: ["1", "2", "3", "4", "5"]
-    };
-    
-
-  console.log(inputDate.value); // Verificar el valor de inputDate
-  console.log(inputYear); // Verificar el valor de inputYear
-
-  let usuarios = {};
-
-  if (localStorage.getItem("usuarios")) {
-    usuarios = JSON.parse(localStorage.getItem("usuarios"));
-  }
-
-  if (inputMail.value === usuarios[inputUserName.value]?.email ||
-      inputUserName.value === usuarios[inputUserName.value]?.username ||
-      inputPassword.value !== inputPasswordComprobation.value ||
-      inputYear < limitYear) {
-    // Realiza todas las comprobaciones al mismo tiempo y muestra los mensajes de error correspondientes
-    if (inputMail.value === usuarios[inputUserName.value]?.email) {
-      alert('There is already a user with that email');
-      inputMail.value = '';
-    }
-    if (inputUserName.value === usuarios[inputUserName.value]?.username) {
-      alert('That username already exists');
-      inputUserName.value = '';
-    }
-    if (inputPassword.value !== inputPasswordComprobation.value) {
-      alert('Passwords do not match');
-      inputPassword.value = '';
-      inputPasswordComprobation.value = '';
-    }
-    if (inputYear < limitYear) {
-      alert("Don't overdo it with age...");
-      inputDate.value = '';
-    }
-  } else {
-    // Si todas las comprobaciones son exitosas, agrega el nuevo usuario a la lista
-    alert('Correct Loging');
-
-    usuarios[inputUserName.value] = datos;
-    localStorage.setItem("usuarios", JSON.stringify(usuarios));
-    gotoPersonalPage();
-  }
-
-  console.log(datos); // Asegurarse de que 'datos' esté definido antes de su uso
-
-  const url2 = "http://localhost:3000/usuarios"; // Definir la URL de la solicitud aquí
-
-  const options = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(datos),
-  };
-
-  fetch(url2, options)
+  // Obtener todos los usuarios del servidor
+  fetch("http://localhost:3000/usuarios")
     .then(response => response.json())
-    .then(json => console.log(json))
+    .then(usuarios => {
+      // Función para obtener el próximo ID disponible
+      const getNextId = () => {
+        // Obtener el ID máximo actual
+        const maxId = usuarios.reduce((max, usuario) => {
+          const id = parseInt(usuario.id);
+          return id > max ? id : max;
+        }, 0);
+        // Incrementar el ID máximo en 1 para obtener el próximo ID disponible
+        return (maxId + 1).toString();
+      };
+
+      const datos = {
+        id: getNextId(), // Obtener el próximo ID disponible
+        name: inputName.value,
+        birthdate: inputDate.value,
+        email: inputMail.value,
+        password: inputPassword.value,
+        pokemon: pokemon.value,
+        pokemonTrainer: pokemonTrainer.value,
+        username: inputUserName.value,
+        pokemonLevel: "1",
+        trainerLevel: "1",
+        win: 0,
+        lose: 0,
+        plays: 0,
+        winedCardsNumber: 0,
+        winedCards: ["1", "2", "3", "4", "5"]
+      };
+
+      console.log(inputDate.value); // Verificar el valor de inputDate
+      console.log(inputYear); // Verificar el valor de inputYear
+
+      if (inputMail.value === usuarios.find(u => u.email === inputMail.value)?.email ||
+        inputUserName.value === usuarios.find(u => u.username === inputUserName.value)?.username ||
+        inputPassword.value !== inputPasswordComprobation.value ||
+        inputYear < limitYear) {
+        // Realiza todas las comprobaciones al mismo tiempo y muestra los mensajes de error correspondientes
+        if (inputMail.value === usuarios.find(u => u.email === inputMail.value)?.email) {
+          alert('There is already a user with that email');
+          inputMail.value = '';
+        }
+        if (inputUserName.value === usuarios.find(u => u.username === inputUserName.value)?.username) {
+          alert('That username already exists');
+          inputUserName.value = '';
+        }
+        if (inputPassword.value !== inputPasswordComprobation.value) {
+          alert('Passwords do not match');
+          inputPassword.value = '';
+          inputPasswordComprobation.value = '';
+        }
+        if (inputYear < limitYear) {
+          alert("Don't overdo it with age...");
+          inputDate.value = '';
+        }
+      } else {
+        // Si todas las comprobaciones son exitosas, agrega el nuevo usuario a la lista
+        alert('Correct Loging');
+
+        // Guardar el nuevo usuario en la base de datos
+        fetch("http://localhost:3000/usuarios", {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(datos),
+        })
+        .then(response => response.json())
+        .then(() => {
+          gotoPersonalPage();
+        })
+        .catch(error => console.error('Error en la solicitud:', error));
+      }
+    })
     .catch(error => console.error('Error en la solicitud:', error));
 };
 

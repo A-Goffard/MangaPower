@@ -73,7 +73,9 @@ export default {
 * {
   margin: 0;
   padding: 0;
-
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 
 #app {

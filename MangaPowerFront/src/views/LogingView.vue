@@ -9,8 +9,7 @@
         <label for="myCheckbox" class="custom-checkbox"></label>
         <span> By checking this box, I declare that I have read and expressly accepted <a href="#"><i>terms and conditions</i></a> as well as <a href="#"><i>privacy and confidentiality policy</i></a>. </span>
       </div>
-<!--       <button @click.prevent="authUser" type="submit" id="loging" class="disabled" :disabled="!agree">Loging</button>
- -->      <button @click.prevent="guardarDatos" type="submit" id="loging" class="disabled" :disabled="!agree">Loging</button>
+        <button @click.prevent="guardarDatos" type="submit" id="loging" class="disabled" :disabled="!agree">Login</button>
     
       <p>If you don't have an account, create one by clicking here </p>
       <button id="register" @click="gotoRegister">Register</button>
@@ -20,58 +19,60 @@
 
 <script setup>
 import { useRouter } from 'vue-router';
-import {ref} from 'vue'
-/* import {getAuth, signInWithEmailAndPassword} from 'firebase/auth' */
+import { ref } from 'vue';
 
 const router = useRouter();
 
 const gotoRegister = () => {
   router.push('/register');
 };
- const email = ref("")
- const password = ref ("")
- const agree = ref(false); // Inicializar el checkbox como no marcado
-/*
-const authUser = () => {
-const auth = getAuth()
-signInWithEmailAndPassword (auth, email.value, password.value).then(()=> {
-    alert("Éxito!")
-})
-.catch((error) => {
-    alert("Kaka, algo ha ido mal...Éste es el error: " + error.message)
-})
 
-} */
+const email = ref("");
+const password = ref("");
+const agree = ref(false); // Inicializar el checkbox como no marcado
+
 const guardarDatos = () => {
-  const login = [email.value, password.value]; 
-  localStorage.setItem("datoslogin", JSON.stringify(login));
-  proveLogin();
+  // Guardar los datos antes de intentar hacer login
+  const login = { email: email.value, password: password.value };
+  localStorage.setItem('datoslogin', JSON.stringify(login));
+  proveLogin(); // Llamar a proveLogin después de guardar los datos
 };
+
 const gotoPersonalPage = () => {
   router.push('/personalfile');
 };
-const proveLogin = () => {
-  const datosRegistered = JSON.parse(localStorage.getItem('personalFileData'));
-  const emailRegistered = datosRegistered.email;
-  const passwordRegistered = datosRegistered.password;
 
+const proveLogin = () => {
   const datosLogin = JSON.parse(localStorage.getItem('datoslogin'));
   const emailLogin = datosLogin.email;
   const passwordLogin = datosLogin.password;
 
-    if (!datosRegistered) {
-    alert('No hay ningún usuario registrado');
-    gotoRegister();
-  } else if (emailLogin === emailRegistered && passwordLogin === passwordRegistered) {
-    gotoPersonalPage();
-    alert('Inicio de sesión correcto');
-  } else {
-    alert('Datos incorrectos o usuario no registrado');
-    gotoRegister();
-  }
-};
+  fetch('http://localhost:3000/usuarios')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('No se pudo obtener los datos de los usuarios');
+      }
+      return response.json();
+    })
+    .then(usuarios => {
+      // Buscar usuario que intenta iniciar sesión
+      const usuario = usuarios.find(user => user.email === emailLogin && user.password === passwordLogin);
 
+      if (!usuario) {
+        alert('Datos incorrectos o usuario no registrado');
+        gotoRegister();
+      } else {
+        gotoPersonalPage();
+        alert('Inicio de sesión correcto');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('Error al obtener los datos de los usuarios');
+    });
+};
 </script>
+
   
 <style scoped>
   button {
