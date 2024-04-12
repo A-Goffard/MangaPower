@@ -185,13 +185,11 @@ const send = () => {
         winedCards: ["1", "2", "3", "4", "5"]
       };
 
-      console.log(inputDate.value); // Verificar el valor de inputDate
-      console.log(inputYear); // Verificar el valor de inputYear
 
       if (inputMail.value === usuarios.find(u => u.email === inputMail.value)?.email ||
         inputUserName.value === usuarios.find(u => u.username === inputUserName.value)?.username ||
         inputPassword.value !== inputPasswordComprobation.value ||
-        inputYear < limitYear || inputYear >= currentYear || inputDate.value.length < 4 || inputDate.value === "" || inputDate.value === Nan) {
+        inputYear < limitYear || inputYear >= currentYear || inputDate.value.length < 4 || inputDate.value === "") {
         // Realiza todas las comprobaciones al mismo tiempo y muestra los mensajes de error correspondientes
         if (inputMail.value === usuarios.find(u => u.email === inputMail.value)?.email) {
           alert('There is already a user with that email');
@@ -233,13 +231,6 @@ const send = () => {
         // Validar que el año de nacimiento sea válido
         if (inputDate.value === ""  ) {
           alert('Please enter a birthdate');
-          inputDate.value = '';
-
-        }
-
-        // Validar que el año de nacimiento sea válido
-        if ( inputDate.value === Nan) {
-          alert('Please enter a valid birth year');
           inputDate.value = '';
 
         }
