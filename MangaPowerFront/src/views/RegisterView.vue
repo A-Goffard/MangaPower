@@ -209,6 +209,10 @@ const send = () => {
           alert("Don't overdo it with age...");
           inputDate.value = '';
         }
+        if (!inputDate.value || inputDate.value.length < 8) {
+        alert("Insert valid date");
+        return;
+        }
       } else {
         // Si todas las comprobaciones son exitosas, agrega el nuevo usuario a la lista
         alert('Correct Loging');
