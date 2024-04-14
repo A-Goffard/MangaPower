@@ -238,7 +238,7 @@ const send = () => {
 
       } else {
         // Si todas las comprobaciones son exitosas, agrega el nuevo usuario a la lista
-        alert('Correct Loging');
+        alert('Correct Login');
 
         // Guardar el nuevo usuario en la base de datos
         fetch("http://localhost:3000/usuarios", {

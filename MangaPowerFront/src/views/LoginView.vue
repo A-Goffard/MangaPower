@@ -1,6 +1,6 @@
 <template>
   <div class="general-container">
-    <h1>LOGING</h1>
+    <h1>LOGIN</h1>
     <article>
       <div class="log-lines"><span>Email </span><input type="email" id="email" placeholder=" Enter email" v-model="email"></div>
       <div class="log-lines"><span>Password </span><input type="password" id="password" placeholder=" Enter Password" v-model="password"></div>
@@ -9,7 +9,7 @@
         <label for="myCheckbox" class="custom-checkbox"></label>
         <span> By checking this box, I declare that I have read and expressly accepted <a href="#"><i>terms and conditions</i></a> as well as <a href="#"><i>privacy and confidentiality policy</i></a>. </span>
       </div>
-        <button @click.prevent="guardarDatos" type="submit" id="loging" class="disabled" :disabled="!agree">Login</button>
+        <button @click.prevent="guardarDatos" type="submit" id="login" class="disabled" :disabled="!agree">Login</button>
     
       <p>If you don't have an account, create one by clicking here </p>
       <button id="register" @click="gotoRegister">Register</button>
