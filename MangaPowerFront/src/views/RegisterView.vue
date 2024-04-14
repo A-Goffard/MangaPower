@@ -111,9 +111,9 @@ const url="http://localhost:3000/usuarios"
 fetch(url)
   .then((resp) => resp.json()) 
   .then(function(data) {
-    console.log(data);
+/*     console.log(data); */
     data.forEach(function(usuario) {
-      console.log(usuario);
+/*       console.log(usuario); */
       // Aquí puedes hacer lo que necesites con cada usuario
     });
   })
@@ -149,7 +149,8 @@ const gotoPersonalPage = () => {
 
 const send = () => {
   const limitYear = 1920; 
-  const inputYear = parseInt(inputDate.value.split('-')[0]);
+  const inputYear = new Date(inputDate.value).getFullYear();
+  const currentYear = new Date().getFullYear();
 
   // Obtener todos los usuarios del servidor
   fetch("http://localhost:3000/usuarios")
@@ -184,13 +185,11 @@ const send = () => {
         winedCards: ["1", "2", "3", "4", "5"]
       };
 
-      console.log(inputDate.value); // Verificar el valor de inputDate
-      console.log(inputYear); // Verificar el valor de inputYear
 
       if (inputMail.value === usuarios.find(u => u.email === inputMail.value)?.email ||
         inputUserName.value === usuarios.find(u => u.username === inputUserName.value)?.username ||
         inputPassword.value !== inputPasswordComprobation.value ||
-        inputYear < limitYear) {
+        inputYear < limitYear || inputYear >= currentYear || inputDate.value.length < 4 || inputDate.value === "") {
         // Realiza todas las comprobaciones al mismo tiempo y muestra los mensajes de error correspondientes
         if (inputMail.value === usuarios.find(u => u.email === inputMail.value)?.email) {
           alert('There is already a user with that email');
@@ -205,13 +204,41 @@ const send = () => {
           inputPassword.value = '';
           inputPasswordComprobation.value = '';
         }
-        if (inputYear < limitYear) {
+        if (inputYear < limitYear ) {
           alert("Don't overdo it with age...");
           inputDate.value = '';
+        } 
+
+        // Validar que todos los campos estén completos
+/*         if (!inputName.value || !inputDate.value || !inputMail.value || !inputUserName.value || !inputPassword.value || !inputPasswordComprobation.value) {
+          alert('Please fill in all fields');
+
+        } */
+
+        // Validar que el año de nacimiento sea válido
+        if (inputYear >= currentYear ) {
+          alert('When do you live?');
+          inputDate.value = '';
         }
+
+        // Validar que el año de nacimiento sea válido
+        if (inputDate.value.length < 4 ) {
+          alert('Is thas the real birthdate?');
+          inputDate.value = '';
+
+        }
+
+        // Validar que el año de nacimiento sea válido
+        if (inputDate.value === ""  ) {
+          alert('Please enter a birthdate');
+          inputDate.value = '';
+
+        }
+
+
       } else {
         // Si todas las comprobaciones son exitosas, agrega el nuevo usuario a la lista
-        alert('Correct Loging');
+        alert('Correct Login');
 
         // Guardar el nuevo usuario en la base de datos
         fetch("http://localhost:3000/usuarios", {
