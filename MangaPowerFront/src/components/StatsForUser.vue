@@ -1,36 +1,25 @@
 <template>
+    <div class="container_global">
 
-<div class="container_global">
-
-        <div class="containerStats">    
-
+      <div class="containerStats"> 
+           
         <div class="name_stats">
             <h3>User</h3>  
-            <div id="name_print_stats">
-
-            </div>
+            <div id="name_print_stats">{{ userData.name }}</div>
         </div>
-
         <div class="avatar_stats">
             <h3>Avatar</h3>
-            <div id="avatar_print_stats">
-
-            </div>
+            <div id="avatar_print_stats">{{ userData.avatar }}</div>
         </div>
-
         <div class="container_graphic">
             <canvas id="graphic" width="100%" height="100%"></canvas>
         </div>
-
+      </div>
+      <div class="informationTittle">
+          <h2>PJ "Partidas jugadas" // PG "Partidas ganadas" // PP "Partidas perdidas"</h2>
+      </div>
     </div>
-
-    <div class="informationTittle">
-        <h2>PJ "Partidas jugadas" // PG "Partidas ganadas" // PP "Partidas perdidas"</h2>
-    </div>
-
-</div>
-
-</template>
+  </template>
 
 <!-- --------Inicio del CSS--------- -->
 
@@ -91,8 +80,9 @@
 
 <script setup>
 
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 import Chart from 'chart.js/auto';
+import axios from 'axios';
 
 let chartInstance = null;
 
@@ -118,11 +108,21 @@ onMounted(() => {
     });
 });
 
-/* -----------------Traer los datos del Local storage para pintarlos de forma dinámica----------- */
+/* -----------------Traer los datos del JSON server  para pintarlos de forma dinámica----------- */
 
 
-let LocalStorageData = JSON.parse(localStorage.getItem('name', 'username'));
+let userData = ref({ name: '', avatar: '' });
 
+onMounted(async () => {
+    try {
+        const response = await axios.get('http://localhost:3000/usuarios');
+        // Tomamos el primer usuario de la respuesta para este ejemplo
+        userData.value = response.data[0];
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Error al obtener los datos del usuario');
+    }
+});
 
 </script>
 
