@@ -64,6 +64,7 @@ const proveLogin = () => {
       } else {
         gotoPersonalPage();
         alert('Inicio de sesión correcto');
+        localStorage.setItem('usuario', JSON.stringify([usuario]));
       }
     })
     .catch(error => {
@@ -71,6 +72,8 @@ const proveLogin = () => {
       alert('Error al obtener los datos de los usuarios');
     });
 };
+
+
 </script>
 
   
