@@ -59,6 +59,7 @@
   background-image: url('/public/autumn-night-illuminated-lantern-tree-yellow-leaf-generated-by-ai.jpg');
 }
 
+
 /* .hamburger-menu {
 
   position: relative;
