@@ -91,6 +91,75 @@
         "4",
         "5"
       ]
+    },
+    {
+      "id": "6",
+      "name": "tina",
+      "birthdate": "2008-06-25",
+      "email": "",
+      "password": "1234",
+      "pokemon": "Squirtle",
+      "pokemonTrainer": "Minato",
+      "username": "tina",
+      "pokemonLevel": "1",
+      "trainerLevel": "1",
+      "win": 0,
+      "lose": 0,
+      "plays": 0,
+      "winedCardsNumber": 0,
+      "winedCards": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    {
+      "id": "7",
+      "name": "ana",
+      "birthdate": "2020-01-01",
+      "email": "as@.gmail.com",
+      "password": "qwer",
+      "pokemon": "Bulbasaur",
+      "pokemonTrainer": "Minato",
+      "username": "ana",
+      "pokemonLevel": "1",
+      "trainerLevel": "1",
+      "win": 0,
+      "lose": 0,
+      "plays": 0,
+      "winedCardsNumber": 0,
+      "winedCards": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    {
+      "id": "8",
+      "name": "pepita",
+      "birthdate": "2019-01-16",
+      "email": "a@gmail.com",
+      "password": "1234",
+      "pokemon": "Squirtle",
+      "pokemonTrainer": "Azumi",
+      "username": "pp",
+      "pokemonLevel": "1",
+      "trainerLevel": "1",
+      "win": 0,
+      "lose": 0,
+      "plays": 0,
+      "winedCardsNumber": 0,
+      "winedCards": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
     }
   ]
 }

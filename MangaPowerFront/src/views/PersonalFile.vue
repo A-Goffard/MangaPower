@@ -1,8 +1,9 @@
 <template>
-  <div>
-    <h1>PERSONAL FILE</h1>
+    
     <div class="container">
+      <h1>PERSONAL FILE</h1>
       <h2>AVATAR</h2>
+      <div></div>
       <h2>CARDS</h2>
       <div class="carousel-container" @mouseenter="stopAutoSlide" @mouseleave="startAutoSlide">
         <div class="carousel" ref="carousel">
@@ -21,7 +22,7 @@
         <path d="M4 11H2v3h2zm5-4H7v7h2zm5-5v12h-2V2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1z"/>
       </svg>
     </div>
-  </div>
+ 
 </template>
 
 <script setup>
@@ -103,6 +104,40 @@ const stopAutoSlide = () => {
 
 // Iniciar el carrusel automáticamente al montar el componente
 onMounted(startAutoSlide);
+
+const proveLogin = () => {
+  const datosLogin = JSON.parse(localStorage.getItem('datoslogin'));
+  const emailLogin = datosLogin.email;
+  const passwordLogin = datosLogin.password;
+
+  // Hacer una solicitud al endpoint de inicio de sesión en JSON Server
+  fetch('http://localhost:3000/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ email: emailLogin, password: passwordLogin }),
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('No se pudo iniciar sesión');
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Almacenar el token JWT en localStorage
+      localStorage.setItem('token', data.token);
+      // Redirigir a la página personal una vez que el usuario inicie sesión correctamente
+      gotoPersonalPage();
+      alert('Inicio de sesión correcto');
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('Error al iniciar sesión');
+    });
+};
+
+
 
 </script>
 
