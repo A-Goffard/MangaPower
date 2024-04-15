@@ -5,7 +5,7 @@
         <div class="containerStats">    
 
         <div class="name_stats">
-            <h3>Name</h3>  
+            <h3>User</h3>  
             <div id="name_print_stats">
 
             </div>
