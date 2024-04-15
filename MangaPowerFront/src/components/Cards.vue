@@ -49,15 +49,14 @@ const mostrarPokemon = (data) => {
                 let name = data.name;
                 let imageUrl = data.sprites.other['official-artwork'].front_default;
                 let types = data.types.map(type => type.type.name);
-                let stats = data.stats;
+                
 
                 if (types.includes('fire')) {
                     let typeFire = document.createElement('div');
                     let nameFire = document.createElement('h3');
                     let img = document.createElement('img');
-                    let stats = document.createElement('p')
 
-                    nameFire.textContent = name; 
+                    nameFire.textContent = name;
                     img.src = imageUrl;
                     
                     nameFire.style.color = 'white';
@@ -73,7 +72,6 @@ const mostrarPokemon = (data) => {
                     typeFire.appendChild(nameFire);
                     typeFire.appendChild(img);
                     pokemonFire.appendChild(typeFire);
-                    pokemonFire.appendChild(stats);
                 } 
                 else  if (types.includes('water')){
                     let typeWater = document.createElement('div');
@@ -371,126 +369,11 @@ const mostrarPokemon = (data) => {
 .cartasPage{
     margin: auto;
     width: 100%;
-    display: flex;
+    display: flex; 
+    flex-wrap: wrap;
     gap: 2rem;
+    justify-content: center;
 }
-/* #CardsFire {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 25rem;
-    background: url(/public/backgrounds/fire-background.png);
-    background-repeat: column;
-    background-size: 25rem;
-} */
-/* #CardsWater{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 25rem;
-    background: url(/public/backgrounds/water-background.png);
-    background-repeat: column;
-    background-size: 25rem; 
-} */
-/* #CardsGrass{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 25rem;
-    background: url(/public/backgrounds/grass-background.png);
-    background-repeat: column;
-    background-size: 25rem; 
-} */
-/* #CardsElectric{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 25rem;
-    background: url(/public/backgrounds/electric-background.png);
-    background-repeat: column;
-    background-size: 25rem; 
-} */
-/* #CardsFighting{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 25rem;
-    background: url(/public/backgrounds/fighting-background.png);
-    background-repeat: column;
-    background-size: 25rem;
-} */
-/* #CardsPoison{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 25rem;
-    background: url(/public/backgrounds/poison-background.png);
-    background-repeat: column;
-    background-size: 25rem;
-} */
-/* #CardsGround{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 25rem;
-    background: url(/public/backgrounds/ground-background.png);
-    background-repeat: column;
-    background-size: 25rem;
-} */
-/* #CardsFlying{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 25rem;
-    background: url(/public/backgrounds/flying-background.png);
-    background-repeat: column;
-    background-size: 25rem;
-} */
-/* #CardsPsychic{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 25rem;
-    background: url(/public/backgrounds/psychic-background.png);
-    background-repeat: column;
-    background-size: 25rem;
-} */
-/* #CardsBug{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 25rem;
-    background: url(/public/backgrounds/bug-background.png);
-    background-repeat: column;
-    background-size: 25rem;
-} */
-/* #CardsRock{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 25rem;
-    background: url(/public/backgrounds/rock-background.png);
-    background-repeat: column;
-    background-size: 25rem;
-} */
-/* #CardsNormal{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 25rem;
-    background: url(/public/backgrounds/normal-background.png);
-    background-repeat: column;
-    background-size: 25rem;
-} */
-/* #CardsSteel{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 25rem;
-    background: url(/public/backgrounds/steel-background.png);
-    background-repeat: column;
-    background-size: 25rem;
-} */
 </style>
 
 
