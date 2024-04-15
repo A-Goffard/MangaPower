@@ -49,13 +49,15 @@ const mostrarPokemon = (data) => {
                 let name = data.name;
                 let imageUrl = data.sprites.other['official-artwork'].front_default;
                 let types = data.types.map(type => type.type.name);
+                let stats = data.stats.map(stat => `${stat.stat.name}: ${stat.base_stat}`);
                 
 
                 if (types.includes('fire')) {
                     let typeFire = document.createElement('div');
                     let nameFire = document.createElement('h3');
                     let img = document.createElement('img');
-
+                    let statsList = document.createElement('ul');
+                    
                     nameFire.textContent = name;
                     img.src = imageUrl;
                     
@@ -68,9 +70,18 @@ const mostrarPokemon = (data) => {
                     typeFire.style.backgroundSize = '16rem';
                     typeFire.style.height = '24.8rem';
                     typeFire.style.marginBottom = '2rem';
+                    
+
+                    stats.forEach(stat => {
+                        let statItem = document.createElement('li');
+                        statItem.textContent = stat;
+                        statItem.style.color = 'white';
+                        statsList.appendChild(statItem);
+                    });
 
                     typeFire.appendChild(nameFire);
                     typeFire.appendChild(img);
+                    typeFire.appendChild(statsList);
                     pokemonFire.appendChild(typeFire);
                 } 
                 else  if (types.includes('water')){
@@ -369,7 +380,7 @@ const mostrarPokemon = (data) => {
 .cartasPage{
     margin: auto;
     width: 100%;
-    display: flex; 
+    display: flex;
     flex-wrap: wrap;
     gap: 2rem;
     justify-content: center;
