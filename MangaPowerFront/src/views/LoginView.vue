@@ -64,6 +64,7 @@ const proveLogin = () => {
       } else {
         gotoPersonalPage();
         alert('Inicio de sesión correcto');
+        localStorage.setItem('datoslogin', JSON.stringify({ email: emailLogin }));
       }
     })
     .catch(error => {

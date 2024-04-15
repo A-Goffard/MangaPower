@@ -8,4 +8,6 @@ no se fijo - npm cache clean --force
 
 no se fijo - npm install --save-dev babel-jest
 
+npm install jsonserver
+
 npm install cypress

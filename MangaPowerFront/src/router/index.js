@@ -8,7 +8,7 @@ import PersonalFile from '../views/PersonalFile.vue'
 import RegisterView from '../views/RegisterView.vue'
 import StatsView from '../views/StatsView.vue'
 import CardStore from '../views/CardStore.vue'
-
+import AboutView from '../views/AboutView.vue'
 
 const routes = [
   {
@@ -55,6 +55,11 @@ const routes = [
     path: '/register',
     name: 'RegisterView',
     component: RegisterView
+  },
+  {
+    path: '/about',
+    name: 'about',
+    component: AboutView
   }
 ]
 

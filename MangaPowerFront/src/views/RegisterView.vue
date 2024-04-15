@@ -12,8 +12,8 @@
           <input type="date" v-model="inputDate">
         </div>
         <div class="log-lines">
-          <span>Mail </span>
-          <input type="email" v-model="inputMail">
+          <span>Email </span>
+          <input type="email" v-model="inputEmail">
         </div>
         <div class="log-lines">
           <span>UserName </span>
@@ -73,7 +73,7 @@ import { useRouter } from 'vue-router';
 
 let inputName = ref('');
 let inputDate = ref('');
-let inputMail = ref('');
+let inputEmail = ref('');
 let inputUserName = ref('');
 let inputPassword = ref('');
 let inputPasswordComprobation = ref('');
@@ -171,7 +171,7 @@ const send = () => {
         id: getNextId(), // Obtener el próximo ID disponible
         name: inputName.value,
         birthdate: inputDate.value,
-        email: inputMail.value,
+        email: inputEmail.value,
         password: inputPassword.value,
         pokemon: pokemon.value,
         pokemonTrainer: pokemonTrainer.value,
@@ -186,14 +186,18 @@ const send = () => {
       };
 
 
-      if (inputMail.value === usuarios.find(u => u.email === inputMail.value)?.email ||
+      if (inputEmail.value === usuarios.find(u => u.email === inputEmail.value)?.email || inputEmail.value === "" ||
         inputUserName.value === usuarios.find(u => u.username === inputUserName.value)?.username ||
         inputPassword.value !== inputPasswordComprobation.value ||
         inputYear < limitYear || inputYear >= currentYear || inputDate.value.length < 4 || inputDate.value === "") {
         // Realiza todas las comprobaciones al mismo tiempo y muestra los mensajes de error correspondientes
-        if (inputMail.value === usuarios.find(u => u.email === inputMail.value)?.email) {
+        if (inputEmail.value === usuarios.find(u => u.email === inputEmail.value)?.email) {
           alert('There is already a user with that email');
-          inputMail.value = '';
+          inputEmail.value = '';
+        }
+        if (inputEmail.value === "") {
+          alert('Enter a valid email');
+          inputEmail.value = '';
         }
         if (inputUserName.value === usuarios.find(u => u.username === inputUserName.value)?.username) {
           alert('That username already exists');
@@ -210,7 +214,7 @@ const send = () => {
         } 
 
         // Validar que todos los campos estén completos
-/*         if (!inputName.value || !inputDate.value || !inputMail.value || !inputUserName.value || !inputPassword.value || !inputPasswordComprobation.value) {
+/*         if (!inputName.value || !inputDate.value || !inputEmail.value || !inputUserName.value || !inputPassword.value || !inputPasswordComprobation.value) {
           alert('Please fill in all fields');
 
         } */
@@ -257,7 +261,6 @@ const send = () => {
     })
     .catch(error => console.error('Error en la solicitud:', error));
 };
-
 
 
 </script>
