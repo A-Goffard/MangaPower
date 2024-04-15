@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "cypress": "^13.7.3",
     "json": "^11.0.0",
     "server": "^1.0.39"
   }
