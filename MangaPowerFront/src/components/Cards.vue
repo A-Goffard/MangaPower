@@ -331,7 +331,6 @@ const mostrarPokemon = (data) => {
                     typePsychic.style.height = '24.8rem';
                     typePsychic.style.width = '16rem';
                     typePsychic.style.marginBottom = '2rem';
-
                     typePsychic.appendChild(namePsychic);
                     typePsychic.appendChild(img);
                     pokemonPsychic.appendChild(typePsychic);

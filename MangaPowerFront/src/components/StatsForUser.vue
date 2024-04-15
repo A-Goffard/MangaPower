@@ -111,7 +111,7 @@ onMounted(() => {
 /* -----------------Traer los datos del JSON server  para pintarlos de forma dinámica----------- */
 
 
-let userData = ref({ name: '', avatar: '' });
+let userData = ref({ name: '', pokemonTrainer: '' });
 
 onMounted(async () => {
     try {
