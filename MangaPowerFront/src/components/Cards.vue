@@ -14,12 +14,17 @@
     <div id="CardsRock"></div>
     <div id="CardsNormal"></div>
     <div id="CardsSteel"></div>
-
+    <div id="CardsFire">
+        <div v-for="pokemon in pokemons" :key="pokemon.id" @click="capturarNombrePokemon($event)">
+            <img :src="pokemon.imageUrl" :alt="pokemon.name">
+        </div>
+    </div>
 </body>
 </template>
 
 
 <script setup>
+
 let url = 'https://pokeapi.co/api/v2/pokemon?limit=151&offset=0';
 
 fetch(url)
@@ -365,6 +370,8 @@ const mostrarPokemon = (data) => {
             .catch(error => console.log(error));
     });
 }
+
+
 </script>
 
 <style scoped>
