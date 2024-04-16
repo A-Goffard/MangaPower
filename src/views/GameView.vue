@@ -43,11 +43,11 @@ const app = Vue.createApp({
     }
   }
 });
-
+*/
 // Mount the Vue app to a DOM element
 app.mount('#app');
 
-*/
+
   </script>
   
 
