@@ -24,25 +24,14 @@
 </template>
 
 <script setup>
-
 import { ref } from 'vue';
 import { onMounted } from 'vue';
 import axios from 'axios';
+import { useRouter } from 'vue-router'; // Importar useRouter desde vue-router
 
-let userData = ref(null);
+const router = useRouter(); // Crear una instancia del enrutador
 
-onMounted(async () => {
-    try {
-        const response = await axios.get('http://localhost:3000/usuarios');
-        userData.value = response.data[0];
-     } catch (error) {
-        console.error('Error:', error);
-        /* alert('Error al obtener los datos del usuario') */;
-    }
-});
-
-
-
+const userData = ref(null);
 const carousel = ref(null);
 const position = ref(0);
 const cardWidth = 200; // Ancho de cada tarjeta de Pokémon
@@ -83,7 +72,7 @@ const getPokemonData = async (pokemonId) => {
     const pokemon = {
       id: data.id,
       name: data.name.toUpperCase(),
-      image:data.sprites.other['official-artwork'].front_default,     
+      image: data.sprites.other['official-artwork'].front_default,     
       abilities: data.abilities.map(ability => ability.ability.name).join(', ')
     };
     pokemons.value.push(pokemon);
@@ -95,7 +84,15 @@ const initCarousel = async () => {
   await Promise.all(pokemonIds.map(async id => await getPokemonData(id)));
 };
 
-onMounted(initCarousel);
+onMounted(async () => {
+  try {
+    const response = await axios.get('http://localhost:3000/usuarios');
+    userData.value = response.data[0];
+  } catch (error) {
+    console.error('Error:', error);
+  }
+  initCarousel();
+});
 
 const goToDetail = (pokemonId) => {
   router.push({ name: 'DetailCard', params: { id: pokemonId } });
@@ -115,11 +112,7 @@ const stopAutoSlide = () => {
   clearInterval(autoSlideInterval);
 };
 
-// Iniciar el carrusel automáticamente al montar el componente
-onMounted(startAutoSlide);
-
 </script>
-
 
 <style scoped>
 h1 {
@@ -138,7 +131,10 @@ h2 {
   height: 20rem;
   gap: 10px;
 }
-
+.avatar{
+  width: 30%;
+  height: 30%;
+}
 .carousel-container {
   width: 60%;
   margin: 20px auto;

@@ -160,6 +160,52 @@
         "4",
         "5"
       ]
+    },
+    {
+      "id": "8",
+      "name": "pp",
+      "birthdate": "2020-02-03",
+      "email": "pp@gmail.com",
+      "password": "12345",
+      "pokemon": "Bulbasaur",
+      "pokemonTrainer": "Azumi",
+      "username": "pp",
+      "pokemonLevel": "1",
+      "trainerLevel": "1",
+      "win": 0,
+      "lose": 0,
+      "plays": 0,
+      "winedCardsNumber": 0,
+      "winedCards": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    {
+      "id": "9",
+      "name": "tinac",
+      "birthdate": "2017-01-12",
+      "email": "tina@gmail.com",
+      "password": "12345",
+      "pokemon": "Squirtle",
+      "pokemonTrainer": "Azumi",
+      "username": "tinac",
+      "pokemonLevel": "1",
+      "trainerLevel": "1",
+      "win": 0,
+      "lose": 0,
+      "plays": 0,
+      "winedCardsNumber": 0,
+      "winedCards": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
     }
   ]
 }
