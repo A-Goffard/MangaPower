@@ -1,19 +1,15 @@
 <template>
     <div class="container_global">
       <div class="containerStats"> 
-        <div class="name_stats">
-          <h3>User</h3>  
+    
+        <div class="avatar_stats">
+         
+          <div class="avatarContainer">
             <div id="name_print_stats">{{ userData && userData.name }}</div>
-            <div class="stats_user">
-                <div id="pokemon_level">Pokemon Level: {{ userData && userData.pokemonLevel }}</div>
+            <img class="avatar" :src="userData && `avatar/${userData.pokemonTrainer}.png`" alt="Avatar del entrenador">
+            <div id="pokemon_level">Pokemon Level: {{ userData && userData.pokemonLevel }}</div>
                 <div id="trainer_level">Trainer Level: {{ userData && userData.trainerLevel }}</div>
                 <div id="username">Username: {{ userData && userData.username }}</div>
-            </div>
-        </div>
-        <div class="avatar_stats">
-          <h3>Avatar</h3>
-          <div class="avatarContainer">
-            <img class="avatar" :src="userData && `avatar/${userData.pokemonTrainer}.png`" alt="Avatar del entrenador">
           </div>
         </div>
         <div class="container_graphic">
@@ -29,6 +25,7 @@
 <!-- --------Inicio del CSS--------- -->
 
 <style scoped>
+
 .avatarContainer {
     display: flex;
   flex-direction: column;
@@ -101,6 +98,7 @@
 
 #name_print_stats{
     color: rgb(255, 0, 0);
+    font-size: 4rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -111,6 +109,27 @@
     align-items: center;
     padding: 1rem;
 }
+
+.avatar_stats{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    padding: 2rem;
+
+}
+
+.avatarContainer{
+    width: 100%;
+    height: 40rem;
+}
+.avatar{
+    width: 100%;
+    height: auto;
+} 
 
 </style>
 
@@ -128,7 +147,7 @@ onMounted(() => {
     const MyCanvas = document.querySelector("#graphic").getContext("2d");
 
     chartInstance = new Chart(MyCanvas, {
-        type: "pie",
+        type: "bar",
         data: {
             labels: ["PJ", "PG", "PP"],
             datasets:[
@@ -139,7 +158,7 @@ onMounted(() => {
                         'rgb(8, 33, 243)',
                         'rgb(255, 5, 5)'
                     ],
-                    data: [15, 3, 2]
+                    data: [10, 7, 3]
                 }
             ]
         }
@@ -153,11 +172,10 @@ let userData = ref(null);
 onMounted(async () => {
     try {
         const response = await axios.get('http://localhost:3000/usuarios');
-        userData.value = response.data[0];
+        userData.value = response.data[2];
      } catch (error) {
         console.error('Error:', error);
         /* alert('Error al obtener los datos del usuario') */;
     }
 });
 </script>
-
