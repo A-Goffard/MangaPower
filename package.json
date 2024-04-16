@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "cypress": "^13.7.3",
-    "serve": "vue-cli-service serve"
+    "json": "^11.0.0",
+    "server": "^1.0.39"
   }
 }
