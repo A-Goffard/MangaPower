@@ -72,10 +72,9 @@ const proveLogin = () => {
       alert('Error al obtener los datos de los usuarios');
     });
 };
+
 </script>
 
-
-</script> 
 <style scoped>
   button {
     margin: 0.5rem;

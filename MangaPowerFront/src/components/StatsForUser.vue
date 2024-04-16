@@ -3,10 +3,12 @@
       <div class="containerStats"> 
         <div class="name_stats">
           <h3>User</h3>  
-          <div id="name_print_stats">{{ userData && userData.name }}</div>
-          <div id="pokemon_level">Pokemon Level: {{ userData && userData.pokemonLevel }}</div>
-          <div id="trainer_level">Trainer Level: {{ userData && userData.trainerLevel }}</div>
-          <div id="username">Username: {{ userData && userData.username }}</div>
+            <div id="name_print_stats">{{ userData && userData.name }}</div>
+            <div class="stats_user">
+                <div id="pokemon_level">Pokemon Level: {{ userData && userData.pokemonLevel }}</div>
+                <div id="trainer_level">Trainer Level: {{ userData && userData.trainerLevel }}</div>
+                <div id="username">Username: {{ userData && userData.username }}</div>
+            </div>
         </div>
         <div class="avatar_stats">
           <h3>Avatar</h3>
@@ -76,7 +78,6 @@
 .name_stats{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
     padding: 1rem;
 
@@ -87,6 +88,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.stats_user{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
 }
 
 </style>
