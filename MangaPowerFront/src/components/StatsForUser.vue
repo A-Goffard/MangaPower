@@ -2,11 +2,13 @@
     <div class="container_global">
       <div class="containerStats"> 
         <div class="name_stats">
-          <h3>User</h3>  
-          <div id="name_print_stats">{{ userData && userData.username }}</div>
-          <div id="pokemon_level">Pokemon Level: {{ userData && userData.pokemonLevel }}</div>
-          <div id="trainer_level">Trainer Level: {{ userData && userData.trainerLevel }}</div>
-          <div id="username">Username: {{ userData && userData.username }}</div>
+          <h3>Username</h3>  
+          <div id="name_print_stats">{{ userDataActive && userDataActive.username }}</div>
+          <div id="pokemon_level">
+            Pokemon Level: {{ userDataActive && userDataActive.pokemonLevel }}
+            <AvatarPokemon />
+        </div>
+          <div id="trainer_level">Trainer Level: {{ userDataActive && userDataActive.trainerLevel }}</div>
         </div>
         <div class="avatar_stats">
           <h3>Avatar</h3>
@@ -101,6 +103,7 @@ import { onMounted, ref } from 'vue';
 import Chart from 'chart.js/auto';
 import axios from 'axios';
 import AvatarUser from '../components/AvatarUser.vue';
+import AvatarPokemon from '../components/AvatarPokemon.vue';
 
 let chartInstance = null;
 
@@ -128,16 +131,32 @@ onMounted(() => {
 
 /* Traer los datos del JSON server para pintarlos de forma dinámica */
 
-let userData = ref(null);
+/* let userDataActive = ref(null); */
 
 onMounted(async () => {
     try {
         const response = await axios.get('http://localhost:3000/usuarios');
-        userData.value = response.data[0];
+        userDataActive.value = response.data[0];
      } catch (error) {
         console.error('Error:', error);
         /* alert('Error al obtener los datos del usuario') */;
     }
 });
+
+// Definir una referencia para los datos del usuario
+let userDataActive = ref(null);
+
+// Función para obtener los datos del usuario del localStorage
+const getUsuarioFromLocalStorage = () => {
+  const usuario = JSON.parse(localStorage.getItem('usuario'));
+  if (usuario && usuario.length > 0) {
+    // Si hay datos de usuario en el localStorage, asignar el primer elemento del array a userData
+    userDataActive.value = usuario[0];
+  }
+};
+
+// Llamar a la función para obtener los datos del usuario al montar el componente
+onMounted(getUsuarioFromLocalStorage);
+
 </script>
 

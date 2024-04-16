@@ -1,12 +1,16 @@
 <template>
   <div class="container">
     <h1>PERSONAL FILE</h1>
-    <div class="avatar">
-      <h2>AVATAR</h2>
-    <AvatarUser />
+    <div class="avatars">
+      <div class="avatar">
+        <h2>AVATAR</h2>
+        <AvatarUser />
+      </div>
+      <div class="avatar">
+        <h2>POKEMON</h2>
+        <AvatarPokemon />
+      </div>
     </div>
-
-
     <h2>CARDS</h2>
     <div class="carousel-container" @mouseenter="stopAutoSlide" @mouseleave="startAutoSlide">
       <div class="carousel" ref="carousel">
@@ -31,6 +35,7 @@
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import AvatarUser from '../components/AvatarUser.vue';
+import AvatarPokemon from '../components/AvatarPokemon.vue';
 
 const router = useRouter();
 
@@ -113,6 +118,16 @@ onMounted(startAutoSlide);
 
 
 <style scoped>
+.avatars {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.avatar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 h1 {
   text-align: center;
 }
@@ -124,11 +139,11 @@ h1 {
   padding: 20px;
 }
 
-h2 {
+/* h2 {
   margin-top: 5rem;
   height: 20rem;
   gap: 10px;
-}
+} */
 
 .carousel-container {
   width: 60%;
