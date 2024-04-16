@@ -4,10 +4,13 @@
         <div class="name_stats">
           <h3>User</h3>  
           <div id="name_print_stats">{{ userData && userData.name }}</div>
+          <div id="pokemon_level">Pokemon Level: {{ userData && userData.pokemonLevel }}</div>
+          <div id="trainer_level">Trainer Level: {{ userData && userData.trainerLevel }}</div>
+          <div id="username">Username: {{ userData && userData.username }}</div>
         </div>
         <div class="avatar_stats">
           <h3>Avatar</h3>
-          <div id="avatar_print_stats">{{ userData && userData.avatar }}</div>
+          <img :src="userData && userData.pokemonTrainer" alt="Avatar del entrenador">
         </div>
         <div class="container_graphic">
           <canvas id="graphic" width="100%" height="100%"></canvas>
@@ -70,6 +73,21 @@
     color: white;
     padding-top: 2rem;
 }
+.name_stats{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+
+}
+
+#name_print_stats{
+    color: rgb(255, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 </style>
 
@@ -112,7 +130,7 @@ let userData = ref(null);
 onMounted(async () => {
     try {
         const response = await axios.get('http://localhost:3000/usuarios');
-        userData.value = response.data[1];
+        userData.value = response.data[0];
      } catch (error) {
         console.error('Error:', error);
         /* alert('Error al obtener los datos del usuario') */;
