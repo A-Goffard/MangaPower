@@ -1,22 +1,20 @@
 <template>
     <div class="container_global">
-
       <div class="containerStats"> 
-           
         <div class="name_stats">
-            <h3>User</h3>  
-            <div id="name_print_stats">{{ userData.name }}</div>
+          <h3>User</h3>  
+          <div id="name_print_stats">{{ userData && userData.name }}</div>
         </div>
         <div class="avatar_stats">
-            <h3>Avatar</h3>
-            <div id="avatar_print_stats">{{ userData.avatar }}</div>
+          <h3>Avatar</h3>
+          <div id="avatar_print_stats">{{ userData && userData.avatar }}</div>
         </div>
         <div class="container_graphic">
-            <canvas id="graphic" width="100%" height="100%"></canvas>
+          <canvas id="graphic" width="100%" height="100%"></canvas>
         </div>
       </div>
       <div class="informationTittle">
-          <h2>PJ "Partidas jugadas" // PG "Partidas ganadas" // PP "Partidas perdidas"</h2>
+        <h2>PJ "Partidas jugadas" // PG "Partidas ganadas" // PP "Partidas perdidas"</h2>
       </div>
     </div>
   </template>
@@ -79,7 +77,6 @@
 
 
 <script setup>
-
 import { onMounted, ref } from 'vue';
 import Chart from 'chart.js/auto';
 import axios from 'axios';
@@ -101,28 +98,25 @@ onMounted(() => {
                         'rgb(8, 33, 243)',
                         'rgb(255, 5, 5)'
                     ],
-                    data: [10, 5, 5]
+                    data: [15, 3, 2]
                 }
             ]
         }
     });
 });
 
-/* -----------------Traer los datos del JSON server  para pintarlos de forma dinámica----------- */
+/* Traer los datos del JSON server para pintarlos de forma dinámica */
 
-
-let userData = ref({ name: '', pokemonTrainer: '' });
+let userData = ref(null);
 
 onMounted(async () => {
     try {
         const response = await axios.get('http://localhost:3000/usuarios');
-        // Tomamos el primer usuario de la respuesta para este ejemplo
-        userData.value = response.data[0];
-    } catch (error) {
+        userData.value = response.data[1];
+     } catch (error) {
         console.error('Error:', error);
-        alert('Error al obtener los datos del usuario');
+        /* alert('Error al obtener los datos del usuario') */;
     }
 });
-
 </script>
 
