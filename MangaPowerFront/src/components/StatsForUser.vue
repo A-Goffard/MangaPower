@@ -2,13 +2,15 @@
     <div class="container_global">
       <div class="containerStats"> 
         <div class="name_stats">
-          <h3>User</h3>  
-            <div id="name_print_stats">{{ userData && userData.name }}</div>
-            <div class="stats_user">
-                <div id="pokemon_level">Pokemon Level: {{ userData && userData.pokemonLevel }}</div>
-                <div id="trainer_level">Trainer Level: {{ userData && userData.trainerLevel }}</div>
-                <div id="username">Username: {{ userData && userData.username }}</div>
-            </div>
+            <div id="name_print_stats">{{ userData && userData.name }}</div>  
+          <div class="stats_user">
+        
+            <div id="pokemon_user">{{ userData && userData.pokemon }}</div>           
+            <div id="pokemon_level">Pokemon Level: {{ userData && userData.pokemonLevel }}</div>
+            <div id="trainer_level">Trainer Level: {{ userData && userData.trainerLevel }}</div>
+            <div id="username">Username: {{ userData && userData.username }}</div>
+
+          </div>
         </div>
         <div class="avatar_stats">
           <h3>Avatar</h3>
@@ -22,7 +24,9 @@
         <h2>PJ "Partidas jugadas" // PG "Partidas ganadas" // PP "Partidas perdidas"</h2>
       </div>
     </div>
+
   </template>
+  
 
 <!-- --------Inicio del CSS--------- -->
 
@@ -80,11 +84,14 @@
     flex-direction: column;
     align-items: center;
     padding: 1rem;
+    height: 100%;
 
 }
 
 #name_print_stats{
-    color: rgb(255, 0, 0);
+    font-size: 5rem;
+    font-weight: 800;
+    color: rgb(255, 255, 255);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -92,8 +99,12 @@
 .stats_user{
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    margin-top: 8rem;
+    gap: 2rem;
     padding: 1rem;
+    color: white;
 }
 
 </style>
