@@ -2,9 +2,7 @@
   <div class="container">
     <h1>PERSONAL FILE</h1>
     <h2>AVATAR</h2>
-    <div v-if="pokemonTrainer">
-      <img :src="pokemonTrainer" alt="Avatar" class="avatar">
-    </div>
+    <img class="avatar" :src="userData && `avatar/${userData.pokemonTrainer}.png`" alt="Avatar del entrenador">
     <h2>CARDS</h2>
     <div class="carousel-container" @mouseenter="stopAutoSlide" @mouseleave="startAutoSlide">
       <div class="carousel" ref="carousel">
@@ -26,19 +24,21 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import { useRouter } from 'vue-router';
 
-const router = useRouter();
-const pokemonTrainer = ref(''); // Definir una referencia para el avatar del usuario
+import { ref } from 'vue';
+import { onMounted } from 'vue';
+import axios from 'axios';
 
-onMounted(() => {
-  // Obtener los datos del usuario del localStorage al cargar el componente
-  const usuario = JSON.parse(localStorage.getItem('usuario'));
-  if (usuario) {
-    // Obtener el avatar del usuario
-    pokemonTrainer.value = usuario[0].pokemonTrainer; // Suponiendo que la estructura de datos sea un array
-  }
+let userData = ref(null);
+
+onMounted(async () => {
+    try {
+        const response = await axios.get('http://localhost:3000/usuarios');
+        userData.value = response.data[0];
+     } catch (error) {
+        console.error('Error:', error);
+        /* alert('Error al obtener los datos del usuario') */;
+    }
 });
 
 
