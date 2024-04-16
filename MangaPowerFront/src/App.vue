@@ -66,7 +66,7 @@ export default {
     </div>
   </nav>
 
-  <router-view />
+<!--   <router-view /> -->
 </template>
 
 <style>
