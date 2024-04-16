@@ -172,7 +172,7 @@ let userData = ref(null);
 onMounted(async () => {
     try {
         const response = await axios.get('http://localhost:3000/usuarios');
-        userData.value = response.data[2];
+        userData.value = response.data[7];
      } catch (error) {
         console.error('Error:', error);
         /* alert('Error al obtener los datos del usuario') */;
