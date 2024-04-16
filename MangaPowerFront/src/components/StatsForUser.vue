@@ -12,7 +12,9 @@
         </div>
         <div class="avatar_stats">
           <h3>Avatar</h3>
-          <img :src="userData && userData.pokemonTrainer" alt="Avatar del entrenador">
+          <div class="avatarContainer">
+            <img class="avatar" :src="userData && `avatar/${userData.pokemonTrainer}.png`" alt="Avatar del entrenador">
+          </div>
         </div>
         <div class="container_graphic">
           <canvas id="graphic" width="100%" height="100%"></canvas>
@@ -26,7 +28,21 @@
 
 <!-- --------Inicio del CSS--------- -->
 
-<style>
+<style scoped>
+.avatarContainer {
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: min-content;
+  padding: 1rem;
+  margin: 1rem;
+  background-color: rgb(255, 255, 255, 0.65);
+  border-radius: 0.5rem;
+}
+.avatar {
+    max-width: 20rem;
+}
 
 /* .container_global{
     
