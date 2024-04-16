@@ -10,9 +10,9 @@
         </div>
         <div class="avatar_stats">
           <h3>Avatar</h3>
-          <div class="avatarContainer">
-            <img class="avatar" :src="userData && `avatar/${userData.pokemonTrainer}.png`" alt="Avatar del entrenador">
-          </div>
+
+            <AvatarUser />
+
         </div>
         <div class="container_graphic">
           <canvas id="graphic" width="100%" height="100%"></canvas>
@@ -27,20 +27,6 @@
 <!-- --------Inicio del CSS--------- -->
 
 <style scoped>
-.avatarContainer {
-    display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: min-content;
-  padding: 1rem;
-  margin: 1rem;
-  background-color: rgb(255, 255, 255, 0.65);
-  border-radius: 0.5rem;
-}
-.avatar {
-    max-width: 20rem;
-}
 
 /* .container_global{
     
@@ -114,6 +100,7 @@
 import { onMounted, ref } from 'vue';
 import Chart from 'chart.js/auto';
 import axios from 'axios';
+import AvatarUser from '../components/AvatarUser.vue';
 
 let chartInstance = null;
 
