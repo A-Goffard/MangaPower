@@ -3,7 +3,7 @@
     <h1>PERSONAL FILE</h1>
     <h2>AVATAR</h2>
     <div v-if="pokemonTrainer">
-      <img :src="pokemonTrainer" alt="Avatar">
+      <img :src="pokemonTrainer" alt="Avatar" class="avatar">
     </div>
     <h2>CARDS</h2>
     <div class="carousel-container" @mouseenter="stopAutoSlide" @mouseleave="startAutoSlide">
@@ -40,6 +40,7 @@ onMounted(() => {
     pokemonTrainer.value = usuario[0].pokemonTrainer; // Suponiendo que la estructura de datos sea un array
   }
 });
+
 
 const carousel = ref(null);
 const position = ref(0);
