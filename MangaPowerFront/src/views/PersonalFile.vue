@@ -42,6 +42,7 @@ onMounted(() => {
 });
 
 
+
 const carousel = ref(null);
 const position = ref(0);
 const cardWidth = 200; // Ancho de cada tarjeta de Pokémon
@@ -118,6 +119,7 @@ const stopAutoSlide = () => {
 onMounted(startAutoSlide);
 
 </script>
+
 
 <style scoped>
 h1 {

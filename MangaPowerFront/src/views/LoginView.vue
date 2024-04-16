@@ -73,9 +73,8 @@ const proveLogin = () => {
     });
 };
 
+</script>
 
-
-</script> 
 <style scoped>
   button {
     margin: 0.5rem;
