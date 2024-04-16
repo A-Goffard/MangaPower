@@ -1,4 +1,5 @@
 <template>
+    <h1>DETAIL CARD</h1>
     <div class="container1">
       <h1>DETAIL CARD</h1>
       <div v-if="pokemon">

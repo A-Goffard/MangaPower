@@ -114,6 +114,52 @@
         "4",
         "5"
       ]
+    },
+    {
+      "id": "6",
+      "name": "ana",
+      "birthdate": "2018-01-01",
+      "email": "q@gmail.com",
+      "password": "1234",
+      "pokemon": "Bulbasaur",
+      "pokemonTrainer": "Minato",
+      "username": "ana",
+      "pokemonLevel": "1",
+      "trainerLevel": "1",
+      "win": 0,
+      "lose": 0,
+      "plays": 0,
+      "winedCardsNumber": 0,
+      "winedCards": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    {
+      "id": "7",
+      "name": "antonio",
+      "birthdate": "2019-01-03",
+      "email": "ant@gmail.com",
+      "password": "12345",
+      "pokemon": "Pikachu",
+      "pokemonTrainer": "Koruko",
+      "username": "ant",
+      "pokemonLevel": "1",
+      "trainerLevel": "1",
+      "win": 0,
+      "lose": 0,
+      "plays": 0,
+      "winedCardsNumber": 0,
+      "winedCards": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
     }
   ]
 }
