@@ -1,9 +1,15 @@
 <template>
   <div class="container">
     <h1>PERSONAL FILE</h1>
-    <h2>AVATAR</h2>
-    <div v-if="pokemonTrainer">
-      <img :src="pokemonTrainer" alt="Avatar" class="avatar">
+    <div class="avatars">
+      <div class="avatar">
+        <h2>AVATAR</h2>
+        <AvatarUser />
+      </div>
+      <div class="avatar">
+        <h2>POKEMON</h2>
+        <AvatarPokemon />
+      </div>
     </div>
     <h2>CARDS</h2>
     <div class="carousel-container" @mouseenter="stopAutoSlide" @mouseleave="startAutoSlide">
@@ -28,20 +34,10 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
+import AvatarUser from '../components/AvatarUser.vue';
+import AvatarPokemon from '../components/AvatarPokemon.vue';
 
 const router = useRouter();
-const pokemonTrainer = ref(''); // Definir una referencia para el avatar del usuario
-
-onMounted(() => {
-  // Obtener los datos del usuario del localStorage al cargar el componente
-  const usuario = JSON.parse(localStorage.getItem('usuario'));
-  if (usuario) {
-    // Obtener el avatar del usuario
-    pokemonTrainer.value = usuario[0].pokemonTrainer; // Suponiendo que la estructura de datos sea un array
-  }
-});
-
-
 
 const carousel = ref(null);
 const position = ref(0);
@@ -122,6 +118,16 @@ onMounted(startAutoSlide);
 
 
 <style scoped>
+.avatars {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.avatar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 h1 {
   text-align: center;
 }
@@ -133,11 +139,11 @@ h1 {
   padding: 20px;
 }
 
-h2 {
+/* h2 {
   margin-top: 5rem;
   height: 20rem;
   gap: 10px;
-}
+} */
 
 .carousel-container {
   width: 60%;
