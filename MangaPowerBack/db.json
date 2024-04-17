@@ -160,6 +160,29 @@
         "4",
         "5"
       ]
+    },
+    {
+      "id": "8",
+      "name": "Jesus",
+      "birthdate": "1995-01-01",
+      "email": "jesus@gmail.com",
+      "password": "123",
+      "pokemon": "Charmander",
+      "pokemonTrainer": "Minato",
+      "username": "Yisus",
+      "pokemonLevel": "1",
+      "trainerLevel": "1",
+      "win": 0,
+      "lose": 0,
+      "plays": 0,
+      "winedCardsNumber": 0,
+      "winedCards": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
     }
   ]
 }
