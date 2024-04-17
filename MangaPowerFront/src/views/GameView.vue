@@ -1,13 +1,101 @@
 <template>
-    <div class="mainGameView">
-
-    </div>
-  </template>
-  
+  <div class="mainGameView">
 
 
-  <script setup>
-/*
+
+  </div>
+</template>
+
+
+
+<script setup>
+
+/* import { ref, onMounted } from 'vue';
+import Card from './CardStore.vue';
+
+const playerCards = ref([]);
+const computerCards = ref([]);
+const selectedCard = ref(null);
+const winner = ref(null);
+
+const selectPlayerCard = (card) => {
+  selectedCard.value = card;
+};
+
+const battle = () => {
+  if (selectedCard.value) {
+    // Generate a random card for the computer
+    generateComputerCard();
+
+    // Determine the winner
+    determineWinner();
+  } else {
+    alert('Please select a card to battle!');
+  }
+};
+
+const generateComputerCard = () => {
+  const randomIndex = Math.floor(Math.random() * computerCards.value.length);
+  computerCards.value[randomIndex].isComputerCard = true;
+};
+
+const determineWinner = () => {
+  const playerCard = selectedCard.value;
+  const computerCard = computerCards.value.find(card => card.isComputerCard);
+
+  const playerStats = calculateStats(playerCard);
+  const computerStats = calculateStats(computerCard);
+
+  let playerScore = 0;
+  let computerScore = 0;
+
+  ['hp', 'attack', 'defense'].forEach(stat => {
+    if (playerStats[stat] > computerStats[stat]) {
+      playerScore++;
+    } else if (playerStats[stat] < computerStats[stat]) {
+      computerScore++;
+    }
+  });
+
+  if (playerScore > computerScore) {
+    winner.value = playerCard;
+  } else if (playerScore < computerScore) {
+    winner.value = computerCard;
+  } else {
+    winner.value = null; // It's a tie
+  }
+};
+
+const calculateStats = (pokemon) => {
+  return {
+    hp: pokemon.stats.hp,
+    attack: pokemon.stats.attack,
+    defense: pokemon.stats.defense,
+  };
+};
+
+onMounted(() => {
+  // Assuming you have fetched allPokemons from your existing carousel component
+  playerCards.value = [...allPokemons.value];
+  computerCards.value = generateRandomCards(5);
+});
+
+const generateRandomCards = (count) => {
+  const allPokemons = [...playerCards.value];
+  const randomCards = [];
+
+  for (let i = 0; i < count; i++) {
+    const randomIndex = Math.floor(Math.random() * allPokemons.length);
+    randomCards.push(allPokemons[randomIndex]);
+    allPokemons.splice(randomIndex, 1);
+  }
+
+  return randomCards;
+};
+ */
+
+
+/* 
   // Define a Vue 3 component for the game
 const app = Vue.createApp({
   data() {
@@ -46,16 +134,32 @@ const app = Vue.createApp({
 
 // Mount the Vue app to a DOM element
 app.mount('#app');
+ */
 
-*/
-  </script>
-  
+</script>
 
 
-  <style scoped>
-  .mainGameView {
+
+<style scoped>
+.mainGameView {
   height: 100vh;
   background-image: url('/public/GameView/Pokemon_Stadium_2_SSBU\ \(1\).webp');
 }
-  
-  </style>
+
+/* .player-cards,
+.computer-cards {
+  width: 50%;
+  float: left;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.player-cards {
+  border-right: 2px solid white;
+}
+.computer-cards {
+  border-left: 2px solid white;
+}
+.card {
+  margin-bottom: 20px;
+} */
+</style>
