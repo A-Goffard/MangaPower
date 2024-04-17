@@ -72,6 +72,7 @@ const proveLogin = () => {
       alert('Error al obtener los datos de los usuarios');
     });
 };
+
 </script>
 
 <style scoped>

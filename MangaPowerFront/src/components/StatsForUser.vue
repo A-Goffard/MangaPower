@@ -146,7 +146,6 @@ onMounted(getUsuarioFromLocalStorage);
 .name_stats{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
     padding: 1rem;
 
@@ -154,9 +153,37 @@ onMounted(getUsuarioFromLocalStorage);
 
 #name_print_stats{
     color: rgb(255, 0, 0);
+    font-size: 4rem;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+.stats_user{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+
+.avatar_stats{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    padding: 2rem;
+
+}
+
+.avatarContainer{
+    width: 100%;
+    height: 40rem;
+}
+.avatar{
+    width: 100%;
+    height: auto;
+} 
 
 </style>
