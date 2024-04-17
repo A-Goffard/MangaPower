@@ -153,7 +153,7 @@ h1 {
   padding: 20px;
 }
 
-/* h2 {
+ h2 {
   margin-top: 5rem;
   height: 20rem;
   gap: 10px;
