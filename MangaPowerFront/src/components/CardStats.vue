@@ -1,5 +1,5 @@
 <template>
-  <div class="card" style="width: 18rem;">
+  <div class="card" style="width: 30rem;">
     <img class="card-img-top" :src="userData.pokemonTrainer" alt="Avatar del entrenador">
     <div class="card-body">
       <h2 class="card-title">{{ userData.name }}</h2>
