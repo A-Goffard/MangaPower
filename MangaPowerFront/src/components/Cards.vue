@@ -1,19 +1,37 @@
 <template>
-<body class="cartasPage">
+<body>
 
-    <div id="CardsFire"></div>
-    <div id="CardsWater"></div>
-    <div id="CardsGrass"></div>
-    <div id="CardsElectric"></div>
-    <div id="CardsFighting"></div>
-    <div id="CardsPoison"></div>
-    <div id="CardsGround"></div>
-    <div id="CardsFlying"></div>
-    <div id="CardsPsychic"></div>
-    <div id="CardsBug"></div>
-    <div id="CardsRock"></div>
-    <div id="CardsNormal"></div>
-    <div id="CardsSteel"></div>
+    <div class="botonesTypes">
+        <button class="fire">Type fire</button>
+        <button class="water">Type water</button>
+        <button class="grass">Type grass</button>
+        <button class="electric">Type electric</button>
+        <button class="psychic">Type psychic</button>
+        <button class="fighting">Type fighting</button>
+        <button class="poison">Type poison</button>
+        <button class="normal">Type normal</button>
+        <button class="bug">Type bug</button>
+        <button class="rock">Type rock</button>
+        <button class="steel">Type steel</button>
+        <button class="ground">Type ground</button>
+        <button class="flying">Type flying</button>
+    </div>
+    
+    <div class="cartasPage">
+        <div id="CardsFire"></div>
+        <div id="CardsWater"></div>
+        <div id="CardsGrass"></div>
+        <div id="CardsElectric"></div>
+        <div id="CardsFighting"></div>
+        <div id="CardsPoison"></div>
+        <div id="CardsGround"></div>
+        <div id="CardsFlying"></div>
+        <div id="CardsPsychic"></div>
+        <div id="CardsBug"></div>
+        <div id="CardsRock"></div>
+        <div id="CardsNormal"></div>
+        <div id="CardsSteel"></div>
+    </div>
 
 </body>
 </template>
@@ -29,19 +47,19 @@ fetch(url)
     .catch(error => console.log(error)); 
 
 const mostrarPokemon = (data) => {
-    let pokemonFire = document.getElementById('CardsFire');
-    let pokemonWater = document.getElementById('CardsWater');
-    let pokemonGrass = document.getElementById('CardsGrass');
-    let pokemonElectric = document.getElementById('CardsElectric');
-    let pokemonFighting = document.getElementById('CardsFighting');
-    let pokemonPoison = document.getElementById('CardsPoison');
-    let pokemonGround = document.getElementById('CardsGround');
-    let pokemonFlying = document.getElementById('CardsFlying');
-    let pokemonPsychic = document.getElementById('CardsPsychic');
-    let pokemonBug = document.getElementById('CardsBug');
-    let pokemonRock = document.getElementById('CardsRock');
-    let pokemonNormal = document.getElementById('CardsNormal');
-    let pokemonSteel = document.getElementById('CardsSteel');
+    const pokemonFire = document.getElementById('CardsFire');
+    const pokemonWater = document.getElementById('CardsWater');
+    const pokemonGrass = document.getElementById('CardsGrass');
+    const pokemonElectric = document.getElementById('CardsElectric');
+    const pokemonFighting = document.getElementById('CardsFighting');
+    const pokemonPoison = document.getElementById('CardsPoison');
+    const pokemonGround = document.getElementById('CardsGround');
+    const pokemonFlying = document.getElementById('CardsFlying');
+    const pokemonPsychic = document.getElementById('CardsPsychic');
+    const pokemonBug = document.getElementById('CardsBug');
+    const pokemonRock = document.getElementById('CardsRock');
+    const pokemonNormal = document.getElementById('CardsNormal');
+    const pokemonSteel = document.getElementById('CardsSteel');
 
     data.forEach(pokemon => {
         fetch(pokemon.url)
@@ -632,11 +650,68 @@ const mostrarPokemon = (data) => {
 <style scoped>
 .cartasPage{
     margin: auto;
+    margin-top: 2rem;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
     justify-content: center;
+}
+.botonesTypes{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: center;
+}
+button{
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    color: white;
+    font-weight: 700;
+    text-shadow: 1px 1px 1px black;
+    font-size: 0.9rem;
+}
+.fire{
+    background-color: orangered;
+}
+.water{
+    background-color: #6390f0;
+}
+.grass{
+    background-color: #78c850;
+}
+.electric{
+    background-color: #f8d030;
+}
+.psychic{
+    background-color: #ff69b4;
+}
+.fighting{
+    background-color: #c03028;
+}
+.bug{
+    background-color: #a8b820;
+}
+.rock{
+    background-color: #b8a038;
+}
+.steel{
+    background-color: #b8b8d0;
+}
+.ground{
+    background-color: #e0c068;
+}
+.flying{
+    background-color: #a890f0;
+}
+.normal{
+    background-color: #898176;
+}
+.poison{
+    background-color: #a040a0;
 }
 </style>
 
