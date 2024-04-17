@@ -1,32 +1,60 @@
 <template>
   <div class="mainGameView">
 
+    <div class="game-container">
+      <h1>Batalla Pokemon</h1>
 
+      <!-- Player's cards -->
+      <div class="player-cards">
+        <h2>Tus cartas:</h2>
+        <div class="card-list">
+          <div v-for="card in playerCards" :key="card.name" @click="selectPlayerCard(card)">
+            <!-- Reusing the Card component -->
+            <Card :pokemon="card" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Computer's cards -->
+      <div class="computer-cards">
+        <h2>Cartas de tu enemigo AI</h2>
+        <div class="card-list">
+          <div v-for="card in computerCards" :key="card.name">
+            <!-- Reusing the Card component -->
+            <Card :pokemon="card" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Battle button -->
+      <button @click="battle">Battle!</button>
+
+      <!-- Winner display -->
+      <div v-if="winner" class="winner-display">
+        <h2>Ganador: {{ winner.name }}</h2>
+        <!-- Display the winner card -->
+        <Card :pokemon="winner" />
+      </div>
+    </div>
 
   </div>
 </template>
 
-
-
 <script setup>
-
-/* import { ref, onMounted } from 'vue';
-import Card from './CardStore.vue';
+import { ref, onMounted } from 'vue';
+import Card from './Cards.vue'; // Importing cards from ./Cards.vue
 
 const playerCards = ref([]);
 const computerCards = ref([]);
-const selectedCard = ref(null);
+const selectedPlayerCard = ref(null);
 const winner = ref(null);
 
 const selectPlayerCard = (card) => {
-  selectedCard.value = card;
+  selectedPlayerCard.value = card;
 };
 
 const battle = () => {
-  if (selectedCard.value) {
-    // Generate a random card for the computer
-    generateComputerCard();
-
+  if (selectedPlayerCard.value) {
     // Determine the winner
     determineWinner();
   } else {
@@ -34,14 +62,9 @@ const battle = () => {
   }
 };
 
-const generateComputerCard = () => {
-  const randomIndex = Math.floor(Math.random() * computerCards.value.length);
-  computerCards.value[randomIndex].isComputerCard = true;
-};
-
 const determineWinner = () => {
-  const playerCard = selectedCard.value;
-  const computerCard = computerCards.value.find(card => card.isComputerCard);
+  const playerCard = selectedPlayerCard.value;
+  const computerCard = computerCards.value[Math.floor(Math.random() * computerCards.value.length)];
 
   const playerStats = calculateStats(playerCard);
   const computerStats = calculateStats(computerCard);
@@ -92,74 +115,43 @@ const generateRandomCards = (count) => {
 
   return randomCards;
 };
- */
-
-
-/* 
-  // Define a Vue 3 component for the game
-const app = Vue.createApp({
-  data() {
-    return {
-      player1Card: null,
-      player2Card: null,
-      winner: null,
-      pokemonCards: [
-        { name: 'Pikachu', hp: 35, attack: 55, defense: 40 },
-        { name: 'Charmander', hp: 39, attack: 52, defense: 43 },
-        // Add more Pokemon cards here
-      ]
-    };
-  },
-  methods: {
-    // Function to randomly select a card for a player
-    selectRandomCard() {
-      return Math.floor(Math.random() * this.pokemonCards.length);
-    },
-    // Function to start the game
-    startGame() {
-      this.player1Card = this.pokemonCards[this.selectRandomCard()];
-      this.player2Card = this.pokemonCards[this.selectRandomCard()];
-      
-      // Compare stats and determine winner
-      if (this.player1Card.hp > this.player2Card.hp) {
-        this.winner = 'Player 1';
-      } else if (this.player2Card.hp > this.player1Card.hp) {
-        this.winner = 'Player 2';
-      } else {
-        this.winner = 'Draw';
-      }
-    }
-  }
-});
-
-// Mount the Vue app to a DOM element
-app.mount('#app');
- */
 
 </script>
-
-
 
 <style scoped>
 .mainGameView {
   height: 100vh;
   background-image: url('/public/GameView/Pokemon_Stadium_2_SSBU\ \(1\).webp');
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* .player-cards,
+.game-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 80%; /* Adjust as needed */
+}
+
+.player-cards,
 .computer-cards {
-  width: 50%;
-  float: left;
+  width: 45%;
   padding: 20px;
   box-sizing: border-box;
 }
-.player-cards {
-  border-right: 2px solid white;
+
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
-.computer-cards {
-  border-left: 2px solid white;
-}
+
 .card {
   margin-bottom: 20px;
-} */
+}
+
+.winner-display {
+  margin-top: 20px;
+}
 </style>
