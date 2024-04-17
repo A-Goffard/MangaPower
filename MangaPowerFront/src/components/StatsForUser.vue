@@ -1,20 +1,18 @@
 <template>
     <div class="container_global">
-      <div class="containerStats"> 
+      <div class="containerStats">
         <div class="name_stats">
-            <div id="name_print_stats">{{ userData && userData.name }}</div>  
-          <div class="stats_user">
-        
-            <div id="pokemon_user">{{ userData && userData.pokemon }}</div>           
-            <div id="pokemon_level">Pokemon Level: {{ userData && userData.pokemonLevel }}</div>
-            <div id="trainer_level">Trainer Level: {{ userData && userData.trainerLevel }}</div>
-            <div id="username">Username: {{ userData && userData.username }}</div>
-
+          <h3>Username</h3>
+          <div id="name_print_stats">{{ userDataActive && userDataActive.username }}</div>
+          <div id="pokemon_level">
+            Pokemon Level: {{ userDataActive && userDataActive.pokemonLevel }}
+            <AvatarPokemon />
           </div>
+          <div id="trainer_level">Trainer Level: {{ userDataActive && userDataActive.trainerLevel }}</div>
         </div>
         <div class="avatar_stats">
           <h3>Avatar</h3>
-          <img :src="userData && userData.pokemonTrainer" alt="Avatar del entrenador">
+          <AvatarUser />
         </div>
         <div class="container_graphic">
           <canvas id="graphic" width="100%" height="100%"></canvas>
@@ -26,11 +24,78 @@
     </div>
 
   </template>
-  
+
+
+
+<!-- --------Inicio del JS--------- -->
+
+
+<script setup>
+import { onMounted, ref } from 'vue';
+import Chart from 'chart.js/auto';
+import axios from 'axios';
+import AvatarUser from '../components/AvatarUser.vue';
+import AvatarPokemon from '../components/AvatarPokemon.vue';
+
+// Datos del usuario activo
+let userDataActive = ref(null);
+
+// Función para obtener los datos del usuario del localStorage
+const getUsuarioFromLocalStorage = () => {
+  const usuario = JSON.parse(localStorage.getItem('usuario'));
+  if (usuario && usuario.length > 0) {
+    // Si hay datos de usuario en el localStorage, asignar el primer elemento del array a userData
+    userDataActive.value = usuario[0];
+    // Actualizar los datos del gráfico con los valores del usuario
+    updateChart();
+  }
+};
+
+// Función para actualizar los datos del gráfico
+const updateChart = () => {
+  if (!userDataActive.value) return;
+
+  const plays = userDataActive.value.plays || 0;
+  const wins = userDataActive.value.win || 0;
+  const losses = userDataActive.value.lose || 0;
+
+  // Actualizar los datos del gráfico
+  chartInstance.data.datasets[0].data = [plays, wins, losses];
+  chartInstance.update();
+};
+
+// Inicializar el gráfico
+let chartInstance = null;
+
+onMounted(() => {
+  const MyCanvas = document.querySelector("#graphic").getContext("2d");
+
+  chartInstance = new Chart(MyCanvas, {
+    type: "pie",
+    data: {
+      labels: ["PJ", "PG", "PP"],
+      datasets:[
+        {
+          label: "Estadísticas del jugador",
+          backgroundColor: [
+            'rgb(255, 231, 27)',
+            'rgb(8, 33, 243)',
+            'rgb(255, 5, 5)'
+          ],
+          data: [0, 0, 0] // Valores iniciales, se actualizarán después
+        }
+      ]
+    }
+  });
+});
+
+// Obtener los datos del usuario del localStorage al montar el componente
+onMounted(getUsuarioFromLocalStorage);
+</script>
 
 <!-- --------Inicio del CSS--------- -->
 
-<style>
+<style scoped>
 
 /* .container_global{
     
@@ -89,9 +154,8 @@
 }
 
 #name_print_stats{
-    font-size: 5rem;
-    font-weight: 800;
-    color: rgb(255, 255, 255);
+    color: rgb(255, 0, 0);
+    font-size: 4rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -104,55 +168,27 @@
     margin-top: 8rem;
     gap: 2rem;
     padding: 1rem;
-    color: white;
 }
 
+.avatar_stats{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    padding: 2rem;
+
+}
+
+.avatarContainer{
+    width: 100%;
+    height: 40rem;
+}
+.avatar{
+    width: 100%;
+    height: auto;
+} 
+
 </style>
-
-<!-- --------Inicio del JS--------- -->
-
-
-<script setup>
-import { onMounted, ref } from 'vue';
-import Chart from 'chart.js/auto';
-import axios from 'axios';
-
-let chartInstance = null;
-
-onMounted(() => {
-    const MyCanvas = document.querySelector("#graphic").getContext("2d");
-
-    chartInstance = new Chart(MyCanvas, {
-        type: "pie",
-        data: {
-            labels: ["PJ", "PG", "PP"],
-            datasets:[
-                {
-                    label: "Estadísticas del jugador",
-                    backgroundColor: [
-                        'rgb(255, 231, 27)',
-                        'rgb(8, 33, 243)',
-                        'rgb(255, 5, 5)'
-                    ],
-                    data: [15, 3, 2]
-                }
-            ]
-        }
-    });
-});
-
-/* Traer los datos del JSON server para pintarlos de forma dinámica */
-
-let userData = ref(null);
-
-onMounted(async () => {
-    try {
-        const response = await axios.get('http://localhost:3000/usuarios');
-        userData.value = response.data[0];
-     } catch (error) {
-        console.error('Error:', error);
-        /* alert('Error al obtener los datos del usuario') */;
-    }
-});
-</script>
-
