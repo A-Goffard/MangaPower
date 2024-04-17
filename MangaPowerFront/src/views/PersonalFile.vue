@@ -34,20 +34,10 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
+import AvatarUser from '../components/AvatarUser.vue';
+import AvatarPokemon from '../components/AvatarPokemon.vue';
 
 const router = useRouter();
-const pokemonTrainer = ref(''); // Definir una referencia para el avatar del usuario
-
-onMounted(() => {
-  // Obtener los datos del usuario del localStorage al cargar el componente
-  const usuario = JSON.parse(localStorage.getItem('usuario'));
-  if (usuario) {
-    // Obtener el avatar del usuario
-    pokemonTrainer.value = usuario[0].pokemonTrainer; // Suponiendo que la estructura de datos sea un array
-  }
-});
-
-
 
 const carousel = ref(null);
 const position = ref(0);
@@ -89,7 +79,7 @@ const getPokemonData = async (pokemonId) => {
     const pokemon = {
       id: data.id,
       name: data.name.toUpperCase(),
-      image: data.sprites.other['official-artwork'].front_default,     
+      image:data.sprites.other['official-artwork'].front_default,     
       abilities: data.abilities.map(ability => ability.ability.name).join(', ')
     };
     pokemons.value.push(pokemon);
@@ -101,15 +91,7 @@ const initCarousel = async () => {
   await Promise.all(pokemonIds.map(async id => await getPokemonData(id)));
 };
 
-onMounted(async () => {
-  try {
-    const response = await axios.get('http://localhost:3000/usuarios');
-    userData.value = response.data[0];
-  } catch (error) {
-    console.error('Error:', error);
-  }
-  initCarousel();
-});
+onMounted(initCarousel);
 
 const goToDetail = (pokemonId) => {
   router.push({ name: 'DetailCard', params: { id: pokemonId } });
@@ -129,7 +111,11 @@ const stopAutoSlide = () => {
   clearInterval(autoSlideInterval);
 };
 
+// Iniciar el carrusel automáticamente al montar el componente
+onMounted(startAutoSlide);
+
 </script>
+
 
 <style scoped>
 .avatars {
@@ -142,22 +128,13 @@ const stopAutoSlide = () => {
   flex-direction: column;
   justify-content: center;
 }
-h1 {
-  text-align: center;
-}
-
-.container {
-  background-image: url('/public/images/plantilla_psiquico 2.png');
-  background-size: cover;
-  background-position: center;
-  padding: 20px;
-}
 
  h2 {
   margin-top: 5rem;
   height: 20rem;
   gap: 10px;
-}
+  color: white;
+} 
 
 .carousel-container {
   width: 60%;

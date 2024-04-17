@@ -1,6 +1,7 @@
 <template>
-    <div class="container1">
-      <h1>DETAIL CARD</h1>
+  <h1>DETAIL CARD</h1>
+    
+      
       <div v-if="pokemon">
        <div class="id">
         <h2><strong>ID:</strong></h2>{{ pokemon.id }}
@@ -27,7 +28,7 @@
          </div>
       <!-- Mostrar más detalles de la carta aquí -->
       </div>
-    </div>
+   
 </template>
 
 <script setup>
@@ -60,23 +61,15 @@ onMounted(() => {
 </script>
 
 <style scoped>
-h1 {
-  text-align: center;
-}
+
 .container1{
-  background-image: url('/public/images/plantilla_psiquico 2.png');
-  background-size: cover;
-  background-position: center;
-  padding: 20px;
-}
-.id{
-  background-color: blueviolet;
-}
-.name{
-  background-color: aquamarine;
-}
-.ability{
-  background-color: blue;
+  width: 100%;
+    height: 50rem;
+    background-image: url('/public/images/Batalla_Pokemon.jpg'); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 img{

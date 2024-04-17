@@ -82,6 +82,9 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
   color: #2c3e50;
+  background-image: url('/public/images/Batalla_Pokemon.jpg'); 
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .main-nav-div {
