@@ -1,10 +1,9 @@
 <template>
-  
   <div class="mainDivHome">
-
-</div>
-
-
+    <div class="logo">
+      <img src="logo.png" alt="">
+    </div>
+  </div>
 </template>
 
 <script>
@@ -25,5 +24,10 @@
 
 }
 
-
+.logo {
+  padding: 0rem 1rem;
+  margin: 1rem;
+  background-color: rgb(255, 255, 255, 0.65);
+  border-radius: 0.5rem;
+}
 </style>
