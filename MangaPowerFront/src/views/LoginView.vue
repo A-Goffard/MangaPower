@@ -88,7 +88,7 @@ const proveLogin = () => {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url('/public/backgrounds/primary-background.jpg'); 
+    background-image: url('/public/autumn-night-illuminated-lantern-tree-yellow-leaf-generated-by-ai.jpg'); 
     background-size: cover; 
     background-repeat: no-repeat; 
 
