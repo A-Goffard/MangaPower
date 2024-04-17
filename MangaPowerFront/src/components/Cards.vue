@@ -73,7 +73,7 @@ const mostrarPokemon = (data) => {
                 
 
                 if (types.includes('fire')) {
-                    let typeFire = document.createElement('div');
+                    let typeFire = document.createElement('button');
                     let nameFire = document.createElement('h3');
                     let img = document.createElement('img');
                     let statsList = document.createElement('h6');
@@ -115,7 +115,7 @@ const mostrarPokemon = (data) => {
                     pokemonFire.appendChild(typeFire);
                 } 
                 else  if (types.includes('water')){
-                    let typeWater = document.createElement('div');
+                    let typeWater = document.createElement('button');
                     let nameWater = document.createElement('h3');
                     let img = document.createElement('img');
                     let statsList = document.createElement('h6');
@@ -158,7 +158,7 @@ const mostrarPokemon = (data) => {
                     pokemonWater.appendChild(typeWater);
                 }
                 else if (types.includes('steel')){
-                    let typeSteel = document.createElement('div');
+                    let typeSteel = document.createElement('button');
                     let nameSteel = document.createElement('h3');
                     let img = document.createElement('img');
                     let statsList = document.createElement('h6');
@@ -203,7 +203,7 @@ const mostrarPokemon = (data) => {
                     pokemonSteel.appendChild(typeSteel);
                 }
                 else if (types.includes('grass')){
-                    let typeGrass = document.createElement('div');
+                    let typeGrass = document.createElement('button');
                     let nameGrass = document.createElement('h3');
                     let img = document.createElement('img');
                     let statsList = document.createElement('h6');
@@ -246,7 +246,7 @@ const mostrarPokemon = (data) => {
                     pokemonGrass.appendChild(typeGrass);
                 }
                 else if (types.includes('electric')){
-                    let typeElectric = document.createElement('div');
+                    let typeElectric = document.createElement('button');
                     let nameElectric = document.createElement('h3');
                     let img = document.createElement('img');
                     let statsList = document.createElement('h6');
@@ -289,7 +289,7 @@ const mostrarPokemon = (data) => {
                     pokemonElectric.appendChild(typeElectric);
                 }
                 else if (types.includes('fighting')){
-                    let typeFighting = document.createElement('div');
+                    let typeFighting = document.createElement('button');
                     let nameFighting = document.createElement('h3');
                     let img = document.createElement('img');
                     let statsList = document.createElement('h6');
@@ -332,7 +332,7 @@ const mostrarPokemon = (data) => {
                     pokemonFighting.appendChild(typeFighting);
                 }
                 else if (types.includes('rock')){
-                    let typeRock = document.createElement('div');
+                    let typeRock = document.createElement('button');
                     let nameRock = document.createElement('h3');
                     let img = document.createElement('img');
                     let statsList = document.createElement('h6');
@@ -377,7 +377,7 @@ const mostrarPokemon = (data) => {
                     pokemonRock.appendChild(typeRock);
                 }
                 else if (types.includes('bug')){
-                    let typeBug = document.createElement('div');
+                    let typeBug = document.createElement('button');
                     let nameBug = document.createElement('h3');
                     let img = document.createElement('img');
                     let statsList = document.createElement('h6');
@@ -420,7 +420,7 @@ const mostrarPokemon = (data) => {
                     pokemonBug.appendChild(typeBug);
                 }
                 else if (types.includes('poison')){
-                    let typePoison = document.createElement('div');
+                    let typePoison = document.createElement('button');
                     let namePoison = document.createElement('h3');
                     let img = document.createElement('img');
                     let statsList = document.createElement('h6');
@@ -465,7 +465,7 @@ const mostrarPokemon = (data) => {
                     pokemonPoison.appendChild(typePoison);
                 }
                 else if (types.includes('ground')){
-                    let typeGround = document.createElement('div');
+                    let typeGround = document.createElement('button');
                     let nameGround = document.createElement('h3');
                     let img = document.createElement('img');
                     let statsList = document.createElement('h6');
@@ -508,7 +508,7 @@ const mostrarPokemon = (data) => {
                     pokemonGround.appendChild(typeGround);
                 }
                 else if (types.includes('flying')){
-                    let typeFlying = document.createElement('div');
+                    let typeFlying = document.createElement('button');
                     let nameFlying = document.createElement('h3');
                     let img = document.createElement('img');
                     let statsList = document.createElement('h6');
@@ -553,7 +553,7 @@ const mostrarPokemon = (data) => {
                     pokemonFlying.appendChild(typeFlying);
                 }
                 else if (types.includes('psychic')){
-                    let typePsychic = document.createElement('div');
+                    let typePsychic = document.createElement('button');
                     let namePsychic = document.createElement('h3');
                     let img = document.createElement('img');
                     let statsList = document.createElement('h6');
@@ -596,7 +596,7 @@ const mostrarPokemon = (data) => {
                     pokemonPsychic.appendChild(typePsychic);
                 }
                 else if (types.includes('normal')){
-                    let typeNormal = document.createElement('div');
+                    let typeNormal = document.createElement('button');
                     let nameNormal = document.createElement('h3');
                     let img = document.createElement('img');
                     let statsList = document.createElement('h6');
