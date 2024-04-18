@@ -1,6 +1,6 @@
 <template>
 <body>
-
+    
     <div class="botonesTypes">
         <button class="fire"></button>
         <button class="water"></button>
