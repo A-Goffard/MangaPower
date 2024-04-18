@@ -1,5 +1,6 @@
 <template>
   <div class="general-container">
+    <Logo class="logo"/>
     <h1>LOGIN</h1>
     <article>
       <div class="log-lines"><span>Email </span><input type="email" id="email" placeholder=" Enter email" v-model="email"></div>
@@ -20,6 +21,7 @@
 <script setup>
 import { useRouter } from 'vue-router';
 import { ref } from 'vue';
+import Logo from '../components/Logo.vue'
 
 const router = useRouter();
 

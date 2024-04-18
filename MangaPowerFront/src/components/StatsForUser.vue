@@ -95,7 +95,7 @@
   <style scoped>
   /* Estilos Bootstrap */
   .container_global {
-    background-image: url(/home/alumno/MangaPower/MangaPowerFront/public/images/Batalla_Pokemon.jpg);
+
     background-size: cover;
     background-position: center;
     height:100vh;

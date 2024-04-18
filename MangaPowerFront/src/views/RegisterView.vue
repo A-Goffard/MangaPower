@@ -1,5 +1,6 @@
 <template>
   <div class="general-container">
+    <Logo class="logo"/>
     <h1>REGISTER</h1>
     <div class="container-medium">
       <div class="input-container">
@@ -70,6 +71,7 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import Logo from '../components/Logo.vue'
 
 let inputName = ref('');
 let inputDate = ref('');
@@ -285,6 +287,7 @@ button {
   background-color: red;
 }
 .general-container {
+  padding-top: 13rem;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
