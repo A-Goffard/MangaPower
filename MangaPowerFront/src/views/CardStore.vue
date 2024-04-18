@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Types backgrounds</h1>
+        <h1>Types Cards</h1>
         <Cards />
     </div>
   </template>
@@ -10,5 +10,8 @@ import Cards from '@/components/Cards.vue';
 </script>
   
   <style scoped>
+    h1 {
+      text-align: center;
+    }
   
   </style>

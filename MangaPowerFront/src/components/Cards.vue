@@ -1,20 +1,20 @@
 <template>
 <body>
-
+    
     <div class="botonesTypes">
-        <button class="fire">Type fire</button>
-        <button class="water">Type water</button>
-        <button class="grass">Type grass</button>
-        <button class="electric">Type electric</button>
-        <button class="psychic">Type psychic</button>
-        <button class="fighting">Type fighting</button>
-        <button class="poison">Type poison</button>
-        <button class="normal">Type normal</button>
-        <button class="bug">Type bug</button>
-        <button class="rock">Type rock</button>
-        <button class="steel">Type steel</button>
-        <button class="ground">Type ground</button>
-        <button class="flying">Type flying</button>
+        <button class="fire"></button>
+        <button class="water"></button>
+        <button class="grass"></button>
+        <button class="electric"></button>
+        <button class="psychic"></button>
+        <button class="fighting"></button>
+        <button class="poison"></button>
+        <button class="normal"></button>
+        <button class="bug"></button>
+        <button class="rock"></button>
+        <button class="steel"></button>
+        <button class="ground"></button>
+        <button class="flying"></button>
     </div>
     
     <div class="cartasPage">
@@ -80,7 +80,9 @@ const mostrarPokemon = (data) => {
                     
                     nameFire.textContent = name;
                     img.src = imageUrl;
-                    
+
+                    typeFire.style.borderRadius = '1.6rem'
+                    typeFire.style.margin = '0.2rem';
                     nameFire.style.backgroundColor = 'red';
                     nameFire.style.borderTopLeftRadius = '1.5rem';
                     nameFire.style.borderTopRightRadius = '1.5rem';
@@ -123,6 +125,8 @@ const mostrarPokemon = (data) => {
                     nameWater.textContent = name; 
                     img.src = imageUrl;
 
+                    typeWater.style.borderRadius = '1.6rem'
+                    typeWater.style.margin = '0.2rem';
                     nameWater.style.backgroundColor = 'blue';
                     nameWater.style.borderTopLeftRadius = '1.5rem';
                     nameWater.style.borderTopRightRadius = '1.5rem'; 
@@ -166,6 +170,8 @@ const mostrarPokemon = (data) => {
                     nameSteel.textContent = name;
                     img.src = imageUrl;
 
+                    typeSteel.style.borderRadius = '1.6rem'
+                    typeSteel.style.margin = '0.2rem';
                     nameSteel.style.backgroundColor = 'grey';
                     nameSteel.style.borderTopLeftRadius = '1.5rem';
                     nameSteel.style.borderTopRightRadius = '1.5rem'; 
@@ -211,6 +217,8 @@ const mostrarPokemon = (data) => {
                     nameGrass.textContent = name;
                     img.src = imageUrl;
 
+                    typeGrass.style.borderRadius = '1.6rem'
+                    typeGrass.style.margin = '0.2rem';
                     nameGrass.style.backgroundColor = 'green';
                     nameGrass.style.borderTopLeftRadius = '1.5rem';
                     nameGrass.style.borderTopRightRadius = '1.5rem'; 
@@ -254,6 +262,8 @@ const mostrarPokemon = (data) => {
                     nameElectric.textContent = name;
                     img.src = imageUrl;
 
+                    typeElectric.style.borderRadius = '1.6rem'
+                    typeElectric.style.margin = '0.2rem';
                     nameElectric.style.backgroundColor = 'yellow';
                     nameElectric.style.borderTopLeftRadius = '1.5rem';
                     nameElectric.style.borderTopRightRadius = '1.5rem'; 
@@ -297,6 +307,8 @@ const mostrarPokemon = (data) => {
                     nameFighting.textContent = name;
                     img.src = imageUrl;
 
+                    typeFighting.style.borderRadius = '1.6rem'
+                    typeFighting.style.margin = '0.2rem';
                     nameFighting.style.backgroundColor = '#428287';
                     nameFighting.style.borderTopLeftRadius = '1.2rem';
                     nameFighting.style.borderTopRightRadius = '1.2rem'; 
@@ -340,6 +352,8 @@ const mostrarPokemon = (data) => {
                     nameRock.textContent = name;
                     img.src = imageUrl;
 
+                    typeRock.style.borderRadius = '1.6rem'
+                    typeRock.style.margin = '0.2rem';
                     nameRock.style.backgroundColor = '#1d1003';
                     nameRock.style.borderTopLeftRadius = '1.5rem';
                     nameRock.style.borderTopRightRadius = '1.5rem'; 
@@ -385,6 +399,8 @@ const mostrarPokemon = (data) => {
                     nameBug.textContent = name;
                     img.src = imageUrl;
 
+                    typeBug.style.borderRadius = '1.6rem'
+                    typeBug.style.margin = '0.2rem';
                     nameBug.style.backgroundColor = '#4d8000';
                     nameBug.style.borderTopLeftRadius = '1.5rem';
                     nameBug.style.borderTopRightRadius = '1.5rem'; 
@@ -428,6 +444,8 @@ const mostrarPokemon = (data) => {
                     namePoison.textContent = name;
                     img.src = imageUrl;
 
+                    typePoison.style.borderRadius = '1.6rem'
+                    typePoison.style.margin = '0.2rem';
                     namePoison.style.backgroundColor = 'purple';
                     namePoison.style.borderTopLeftRadius = '1.5rem';
                     namePoison.style.borderTopRightRadius = '1.5rem'; 
@@ -473,6 +491,8 @@ const mostrarPokemon = (data) => {
                     nameGround.textContent = name;
                     img.src = imageUrl;
 
+                    typeGround.style.borderRadius = '1.6rem'
+                    typeGround.style.margin = '0.2rem';
                     nameGround.style.backgroundColor = '#804000';
                     nameGround.style.borderTopLeftRadius = '1.5rem';
                     nameGround.style.borderTopRightRadius = '1.5rem'; 
@@ -516,6 +536,8 @@ const mostrarPokemon = (data) => {
                     nameFlying.textContent = name;
                     img.src = imageUrl;
 
+                    typeFlying.style.borderRadius = '1.6rem'
+                    typeFlying.style.margin = '0.2rem';
                     nameFlying.style.backgroundColor = '#7fbfff';
                     nameFlying.style.borderTopLeftRadius = '1.5rem';
                     nameFlying.style.borderTopRightRadius = '1.5rem'; 
@@ -561,6 +583,8 @@ const mostrarPokemon = (data) => {
                     namePsychic.textContent = name;
                     img.src = imageUrl;
 
+                    typePsychic.style.borderRadius = '1.6rem'
+                    typePsychic.style.margin = '0.2rem';
                     namePsychic.style.backgroundColor = '#ff69b4';
                     namePsychic.style.borderTopLeftRadius = '1.5rem';
                     namePsychic.style.borderTopRightRadius = '1.5rem'; 
@@ -604,6 +628,8 @@ const mostrarPokemon = (data) => {
                     nameNormal.textContent = name;
                     img.src = imageUrl;
 
+                    typeNormal.style.borderRadius = '1.6rem'
+                    typeNormal.style.margin = '0.2rem';
                     nameNormal.style.backgroundColor = '#898176';
                     nameNormal.style.borderTopLeftRadius = '1.5rem';
                     nameNormal.style.borderTopRightRadius = '1.5rem'; 
@@ -647,19 +673,23 @@ const mostrarPokemon = (data) => {
 </script>
 
 <style scoped>
+body{
+    margin: auto;
+    text-align: center;
+    align-items: center;
+}
 .cartasPage{
     margin: auto;
     margin-top: 2rem;
-    width: 100%;
+    width: 100rem;
     display: flex;
     flex-wrap: wrap;
-    gap: 2rem;
     justify-content: center;
 }
 .botonesTypes{
     display: flex;
     flex-wrap: wrap;
-    gap: 3rem;
+    gap: 1.5rem;
     justify-content: center;
 }
 button{
@@ -674,43 +704,81 @@ button{
     font-size: 0.9rem;
 }
 .fire{
-    background-color: orangered;
+    background-image: url(/public/typesLogo/fire.png);
+    background-repeat: no-repeat;
+    background-size: 7rem;
+    background-position: center;
 }
 .water{
-    background-color: #6390f0;
+    background-image: url(/public/typesLogo/water.png);
+    background-repeat: no-repeat;
+    background-size: 7rem;
+    background-position: center;;
 }
 .grass{
-    background-color: #78c850;
+    background-image: url(/public/typesLogo/grass.png);
+    background-repeat: no-repeat;
+    background-size: 7rem;
+    background-position: center;
 }
 .electric{
-    background-color: #f8d030;
+    background-image: url(/public/typesLogo/electric.png);
+    background-repeat: no-repeat;
+    background-size: 7rem;
+    background-position: center;
 }
 .psychic{
-    background-color: #ff69b4;
-}
+    background-image: url(/public/typesLogo/psychic.png);
+    background-repeat: no-repeat;
+    background-size: 7rem;
+    background-position: center;}
 .fighting{
-    background-color: #c03028;
+    background-image: url(/public/typesLogo/fighting.png);
+    background-repeat: no-repeat;
+    background-size: 9rem;
+    background-position: center;
 }
 .bug{
-    background-color: #a8b820;
+    background-image: url(/public/typesLogo/bug.png);
+    background-repeat: no-repeat;
+    background-size: 7rem;
+    background-position: center;
 }
 .rock{
-    background-color: #b8a038;
+    background-image: url(/public/typesLogo/rock.png);
+    background-repeat: no-repeat;
+    background-size: 7rem;
+    background-position: center;
 }
 .steel{
-    background-color: #b8b8d0;
+    background-image: url(/public/typesLogo/steel.png);
+    background-repeat: no-repeat;
+    background-size: 7rem;
+    background-position: center;
 }
 .ground{
-    background-color: #e0c068;
+    background-image: url(/public/typesLogo/ground.png);
+    background-repeat: no-repeat;
+    background-size: 7rem;
+    background-position: center;
 }
 .flying{
-    background-color: #a890f0;
+    background-image: url(/public/typesLogo/flying.png);
+    background-repeat: no-repeat;
+    background-size: 9rem;
+    background-position: center;
 }
 .normal{
-    background-color: #898176;
+    background-image: url(/public/typesLogo/normal.png);
+    background-repeat: no-repeat;
+    background-size: 7rem;
+    background-position: center;
 }
 .poison{
-    background-color: #a040a0;
+    background-image: url(/public/typesLogo/poison.png);
+    background-repeat: no-repeat;
+    background-size: 7rem;
+    background-position: center;
 }
 </style>
 
