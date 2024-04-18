@@ -1,10 +1,9 @@
 <template>
-    <div>
-        
-    </div>
+    <CardStats />
 </template>
 
 <script setup>
+import CardStats from '../components/CardStats.vue'
 
 
 
