@@ -10,15 +10,15 @@
 
       <div class="player-cards">
         <h2>Your Cards</h2>
-        <div class="card-container" v-for="pokemon in playerCards" :key="pokemon.name" @click="selectPlayerCard(pokemon)">
-          <PokemonCard :pokemon="pokemon" />
+        <div class="card-container">
+          <PokemonCard v-for="pokemon in playerCards" :key="pokemon.name" :pokemon="pokemon" @click="selectPlayerCard(pokemon)" />
         </div>
       </div>
 
       <div class="computer-cards">
         <h2>Computer's Cards</h2>
-        <div class="card-container" v-for="pokemon in computerCards" :key="pokemon.name">
-          <PokemonCard :pokemon="pokemon" />
+        <div class="card-container">
+          <PokemonCard v-for="pokemon in computerCards" :key="pokemon.name" :pokemon="pokemon" />
         </div>
       </div>
 
@@ -98,6 +98,8 @@ onMounted(() => {
 </script>
 
 <style scoped>
+/* ... Previous styles ... */
+
 .mainGameView {
   height: 100vh;
   background-image: url('/GameView/Pokemon_Stadium_2_SSBU\ \(1\).webp');
@@ -115,10 +117,10 @@ onMounted(() => {
 
 .battle-button,
 .reset-button {
-  width: 200px; /* Increased width */
-  height: 60px; /* Increased height */
+  width: 200px;
+  height: 60px;
   font-size: 1.2em;
-  margin: 0 10px; /* Added margin to separate buttons */
+  margin: 0 10px;
   background-color: #ffcc00;
   border: none;
   border-radius: 10px;
@@ -131,30 +133,15 @@ onMounted(() => {
   background-color: #e6b800;
 }
 
-.game-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  width: 80%; /* Adjust as needed */
-}
-
-.player-cards,
-.computer-cards {
-  width: 45%;
-  padding: 20px;
-  box-sizing: border-box;
-}
-
 .card-container {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  align-items: center;
 }
 
-.winner-display {
-  margin-top: 20px;
-}
+/* ... Remaining styles ... */
 </style>
+
 
 
 
