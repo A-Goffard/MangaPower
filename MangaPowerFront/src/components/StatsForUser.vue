@@ -98,6 +98,7 @@
     background-image: url(/home/alumno/MangaPower/MangaPowerFront/public/images/Batalla_Pokemon.jpg);
     background-size: cover;
     background-position: center;
+    height:100vh;
   }
   
   .containerStats {
@@ -111,9 +112,7 @@
     margin-bottom: 20px;
   }
   
-  .containerStats .card-body {
-    background-color: rgba(255, 255, 255, 0.8);
-  }
+
   
   .container_graphic .card-body {
     height: 50rem;
@@ -121,12 +120,16 @@
   
   .card-body {
     width: 30rem;
-    height: auto;
+    height: 20rem;
+    background-color: transparent;
+
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     margin: 0 auto;
+    padding: 0;
+    opacity: 1;
   }
 
 .name_stats.card{
@@ -139,6 +142,14 @@
     font-weight: 900;
     color: black;
   }
+
+  /* Eliminación del color de fondo */
+.name_stats.card,
+.avatar_stats.card,
+.container_graphic.card {
+    background-color: transparent;
+    border: none;
+}
 
   .name_stats.card{
     width: auto;
@@ -169,5 +180,36 @@
     align-items: center;
     margin: 0 auto;
   }
+
+  .informationTittle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 3rem;
+  }
+
+
+/*   ----- Responsive----- */
+
+
+@media only screen and (max-width: 1150px) {
+   .containerStats {
+      grid-template-columns: repeat(1, 1fr);
+   }
+   .card-body {
+      width: 80%;
+      height: auto;
+   }
+}
+
+@media screen and (max-width: 768px) {
+   .containerStats {
+      grid-template-columns: repeat(1, 1fr);
+   }
+}
+
+  
+
+  
   </style>
   
