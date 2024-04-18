@@ -24,7 +24,7 @@
     { text: 'Home', name: 'home' },
     { text: 'Login', name: 'LoginView' },
     { text: 'Register', name: 'RegisterView' },
-    { text: 'Personal', name: 'PersonalFile' },
+    { text: 'Personal', name: 'Personal' },
     { text: 'Stats', name: 'StatsView' },
     { text: 'Game', name: 'GameView' },
     { text: 'CardStore', name: 'CardStore' },

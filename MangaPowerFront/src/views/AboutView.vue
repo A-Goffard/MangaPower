@@ -1,5 +1,6 @@
 <template>
   <div class="mainDivHome">
+    <Logo class="logo"/>
     <div class="about-page">
       <h1>Bienvenido a Pokémon Cards Adventure</h1>
       <div class="section">
@@ -27,13 +28,14 @@
   </div>
 </template>
 
-<script>
-
+<script setup>
+import Logo from '../components/Logo.vue'
 </script>
 
 <style>
 
 .mainDivHome {
+  padding-top: 13rem;
   height: auto; /* Ajustar la altura automáticamente */
   display: flex;
   flex-direction: column;

@@ -4,8 +4,6 @@
     </div>
 </template>
 
-
-
 <script setup>
 
 </script>
@@ -16,7 +14,6 @@
   }
   .logo {
     max-width: 30rem;
-    width: 70%;
     padding: 0rem 1rem;
     margin: 1rem;
     background-color: rgb(255, 255, 255, 0.65);
