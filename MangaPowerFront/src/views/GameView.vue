@@ -1,39 +1,30 @@
 <template>
   <div class="mainGameView">
 
+    <div class="button-container">
+      <button class="battle-button" @click="startBattle">Start Battle</button>
+      <button class="reset-button" @click="resetGame">Reset Game</button>
+    </div>
+
     <div class="game-container">
-      <h1>Batalla Pokemon</h1>
 
-      <!-- Player's cards -->
       <div class="player-cards">
-        <h2>Tus cartas:</h2>
-        <div class="card-list">
-          <div v-for="card in playerCards" :key="card.name" @click="selectPlayerCard(card)">
-            <!-- Reusing the Card component -->
-            <Card :pokemon="card" />
-          </div>
+        <h2>Your Cards</h2>
+        <div class="card-container" v-for="pokemon in playerCards" :key="pokemon.name" @click="selectPlayerCard(pokemon)">
+          <PokemonCard :pokemon="pokemon" />
         </div>
       </div>
 
-      <!-- Computer's cards -->
       <div class="computer-cards">
-        <h2>Cartas de tu enemigo AI</h2>
-        <div class="card-list">
-          <div v-for="card in computerCards" :key="card.name">
-            <!-- Reusing the Card component -->
-            <Card :pokemon="card" />
-          </div>
+        <h2>Computer's Cards</h2>
+        <div class="card-container" v-for="pokemon in computerCards" :key="pokemon.name">
+          <PokemonCard :pokemon="pokemon" />
         </div>
       </div>
 
-      <!-- Battle button -->
-      <button @click="battle">Battle!</button>
-
-      <!-- Winner display -->
-      <div v-if="winner" class="winner-display">
-        <h2>Ganador: {{ winner.name }}</h2>
-        <!-- Display the winner card -->
-        <Card :pokemon="winner" />
+      <div class="winner-display" v-if="winner">
+        <h2>Winner</h2>
+        <PokemonCard :pokemon="winner" />
       </div>
     </div>
 
@@ -42,89 +33,102 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import Card from './Cards.vue'; // Importing cards from ./Cards.vue
+import PokemonCard from '../components/PokemonCard.vue';
 
+const pokemonList = ref([]);
 const playerCards = ref([]);
 const computerCards = ref([]);
-const selectedPlayerCard = ref(null);
 const winner = ref(null);
 
-const selectPlayerCard = (card) => {
-  selectedPlayerCard.value = card;
+const mostrarPokemon = (data) => {
+  pokemonList.value = data;
 };
 
-const battle = () => {
-  if (selectedPlayerCard.value) {
-    // Determine the winner
-    determineWinner();
-  } else {
-    alert('Please select a card to battle!');
-  }
+const getRandomCards = (count) => {
+  const shuffled = pokemonList.value.sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, count);
 };
 
-const determineWinner = () => {
-  const playerCard = selectedPlayerCard.value;
+const selectPlayerCard = (selectedCard) => {
   const computerCard = computerCards.value[Math.floor(Math.random() * computerCards.value.length)];
 
-  const playerStats = calculateStats(playerCard);
-  const computerStats = calculateStats(computerCard);
+  // Compare selected card and computer card based on HP, Attack, and Defense
+  const playerScore = selectedCard.stats.reduce((acc, stat) => acc + stat.base_stat, 0);
+  const computerScore = computerCard.stats.reduce((acc, stat) => acc + stat.base_stat, 0);
 
-  let playerScore = 0;
-  let computerScore = 0;
-
-  ['hp', 'attack', 'defense'].forEach(stat => {
-    if (playerStats[stat] > computerStats[stat]) {
-      playerScore++;
-    } else if (playerStats[stat] < computerStats[stat]) {
-      computerScore++;
-    }
-  });
-
-  if (playerScore > computerScore) {
-    winner.value = playerCard;
-  } else if (playerScore < computerScore) {
-    winner.value = computerCard;
-  } else {
-    winner.value = null; // It's a tie
-  }
+  winner.value = playerScore > computerScore ? selectedCard : computerCard;
 };
 
-const calculateStats = (pokemon) => {
-  return {
-    hp: pokemon.stats.hp,
-    attack: pokemon.stats.attack,
-    defense: pokemon.stats.defense,
-  };
+const startBattle = () => {
+  selectPlayerCard(playerCards.value[Math.floor(Math.random() * playerCards.value.length)]);
+};
+
+const resetGame = () => {
+  winner.value = null;
+  playerCards.value = getRandomCards(3);
+  computerCards.value = getRandomCards(3);
+};
+
+const capitalize = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+const fetchPokemon = async () => {
+  try {
+    const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151&offset=0');
+    const data = await response.json();
+
+    // Fetch detailed data for each Pokemon
+    const pokemonPromises = data.results.map(pokemon => fetch(pokemon.url).then(response => response.json()));
+
+    Promise.all(pokemonPromises)
+      .then(detailedPokemon => {
+        mostrarPokemon(detailedPokemon);
+        playerCards.value = getRandomCards(3);
+        computerCards.value = getRandomCards(3);
+      });
+  } catch (error) {
+    console.error('Error fetching Pokemon:', error);
+  }
 };
 
 onMounted(() => {
-  // Assuming you have fetched allPokemons from your existing carousel component
-  playerCards.value = [...allPokemons.value];
-  computerCards.value = generateRandomCards(5);
+  fetchPokemon();
 });
-
-const generateRandomCards = (count) => {
-  const allPokemons = [...playerCards.value];
-  const randomCards = [];
-
-  for (let i = 0; i < count; i++) {
-    const randomIndex = Math.floor(Math.random() * allPokemons.length);
-    randomCards.push(allPokemons[randomIndex]);
-    allPokemons.splice(randomIndex, 1);
-  }
-
-  return randomCards;
-};
-
 </script>
 
 <style scoped>
 .mainGameView {
   height: 100vh;
-  background-image: url('/public/GameView/Pokemon_Stadium_2_SSBU\ \(1\).webp');
+  background-image: url('/GameView/Pokemon_Stadium_2_SSBU\ \(1\).webp');
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.battle-button,
+.reset-button {
+  width: 200px; /* Increased width */
+  height: 60px; /* Increased height */
+  font-size: 1.2em;
+  margin: 0 10px; /* Added margin to separate buttons */
+  background-color: #ffcc00;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.battle-button:hover,
+.reset-button:hover {
+  background-color: #e6b800;
 }
 
 .game-container {
@@ -141,13 +145,9 @@ const generateRandomCards = (count) => {
   box-sizing: border-box;
 }
 
-.card-list {
+.card-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
-.card {
+  justify-content: center;
   margin-bottom: 20px;
 }
 
@@ -155,3 +155,6 @@ const generateRandomCards = (count) => {
   margin-top: 20px;
 }
 </style>
+
+
+
