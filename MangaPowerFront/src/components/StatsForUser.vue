@@ -96,6 +96,8 @@
   /* Estilos Bootstrap */
   .container_global {
     background-image: url(/home/alumno/MangaPower/MangaPowerFront/public/images/Batalla_Pokemon.jpg);
+    background-size: cover;
+    background-position: center;
   }
   
   .containerStats {
@@ -136,6 +138,36 @@
     font-size: 2rem;
     font-weight: 900;
     color: black;
+  }
+
+  .name_stats.card{
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;    
+  }
+
+  .avatar_stats.card{
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  .container_graphic.card{
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
   }
   </style>
   
