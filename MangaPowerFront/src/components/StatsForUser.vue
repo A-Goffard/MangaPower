@@ -1,19 +1,23 @@
 <template>
     <div class="container_global">
+      
+        <div id="name_print_stats" class="card-text">{{ userDataActive && userDataActive.username }}</div>
+      
       <div class="containerStats">
         <div class="name_stats card">
           <div class="card-body">
-            <h3 class="card-title">Username</h3>
-            <div id="name_print_stats" class="card-text">{{ userDataActive && userDataActive.username }}</div>
-            <div class="card-text">Pokemon Level: {{ userDataActive && userDataActive.pokemonLevel }}</div>
-            <div class="card-text">Trainer Level: {{ userDataActive && userDataActive.trainerLevel }}</div>
+            <!-- <div id="name_print_stats" class="card-text">{{ userDataActive && userDataActive.username }}</div> -->
+            <div id="name_print_stats" class="card-text">{{ userDataActive && userDataActive.pokemon }}</div>
+            
             <AvatarPokemon />
+            <div class="card-text">Pokemon Level: {{ userDataActive && userDataActive.pokemonLevel }}</div>
           </div>
         </div>
         <div class="avatar_stats card">
           <div class="card-body">
-            <h3 class="card-title">Avatar</h3>
+            <div id="name_print_stats" class="card-text">{{ userDataActive && userDataActive.pokemonTrainer }}</div>
             <AvatarUser />
+            <div class="card-text">Trainer Level: {{ userDataActive && userDataActive.trainerLevel }}</div>
           </div>
         </div>
         <div class="container_graphic card">
@@ -112,7 +116,13 @@
     margin-bottom: 20px;
   }
   
-
+  #name_print_stats.card-text {
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   
   .container_graphic .card-body {
     height: 50rem;
@@ -207,8 +217,6 @@
       grid-template-columns: repeat(1, 1fr);
    }
 }
-
-  
 
   
   </style>
