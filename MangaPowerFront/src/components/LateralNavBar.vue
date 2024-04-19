@@ -27,6 +27,7 @@
     { text: 'Personal', name: 'Personal' },
     { text: 'Stats', name: 'StatsView' },
     { text: 'Game', name: 'GameView' },
+    { text: 'Pokedex', name: 'Pokedex' },
     { text: 'CardStore', name: 'CardStore' },
     { text: 'About', name: 'About' }
   ]);
