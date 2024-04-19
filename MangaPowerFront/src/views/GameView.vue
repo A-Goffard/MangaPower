@@ -1,25 +1,45 @@
 <template>
   <div class="mainGameView">
-    <!-- Iterar sobre el array de IDs de Pokémon y renderizar múltiples instancias de CardPokemon -->
-    <CardPokemon v-for="pokemonId in pokemonIds" :key="pokemonId" :selectedPokemonId="pokemonId" />
+
+    <button class="start" @click="goToSelectPokemon">Start</button>
+
+
   </div>
 </template>
 
 <script setup>
 
-import CardPokemon from '../components/CardPokemon.vue';
-import { ref } from 'vue';
+import { useRouter } from 'vue-router'; // Importar el enrutador de Vue Router
 
-/* Aqui hay que poner 10 cartas aleatorias para que seleccione 5 */
+const router = useRouter(); // Inicializar el enrutador
 
+function goToSelectPokemon () {
+  router.push('/game/selectcards'); // Usar el enrutador para navegar a la ruta "/game/selectcards"
+}
 </script>
 
 <style scoped>
 .mainGameView {
+  justify-content: center;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   padding: 1rem;
   height: 100vh;
   background-image: url('/public/GameView/Pokemon_Stadium_2_SSBU\ \(1\).webp');
+}
+
+.start {
+  margin: 0.5rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 0.5rem;
+  background-color: red;
+  width: 20rem;
+  height: 5rem;
+  font-size: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

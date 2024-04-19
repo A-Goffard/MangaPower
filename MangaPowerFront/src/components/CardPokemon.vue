@@ -1,5 +1,5 @@
 <template>
-  <div v-if="pokemon" class="pokemonCard">
+  <div :class="{ pokemonCard: true, selected: isSelected }" v-if="pokemon">
     <h2>{{ pokemon.name }}</h2>
     <img :src="pokemon.imageUrl" alt="Imagen del Pokémon">
     <div>HP: {{ pokemon.hpStat }}</div>

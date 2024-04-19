@@ -11,6 +11,7 @@ import CardStore from '../views/CardStore.vue'
 import AboutView from '../views/AboutView.vue'
 import PersonalView from '../views/PersonalView.vue'
 import PokedexView from '../views/PokedexView.vue'
+import SelectView from '../views/game/SelectView.vue'
 
 const routes = [
   {
@@ -72,6 +73,11 @@ const routes = [
     path: '/about',
     name: 'About',
     component: AboutView
+  },
+  {
+    path: '/game/selectcards',
+    name: 'SelectCards',
+    component: SelectView
   }
 ]
 
