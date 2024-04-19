@@ -1,6 +1,6 @@
 <template>
     <div class="video-container">
-      <video ref="videoPlayer" class="video-player" loop autoplay muted>
+      <video ref="videoPlayer" class="video-player" @click="stopToggle" loop autoplay muted>
         <source src="/video/PokemonWhithSound.mp4" type="video/mp4">
         <!-- Añade otras fuentes de video según sea necesario para la compatibilidad del navegador -->
       </video>
@@ -12,6 +12,7 @@
   import { ref, onMounted, onUnmounted } from 'vue';
   
   const videoPlayer = ref(null);
+  const isPlaying = ref(true); // Variable reactiva para controlar si el video está reproduciéndose o no
   
   onMounted(() => {
     // Comienza la reproducción del video cuando el componente se monta
@@ -25,7 +26,7 @@
   
   // Función para reproducir el video
   function playVideo() {
-    if (videoPlayer.value) {
+    if (videoPlayer.value && isPlaying.value) {
       videoPlayer.value.play().catch(error => {
         // Captura cualquier error de reproducción
         console.error('Error al reproducir el video:', error);
@@ -39,7 +40,21 @@
       videoPlayer.value.pause();
     }
   }
+  
+  // Función para alternar entre reproducir y detener el video
+  function stopToggle() {
+    // Cambia el estado de isPlaying
+    isPlaying.value = !isPlaying.value;
+  
+    if (isPlaying.value) {
+      playVideo();
+    } else {
+      stopVideo();
+    }
+  }
   </script>
+  
+  
   
   <style scoped>
   .video-container {
