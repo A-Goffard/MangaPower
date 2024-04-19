@@ -9,13 +9,15 @@
 
 <script setup>
 
-import { useRouter } from 'vue-router'; // Importar el enrutador de Vue Router
+import { useRouter } from 'vue-router';
 
-const router = useRouter(); // Inicializar el enrutador
+// Obtener el objeto router
+const router = useRouter();
 
-function goToSelectPokemon () {
-  router.push('/game/selectcards'); // Usar el enrutador para navegar a la ruta "/game/selectcards"
-}
+// Función para navegar a la vista de selección de Pokémon
+const goToSelectPokemon = () => {
+  router.push('/game/selectcards');
+};
 </script>
 
 <style scoped>
