@@ -1,19 +1,24 @@
 <template>
     <div class="container_global">
+      
+        <div id="name_print_stats" class="card-text">{{ userDataActive && userDataActive.username }}</div>
+      
       <div class="containerStats">
+
         <div class="name_stats card">
           <div class="card-body">
-            <h3 class="card-title">Username</h3>
-            <div id="name_print_stats" class="card-text">{{ userDataActive && userDataActive.username }}</div>
-            <div class="card-text">Pokemon Level: {{ userDataActive && userDataActive.pokemonLevel }}</div>
-            <div class="card-text">Trainer Level: {{ userDataActive && userDataActive.trainerLevel }}</div>
+            <!-- <div id="name_print_stats" class="card-text">{{ userDataActive && userDataActive.username }}</div> -->
+            <div id="name_print_stats" class="card-text">{{ userDataActive && userDataActive.pokemon }}</div>
+            
             <AvatarPokemon />
+            <div class="card-text">Pokemon Level: {{ userDataActive && userDataActive.pokemonLevel }}</div>
           </div>
         </div>
         <div class="avatar_stats card">
           <div class="card-body">
-            <h3 class="card-title">Avatar</h3>
+            <div id="name_print_stats" class="card-text">{{ userDataActive && userDataActive.pokemonTrainer }}</div>
             <AvatarUser />
+            <div class="card-text">Trainer Level: {{ userDataActive && userDataActive.trainerLevel }}</div>
           </div>
         </div>
         <div class="container_graphic card">
@@ -77,8 +82,8 @@
           {
             label: "Estadísticas del jugador",
             backgroundColor: [
-              'rgb(255, 231, 27)',
-              'rgb(8, 33, 243)',
+              'rgb(219, 219, 223)',
+              'rgb(20, 5, 255)',
               'rgb(255, 5, 5)'
             ],
             data: [0, 0, 0] // Valores iniciales, se actualizarán después
@@ -90,29 +95,36 @@
   
   // Obtener los datos del usuario del localStorage al montar el componente
   onMounted(getUsuarioFromLocalStorage);
+  
   </script>
   
   <style scoped>
   /* Estilos Bootstrap */
   .container_global {
-
     background-size: cover;
     background-position: center;
     height:100vh;
   }
   
   .containerStats {
+    width: 90%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
-    padding: 0.5rem;
+    margin: 0 auto;
   }
   
   .containerStats .card {
     margin-bottom: 20px;
   }
   
-
+  #name_print_stats.card-text {
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   
   .container_graphic .card-body {
     height: 50rem;
@@ -122,6 +134,7 @@
     width: 30rem;
     height: 20rem;
     background-color: transparent;
+    padding: 1rem;
 
     display: flex;
     justify-content: center;
@@ -132,6 +145,14 @@
     opacity: 1;
   }
 
+  .card-title {
+    color: white;
+  }
+
+  .card-text{
+    color: white;
+  }
+
 .name_stats.card{
     
     height: auto;
@@ -140,7 +161,7 @@
 .informationTittle h2{
     font-size: 2rem;
     font-weight: 900;
-    color: black;
+    color: rgb(255, 255, 255);
   }
 
   /* Eliminación del color de fondo */
@@ -186,8 +207,15 @@
     justify-content: center;
     align-items: center;
     padding-top: 3rem;
+    font-size: 5rem;
   }
+  #name_print_stats{ 
+    font-size: 2rem;
+    font-weight: 900;
+    color: rgb(255, 255, 255);
+   
 
+}
 
 /*   ----- Responsive----- */
 
@@ -207,8 +235,6 @@
       grid-template-columns: repeat(1, 1fr);
    }
 }
-
-  
 
   
   </style>
