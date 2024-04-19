@@ -69,7 +69,8 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    margin-top: 8rem;
+    margin-top: 9rem;
+    margin-left: 1.5rem;
   }
   
   #menu ul li {
