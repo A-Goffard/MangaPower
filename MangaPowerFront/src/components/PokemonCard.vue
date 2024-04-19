@@ -1,5 +1,8 @@
 <template>
-  <div class="pokemon-card" v-if="pokemon">
+  <div 
+    :class="{ 'selected-card': selected, 'winner-card': isWinner, 'random-selected-card': randomSelected }"
+    class="pokemon-card" 
+    v-if="pokemon">
     <div :style="cardStyle">
       <h3 :style="nameStyle">{{ pokemon.name }}</h3>
       <img :src="pokemon.sprites.front_default" :alt="pokemon.name" :style="imgStyle" />
@@ -21,6 +24,18 @@ export default {
     pokemon: {
       type: Object,
       required: true
+    },
+    selected: {
+      type: Boolean,
+      default: false
+    },
+    isWinner: {
+      type: Boolean,
+      default: false
+    },
+    randomSelected: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
@@ -35,7 +50,7 @@ export default {
     },
     nameStyle() {
       return {
-        backgroundColor: '#ffcc00', // Default color
+        backgroundColor: this.selected ? '#ffcc00' : (this.isWinner ? '#66ff66' : (this.randomSelected ? '#ff6666' : '#000000')), // Selected, Winner, Random Selected, or default color
         borderTopLeftRadius: '1.5rem',
         borderTopRightRadius: '1.5rem',
         color: 'white',
@@ -72,9 +87,27 @@ export default {
 </script>
 
 <style scoped>
-/* Additional styles can go here */
 .pokemon-card {
-  /* Add your styles here */
+  box-sizing: border-box; /* Ensure border and padding are included in the width */
+}
+
+.selected-card {
+  border: 2px solid #ffcc00; /* Yellow border */
+  box-shadow: 0 0 10px #ffcc00; /* Yellow shadow */
+}
+
+.winner-card {
+  background-color: #66ff66; /* Winner background color */
+}
+
+.random-selected-card {
+  background-color: #ff6666; /* Randomly selected background color */
+}
+
+.selected {
+  border: 4px solid #ffcc00; /* Yellow border when selected */
+  box-shadow: 0 0 10px #ffcc00; /* Yellow shadow when selected */
+  margin: -4px; /* Compensate for the added border width */
 }
 </style>
 
