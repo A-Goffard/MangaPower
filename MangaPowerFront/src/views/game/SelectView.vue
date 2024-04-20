@@ -12,8 +12,8 @@
     <!-- Div para contener los botones, solo se muestra cuando se han seleccionado los 5 pokémon -->
     <div v-if="selectedPokemon.length === 5" class="buttonsContainer">
       <div class="buttonsWrapper">
-        <button class="backButton">Back</button>
-        <button class="goButton">Go</button>
+        <button class="backButton" @click="unselect">Back</button>
+        <button class="goButton" @click="goToGame">Go</button>
       </div>
     </div>
   </div>
@@ -22,6 +22,9 @@
 <script setup>
 import CardPokemon from '../../components/CardPokemon.vue';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router'; // Importa el router de Vue Router
+
+const router = useRouter(); // Obtén acceso al router
 
 // Función para generar un número aleatorio dentro de un rango
 const getRandomNumber = (min, max) => {
@@ -76,7 +79,16 @@ const selectPokemon = (pokemonId) => {
   localStorage.setItem('selectedPokemon', JSON.stringify(selectedPokemon.value));
 };
 
+const unselect = () => {
+  selectedPokemon.value = [];
+  localStorage.setItem('selectedPokemon', JSON.stringify(selectedPokemon.value));
+  router.push({ name: 'GameView' });
 
+};
+
+const goToGame = () => {
+  router.push({ name: 'BattleView' });
+};
 </script>
 
 <style scoped>
