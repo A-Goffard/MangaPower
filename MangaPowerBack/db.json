@@ -241,16 +241,16 @@
       "username": "b",
       "pokemonLevel": "1",
       "trainerLevel": "1",
-      "win": 0,
-      "lose": 0,
-      "plays": 0,
+      "win": 3,
+      "lose": 4,
+      "plays": 7,
       "winedCardsNumber": 0,
       "winedCards": [
         "1",
-        "2",
-        "3",
-        "4",
-        "5"
+        "7",
+        "26",
+        "140",
+        "57"
       ]
     }
   ]
