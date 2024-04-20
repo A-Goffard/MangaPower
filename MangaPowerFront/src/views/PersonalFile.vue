@@ -10,7 +10,7 @@
       </div>
       <div class="avatar">
         <h2>POKEMON</h2>
-        <!-- <AvatarPokemon /> -->
+        <AvatarPokemon />
       </div>
     </div>
 
