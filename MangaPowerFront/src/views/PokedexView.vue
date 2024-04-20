@@ -27,18 +27,23 @@
   </script>
   
   <style scoped>
-  .mainGameView {
 
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 1rem;
-    height: 100vh;
-    background-image: url('/public/backgrounds/Backgroundacuarela.jpg');
-  }
+  .mainGameView {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  background-image: url('/public/backgrounds/Backgroundacuarela.jpg');
+  background-attachment: fixed;
+}
   .pokemonContainer {
-    margin: 10rem;
+    margin: 11rem;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
     padding: 1rem;
     width: 85%;

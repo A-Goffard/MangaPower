@@ -14,7 +14,9 @@
       </div>
 
 
-
+      <button class="statsBtn" @click="goToWinedCards">
+        <h2>CARDS</h2>
+      </button>
 
       <button class="statsBtn" @click="goToStatsPage">
         <h2>STATS</h2>
@@ -28,15 +30,19 @@
   </template>
   
   <script setup>
-import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import AvatarUser from '../components/AvatarUser.vue';
 import AvatarPokemon from '../components/AvatarPokemon.vue';
-import Logo from '../components/Logo.vue'
+import Logo from '../components/Logo.vue';
 
+const router = useRouter();
 
 const goToStatsPage = () => {
   router.push({ name: 'StatsView' });
+};
+
+const goToWinedCards = () => {
+  router.push({ name: 'WinedCardsView' });
 };
 
 

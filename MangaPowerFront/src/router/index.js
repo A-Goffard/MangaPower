@@ -11,7 +11,10 @@ import CardStore from '../views/CardStore.vue'
 import AboutView from '../views/AboutView.vue'
 import PersonalView from '../views/PersonalView.vue'
 import PokedexView from '../views/PokedexView.vue'
+
 import SelectView from '../views/game/SelectView.vue'
+
+import WinedCardsView from '../views/user/WinedCardsView.vue'
 
 const routes = [
   {
@@ -56,12 +59,12 @@ const routes = [
   },
   {
     path: '/personal',
-    name: 'Personal',
+    name: 'PersonalView',
     component: PersonalView
   },
   {
     path: '/pokedex',
-    name: 'Pokedex',
+    name: 'PokedexView',
     component: PokedexView
   },
   {
@@ -71,13 +74,18 @@ const routes = [
   },
   {
     path: '/about',
-    name: 'About',
+    name: 'AboutView',
     component: AboutView
   },
   {
     path: '/game/selectcards',
     name: 'SelectCards',
     component: SelectView
+  },
+  {
+    path: '/user/winedcards',
+    name: 'WinedCardsView',
+    component: WinedCardsView
   }
 ]
 

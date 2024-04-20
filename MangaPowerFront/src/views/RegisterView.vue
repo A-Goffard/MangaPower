@@ -145,7 +145,7 @@ const avatarImagePath = ref(avatarImages[pokemonTrainer.value]);
 const pokemonImagePath = ref(pokemonImages[pokemon.value]);
 
 const gotoPersonalPage = () => {
-  router.push('/personalfile');
+  router.push({ name: 'LoginView' });
 };
 
 

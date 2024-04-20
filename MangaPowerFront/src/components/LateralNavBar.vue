@@ -24,12 +24,12 @@
     { text: 'Home', name: 'home' },
     { text: 'Login', name: 'LoginView' },
     { text: 'Register', name: 'RegisterView' },
-    { text: 'Personal', name: 'Personal' },
+    { text: 'Personal', name: 'PersonalView' },
     { text: 'Stats', name: 'StatsView' },
     { text: 'Game', name: 'GameView' },
-    { text: 'Pokedex', name: 'Pokedex' },
+    { text: 'Pokedex', name: 'PokedexView' },
     { text: 'CardStore', name: 'CardStore' },
-    { text: 'About', name: 'About' }
+    { text: 'About', name: 'AboutView' }
   ]);
   
   const toggleMenu = () => {
