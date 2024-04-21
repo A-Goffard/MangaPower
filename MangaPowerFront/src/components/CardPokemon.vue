@@ -86,9 +86,7 @@ img {
 
 .selected {
   border: 2px solid blue; /* Cambia el color del borde cuando está seleccionada */
+  box-shadow: 0rem 0rem 1rem 0.1rem blue;
 }
 
-.battle {
-  border: 2px solid rgb(235, 91, 34); /* Cambia el color del borde cuando está seleccionada para la batalla*/
-}
 </style>

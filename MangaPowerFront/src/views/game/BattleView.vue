@@ -23,6 +23,7 @@
       <CardPokemon v-for="pokemonId in pokemonIdsPC" :key="pokemonId" :selectedPokemonId="pokemonId"/>
     </div>
 
+    <button v-if="isGoVisible" class="goButton" @click="goBattle">Go!</button>
 
   </div>
 </template>
@@ -62,7 +63,7 @@
 
 
 
-  
+
   // Estado para controlar si se muestra el mensaje
   const showMessage = ref(true);
 
@@ -123,6 +124,10 @@
     return selectedPokemon.value.includes(pokemonId);
   };
 
+
+  const goBattle =() => {
+
+  }
 </script>
 
 <style scoped>
