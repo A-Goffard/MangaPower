@@ -13,6 +13,7 @@ import PersonalView from '../views/PersonalView.vue'
 import PokedexView from '../views/PokedexView.vue'
 
 import SelectView from '../views/game/SelectView.vue'
+import BattleView from '../views/game/BattleView.vue'
 
 import WinedCardsView from '../views/user/WinedCardsView.vue'
 
@@ -23,9 +24,9 @@ const routes = [
     component: HomeView
   },
   {
-  path: '/stats',
-  name: 'StatsView',
-  component: StatsView
+    path: '/stats',
+    name: 'StatsView',
+    component: StatsView
   },
   {
     path: '/detailcard/:id',
@@ -86,6 +87,11 @@ const routes = [
     path: '/user/winedcards',
     name: 'WinedCardsView',
     component: WinedCardsView
+  },
+  {
+    path: '/game/battle',
+    name: 'BattleView',
+    component: BattleView
   }
 ]
 

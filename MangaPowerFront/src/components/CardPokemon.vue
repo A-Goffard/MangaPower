@@ -1,19 +1,21 @@
 <template>
   <div :class="{ pokemonCard: true, selected: isSelected }" v-if="pokemon">
-    <h2>{{ pokemon.name }}</h2>
+    <!-- Utiliza un método para capitalizar el nombre -->
+    <h2>{{ getCapitalizedPokemonName() }}</h2>
     <img :src="pokemon.imageUrl" alt="Imagen del Pokémon">
     <div>HP: {{ pokemon.hpStat }}</div>
-    <div>Ataque: {{ pokemon.attackStat }}</div>
-    <div>Defensa: {{ pokemon.defenseStat }}</div>
-    <div>Tipo: {{ pokemon.types.join(', ') }}</div>
+    <div>Attack: {{ pokemon.attackStat }}</div>
+    <div>Defense: {{ pokemon.defenseStat }}</div>
+    <div>Type: {{ pokemon.types.join(', ') }}</div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, defineProps } from 'vue';
 
 // Definir props
 const props = defineProps({
+  pokemon: Object,
   selectedPokemonId: Number,
   isSelected: Boolean
 });
@@ -46,6 +48,17 @@ onMounted(async () => {
     };
   }
 });
+
+// Método para capitalizar el nombre del Pokémon
+const getCapitalizedPokemonName = () => {
+  if (pokemon.value) {
+    return pokemon.value.name.charAt(0).toUpperCase() + pokemon.value.name.slice(1);
+  } else {
+    return '';
+  }
+};
+
+
 </script>
 
 <style scoped>
@@ -60,12 +73,13 @@ onMounted(async () => {
   color: white;
   text-shadow: 2px 2px 2px black;
   padding-top: 0.5rem;
-  width: 18rem;
-  height: 26rem;
+  max-width: 18rem;
+  max-height: 26rem;
+  font-size: 0.8rem;
 }
 
 img {
-  width: 16rem;
+  width: 10rem;
 }
 
 .pokemonCard img {
@@ -74,5 +88,7 @@ img {
 
 .selected {
   border: 2px solid blue; /* Cambia el color del borde cuando está seleccionada */
+  box-shadow: 0rem 0rem 1rem 0.1rem blue;
 }
+
 </style>
