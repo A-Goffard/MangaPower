@@ -3,22 +3,23 @@
     <h1>CARDS POKEMON</h1>
     
     <div class="botonesTypes">
-        <button class="fire"></button>
-        <button class="water"></button>
-        <button class="grass"></button>
-        <button class="electric"></button>
-        <button class="psychic"></button>
-        <button class="fighting"></button>
-        <button class="poison"></button>
-        <button class="normal"></button>
-        <button class="bug"></button>
-        <button class="rock"></button>
-        <button class="steel"></button>
-        <button class="ground"></button>
-        <button class="flying"></button>
+        <button id="fire" ></button>
+        <button id="water"></button>
+        <button id="grass"></button>
+        <button id="electric"></button>
+        <button id="psychic"></button>
+        <button id="fighting"></button>
+        <button id="poison"></button>
+        <button id="normal"></button>
+        <button id="bug"></button>
+        <button id="rock"></button>
+        <button id="steel"></button>
+        <button id="ground"></button>
+        <button id="flying"></button>
     </div>
     
     <div class="cartasPage">
+
         <div id="CardsFire"></div>
         <div id="CardsWater"></div>
         <div id="CardsGrass"></div>
@@ -60,7 +61,8 @@ const mostrarPokemon = (data) => {
     const pokemonRock = document.getElementById('CardsRock');
     const pokemonNormal = document.getElementById('CardsNormal');
     const pokemonSteel = document.getElementById('CardsSteel');
-    const pokemonesContainer = document.getElementById('cartasPage');
+
+    
 
     data.forEach(pokemon => {
         fetch(pokemon.url)
@@ -104,6 +106,7 @@ const mostrarPokemon = (data) => {
                     statsList.style.marginRight = '1rem';
                     statsList.style.fontWeight = '800';
                     statsList.style.textShadow = '2px 1px 2px black';
+                    
 
                     let stats = ['HP: ' + hpStat, 'Attack: ' + attackStat, 'Defense: ' + defenseStat];
                     stats.forEach(stat => {
@@ -671,6 +674,7 @@ const mostrarPokemon = (data) => {
             
             .catch(error => console.log(error));
     });
+
 }
 
 
@@ -704,7 +708,7 @@ h1{
     margin-top: 3rem; ;
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem;
+    gap: 0.5rem;
     justify-content: center;
 }
 button{
@@ -717,7 +721,7 @@ button{
     text-shadow: 1px 1px 1px black;
     font-size: 0.9rem;
 }
-.fire{
+#fire{
     background-image: url(/public/typesLogo/fire.png);
     background-repeat: no-repeat;
     background-size: 7rem;
@@ -725,7 +729,7 @@ button{
     border-radius: 1.1rem;
     background-position: center;
 }
-.water{
+#water{
     background-image: url(/public/typesLogo/water.png);
     background-repeat: no-repeat;
     background-size: 7rem;
@@ -733,7 +737,7 @@ button{
     border-radius: 1.1rem;
     background-position: center;
 }
-.grass{
+#grass{
     background-image: url(/public/typesLogo/grass.png);
     background-repeat: no-repeat;
     background-size: 7rem;
@@ -741,7 +745,7 @@ button{
     border-radius: 1.1rem;
     background-position: center;
 }
-.electric{
+#electric{
     background-image: url(/public/typesLogo/electric.png);
     background-repeat: no-repeat;
     background-size: 7rem;
@@ -749,14 +753,14 @@ button{
     border-radius: 1.1rem;
     background-position: center;
 }
-.psychic{
+#psychic{
     background-image: url(/public/typesLogo/psychic.png);
     background-repeat: no-repeat;
     background-size: 7rem;
     height: 2.8rem;
     border-radius: 1.1rem;
     background-position: center;}
-.fighting{
+#fighting{
     background-image: url(/public/typesLogo/fighting.png);
     background-repeat: no-repeat;
     background-size: 7rem;
@@ -764,7 +768,7 @@ button{
     border-radius: 1.1rem;
     background-position: center;
 }
-.bug{
+#bug{
     background-image: url(/public/typesLogo/bug.png);
     background-repeat: no-repeat;
     background-size: 7rem;
@@ -772,7 +776,7 @@ button{
     border-radius: 1.1rem;
     background-position: center;
 }
-.rock{
+#rock{
     background-image: url(/public/typesLogo/rock.png);
     background-repeat: no-repeat;
     background-position: center;
@@ -781,7 +785,7 @@ button{
     border-radius: 1.1rem;
     
 }
-.steel{
+#steel{
     background-image: url(/public/typesLogo/steel.png);
     background-repeat: no-repeat;
     background-size: 7rem;
@@ -789,7 +793,7 @@ button{
     border-radius: 1.1rem;
     background-position: center;
 }
-.ground{
+#ground{
     background-image: url(/public/typesLogo/ground.png);
     background-repeat: no-repeat;
     background-size: 7rem;
@@ -797,7 +801,7 @@ button{
     border-radius: 1.1rem;
     background-position: center;
 }
-.flying{
+#flying{
     background-image: url(/public/typesLogo/flying.png);
     background-repeat: no-repeat;
     background-size: 7rem;
@@ -805,7 +809,7 @@ button{
     border-radius: 1.1rem;
     background-position: center;
 }
-.normal{
+#normal{
     background-image: url(/public/typesLogo/normal.png);
     background-repeat: no-repeat;
     background-size: 7rem;
@@ -813,7 +817,7 @@ button{
     border-radius: 1.1rem;
     background-position: center;
 }
-.poison{
+#poison{
     background-image: url(/public/typesLogo/poison.png);
     background-repeat: no-repeat;
     background-size: 7rem;
