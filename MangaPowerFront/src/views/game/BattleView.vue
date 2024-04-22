@@ -125,9 +125,21 @@
   };
 
 
-  const goBattle =() => {
-
+  const goBattle = () => {
+  // Si no hay ninguna carta seleccionada de YourCards, salimos de la función
+  if (selectedPokemon.value.length === 0) {
+    return;
   }
+
+  // Obtener un Pokémon aleatorio de la PC
+  const randomIndex = Math.floor(Math.random() * pokemonIdsPC.length);
+  const randomPokemonId = pokemonIdsPC[randomIndex];
+
+  // Agregar el Pokémon aleatorio de la PC al array battlePokemon
+  battlePokemon.value.push(randomPokemonId);
+
+  // Tu lógica para iniciar la batalla aquí
+};
 </script>
 
 <style scoped>
