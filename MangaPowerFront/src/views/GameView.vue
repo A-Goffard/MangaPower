@@ -166,7 +166,6 @@ onMounted(() => {
 
 
 <style scoped>
-/* ... Previous styles ... */
 
 .mainGameView {
   height: 100vh;
@@ -219,9 +218,7 @@ onMounted(() => {
   flex-wrap: nowrap;
   /* Prevent cards from wrapping to the next line */
   overflow-x: auto;
-  /* Allow horizontal scrolling if needed */
   gap: 10px;
-  /* Reduced gap between cards */
 }
 
 .selected-card {
@@ -266,5 +263,4 @@ onMounted(() => {
   }
 }
 
-/* ... Remaining styles ... */
 </style>
