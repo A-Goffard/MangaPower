@@ -9,7 +9,10 @@
 
         <AvatarUser />
 
-        <canvas id="graphic" width="100%" height="100%"></canvas>
+          <div class="canvaContainer">
+            <canvas id="graphic" width="100%" height="100%"></canvas>
+          </div>
+
     </div>
 
 </template>
@@ -90,7 +93,7 @@ import { onMounted, ref } from 'vue';
     background-repeat: no-repeat;
     display: flex;
     justify-content: center;
-    margin-left: 20rem;
+    margin-left: 35rem;
     position: fixed;
     top: 0;
     left: 0;
@@ -148,9 +151,18 @@ import { onMounted, ref } from 'vue';
     
 }
 
+.canvaContainer{
+  width: 25rem;
+  height: 10rem;
+  position: absolute;
+  top: 19.5rem;
+  left: 52rem;
+}
+
 #graphic{
-    width: 8rem;
-    height: 6rem;
+  max-width: 100%;
+  max-height: 100%;
+
 }
 
 </style>
