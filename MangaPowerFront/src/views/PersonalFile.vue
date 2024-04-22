@@ -1,5 +1,7 @@
 <template>
   <div class="container">
+    
+    <Logo class="logo"/>
     <h1>PERSONAL FILE</h1>
     <div class="avatars">
       <div class="avatar">
@@ -11,6 +13,8 @@
         <AvatarPokemon />
       </div>
     </div>
+
+
     <h2>CARDS</h2>
     <div class="carousel-container" @mouseenter="stopAutoSlide" @mouseleave="startAutoSlide">
       <div class="carousel" ref="carousel">
@@ -23,11 +27,16 @@
       <button class="prev-button" @click="slideLeft">Previous</button>
       <button class="next-button" @click="slideRight">Next</button>
     </div>
-    <h2>STATS</h2>
-    <!-- Aquí agregamos el gráfico SVG -->
-    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bar-chart" viewBox="0 0 16 16" @click="goToStatsPage">
-      <path d="M4 11H2v3h2zm5-4H7v7h2zm5-5v12h-2V2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1z"/>
-    </svg>
+
+
+    <button class="statsBtn" @click="goToStatsPage">
+      <h2>STATS</h2>
+      <!-- Aquí agregamos el gráfico SVG -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bar-chart" viewBox="0 0 16 16">
+        <path d="M4 11H2v3h2zm5-4H7v7h2zm5-5v12h-2V2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1z"/>
+      </svg>
+    </button>
+
   </div>
 </template>
 
@@ -36,6 +45,7 @@ import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import AvatarUser from '../components/AvatarUser.vue';
 import AvatarPokemon from '../components/AvatarPokemon.vue';
+import Logo from '../components/Logo.vue'
 
 const router = useRouter();
 
@@ -122,23 +132,37 @@ onMounted(startAutoSlide);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
 }
 .avatar {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
+h1 {
+  text-align: center;
+}
 
- h2 {
-  margin-top: 5rem;
-  height: 20rem;
-  gap: 10px;
+.container {
   color: white;
-} 
+  padding-top: 13rem;
+  height: auto; /* Ajustar la altura automáticamente */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url('/public/autumn-night-illuminated-lantern-tree-yellow-leaf-generated-by-ai.jpg'); 
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  background-attachment: fixed; /* Fija el fondo */
+}
 
 .carousel-container {
-  width: 60%;
-  margin: 20px auto;
+  width: 100%; /* Cambiar el valor de 60% a 100% */
+  max-width: 100%; /* Asegurar que el ancho no exceda el ancho del contenedor padre */
+  margin: 1rem auto;
   overflow: hidden;
   position: relative;
 }
@@ -169,9 +193,19 @@ onMounted(startAutoSlide);
 }
 
 svg {
-  width: 20rem;
-  height: 10rem;
-  cursor: pointer;
+  margin: 0.5rem;
+  height: 2rem;
 }
 
+.statsBtn {
+  display: flex;
+  margin: 0.5rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 0.5rem;
+  background-color: red;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
 </style>
