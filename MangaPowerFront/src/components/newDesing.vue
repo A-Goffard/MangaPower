@@ -1,6 +1,7 @@
 <template>
 
     <div class="globalContainer">
+      
         <AvatarPokemon />
 
         <div class="card-text">Pokemon Level: {{ userDataActive && userDataActive.pokemonLevel }}</div>
