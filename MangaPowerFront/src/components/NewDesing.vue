@@ -2,13 +2,13 @@
 
     <div class="globalContainer">
       
-        <AvatarPokemon />
+        <AvatarPokemonStats />
 
         <div class="card-text">Pokemon Level: {{ userDataActive && userDataActive.pokemonLevel }}</div>
 
         <div id="name_print_stats" class="card-text">{{ userDataActive && userDataActive.username }}</div>
 
-        <AvatarUser />
+        <AvatarUserStats />
 
           <div class="canvaContainer">
             <canvas id="graphic" width="100%" height="100%"></canvas>
@@ -23,8 +23,8 @@
 import { onMounted, ref } from 'vue';
   import Chart from 'chart.js/auto';
   import axios from 'axios';
-  import AvatarUser from '../components/AvatarUser.vue';
-  import AvatarPokemon from '../components/AvatarPokemon.vue';
+  import AvatarUser from '../components/AvatarUserStats.vue';
+  import AvatarPokemon from '../components/AvatarPokemonStats.vue';
 
   // Datos del usuario activo
   let userDataActive = ref(null);
@@ -36,7 +36,7 @@ import { onMounted, ref } from 'vue';
       // Si hay datos de usuario en el localStorage, asignar el primer elemento del array a userData
       userDataActive.value = usuario[0];
       // Actualizar los datos del gráfico con los valores del usuario
-      /* updateChart(); */
+      /* updateChart() */;
     }
   };
   // Obtener los datos del usuario del localStorage al montar el componente
@@ -99,16 +99,9 @@ import { onMounted, ref } from 'vue';
     top: 0;
     left: 0;
     position: relative;
-  
-}
 
-.avatarContainer{
-    height: 15rem;
-    position: absolute;
-    right: 100rem;
-    top: 18rem;
 }
-.avatar{
+.avatarPokemon{
     width: 10rem;
     height: 10rem;
     border-radius: 50%;
@@ -148,8 +141,14 @@ import { onMounted, ref } from 'vue';
     height: 15rem;
     position: absolute;
     right: 104.5rem;
-    top: -3rem;
-    
+    top: -3rem;    
+}
+
+.avatarContainerPokemon{
+    height: 15rem;
+    position: absolute;
+    right: 90rem;
+    top: 18rem;
 }
 
 .canvaContainer{

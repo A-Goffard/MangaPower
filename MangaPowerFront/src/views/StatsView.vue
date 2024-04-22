@@ -1,7 +1,9 @@
 <template>
 
-  <!-- <StatsForUser /> -->
+  
   <newDesing />
+
+ 
 
 
 
@@ -10,7 +12,8 @@
 <script setup>
 
 import StatsForUser from '../components/StatsForUser.vue'
-import newDesing from '@/components/newDesing.vue';
+import NewDesing from '@/components/NewDesing.vue';
+
 
 </script>
 
