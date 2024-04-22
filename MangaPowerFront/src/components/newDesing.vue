@@ -9,7 +9,10 @@
 
         <AvatarUser />
 
-        <canvas id="graphic" width="100%" height="100%"></canvas>
+          <div class="canvaContainer">
+            <canvas id="graphic" width="100%" height="100%"></canvas>
+          </div>
+
     </div>
 
 </template>
@@ -148,9 +151,24 @@ import { onMounted, ref } from 'vue';
     
 }
 
+.canvaContainer{
+  width: 25rem;
+  height: 10rem;
+  position: absolute;
+  top: 19.5rem;
+  left: 52rem;
+}
+
 #graphic{
-    width: 15rem;
-    height: 10rem;
+  max-width: 100%;
+  max-height: 100%;
+
+}
+
+/* --------MEDIA QUERIES--------- */
+
+@media screen and (max-width: 1200px){
+  
 }
 
 </style>
