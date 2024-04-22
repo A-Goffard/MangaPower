@@ -148,7 +148,7 @@ import { onMounted, ref } from 'vue';
     
 }
 
-#canvas{
+#graphic{
     width: 15rem;
     height: 10rem;
 }
