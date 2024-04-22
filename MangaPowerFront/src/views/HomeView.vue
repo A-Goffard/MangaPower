@@ -1,8 +1,6 @@
 <template>
   <div class="mainDivHome">
-    <div class="logo">
-      <img class="logoimage" src="logo.png" alt="">
-    </div>
+    <Logo class="logo"/>
     <div class="video">
       <Video />
     </div>
@@ -14,12 +12,16 @@
 
 <script setup>
 import Video from '../components/Video.vue'
+import Logo from '../components/Logo.vue'
 </script>
 
 <style>
-
+.logo {
+  position: absolute;
+  top: 1rem;
+}
 .mainDivHome {
-  height: auto; /* Ajustar la altura automáticamente */
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -27,18 +29,6 @@ import Video from '../components/Video.vue'
   background-image: url('/public/autumn-night-illuminated-lantern-tree-yellow-leaf-generated-by-ai.jpg'); 
   background-size: cover; 
   background-repeat: no-repeat; 
-  background-attachment: fixed; /* Fija el fondo */
-}
-.logoimage {
-  width: 100%;
-}
-.logo {
-  max-width: 30rem;
-  width: 70%;
-  padding: 0rem 1rem;
-  margin: 1rem;
-  background-color: rgb(255, 255, 255, 0.65);
-  border-radius: 0.5rem;
 }
 
 .video {

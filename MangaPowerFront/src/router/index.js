@@ -9,6 +9,13 @@ import RegisterView from '../views/RegisterView.vue'
 import StatsView from '../views/StatsView.vue'
 import CardStore from '../views/CardStore.vue'
 import AboutView from '../views/AboutView.vue'
+import PersonalView from '../views/PersonalView.vue'
+import PokedexView from '../views/PokedexView.vue'
+
+import SelectView from '../views/game/SelectView.vue'
+import BattleView from '../views/game/BattleView.vue'
+
+import WinedCardsView from '../views/user/WinedCardsView.vue'
 
 const routes = [
   {
@@ -17,9 +24,9 @@ const routes = [
     component: HomeView
   },
   {
-  path: '/stats',
-  name: 'StatsView',
-  component: StatsView
+    path: '/stats',
+    name: 'StatsView',
+    component: StatsView
   },
   {
     path: '/detailcard/:id',
@@ -52,14 +59,39 @@ const routes = [
     component: PersonalFile
   },
   {
+    path: '/personal',
+    name: 'PersonalView',
+    component: PersonalView
+  },
+  {
+    path: '/pokedex',
+    name: 'PokedexView',
+    component: PokedexView
+  },
+  {
     path: '/register',
     name: 'RegisterView',
     component: RegisterView
   },
   {
     path: '/about',
-    name: 'About',
+    name: 'AboutView',
     component: AboutView
+  },
+  {
+    path: '/game/selectcards',
+    name: 'SelectCards',
+    component: SelectView
+  },
+  {
+    path: '/user/winedcards',
+    name: 'WinedCardsView',
+    component: WinedCardsView
+  },
+  {
+    path: '/game/battle',
+    name: 'BattleView',
+    component: BattleView
   }
 ]
 
