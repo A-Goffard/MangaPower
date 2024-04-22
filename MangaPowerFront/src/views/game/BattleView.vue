@@ -112,7 +112,7 @@ const selectedPCBattlePokemon = ref([]);
 
 
 
-// Función para determinar la carta ganadora
+
 // Función para determinar la carta ganadora
 const determineWinner = () => {
   if (battlePokemon.value.length === 2) {
@@ -129,11 +129,17 @@ const determineWinner = () => {
     } else if (totalStats2 > totalStats1) {
       battlePokemon.value = [battlePokemon.value[1]];
     } else {
-      // If all stats are equal, handle the tie however you prefer
-      console.log("Tie");
-      // For this example, we randomly select a winner
-      const winner = totalStats1 > totalStats2 ? battlePokemon.value[0] : battlePokemon.value[1];
-      battlePokemon.value = [winner];
+      // If all stats are equal, handle the tie by comparing HP
+      if (pokemon1Data.stats.hp > pokemon2Data.stats.hp) {
+        battlePokemon.value = [battlePokemon.value[0]];
+      } else if (pokemon2Data.stats.hp > pokemon1Data.stats.hp) {
+        battlePokemon.value = [battlePokemon.value[1]];
+      } else {
+        // If both Pokémon have the same HP, handle the tie by randomly selecting a winner
+        console.log("Tie");
+        const winner = Math.random() < 0.5 ? battlePokemon.value[0] : battlePokemon.value[1];
+        battlePokemon.value = [winner];
+      }
     }
 
     // Update the state to show the "Go!" button again
