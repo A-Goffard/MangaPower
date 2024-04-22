@@ -128,12 +128,19 @@ const isSelected = (pokemonId) => {
 // Estado para controlar si se muestra el botón "Go!"
 const showGoButton = ref(false);
 
-const goBattle = () => {
-  // Si no hay ninguna carta seleccionada de YourCards, salimos de la función
-  if (selectedPokemon.value.length === 0) {
-    return;
-  }
 
+// Definir el array para almacenar los IDs de los Pokémon seleccionados por la PC para la batalla
+const selectedPCBattlePokemon = ref([]);
+
+
+// Función para seleccionar un Pokémon de la PC
+const selectPCPokemon = (pokemonId) => {
+  selectedPCBattlePokemon.value.push(pokemonId);
+  localStorage.setItem('SelectedPCBattlePokemon', JSON.stringify(selectedPCBattlePokemon.value));
+};
+
+// Función para iniciar la batalla
+const goBattle = () => {
   // Obtener un Pokémon aleatorio de la PC
   const randomIndex = Math.floor(Math.random() * pokemonIdsPC.length);
   const randomPokemonId = pokemonIdsPC[randomIndex];
@@ -141,15 +148,24 @@ const goBattle = () => {
   // Agregar el Pokémon aleatorio de la PC al array battlePokemon
   battlePokemon.value.push(randomPokemonId);
 
+  // Agregar el ID del Pokémon aleatorio de la PC al array selectedPCBattlePokemon
+  selectedPCBattlePokemon.value.push(randomPokemonId);
+
+  // Guardar el array en el localStorage
+  localStorage.setItem('SelectedPCBattlePokemon', JSON.stringify(selectedPCBattlePokemon.value));
+
   // Ocultar el botón "Go!" después de agregar la carta del PC
   showGoButton.value = false;
-
   showBattleButton.value = true;
-
-  // Tu lógica para iniciar la batalla aquí
 };
 
+// Estado para controlar si se muestra el botón "BattleButton"
+const showBattleButton = ref(false);
 
+const BattleButton = () => {
+
+
+}
 
 
 </script>
