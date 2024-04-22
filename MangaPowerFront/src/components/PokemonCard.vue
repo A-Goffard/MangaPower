@@ -1,8 +1,5 @@
 <template>
-  <div 
-    :class="{ 'selected-card': selected, 'winner-card': isWinner, 'random-selected-card': randomSelected }"
-    class="pokemon-card" 
-    v-if="pokemon">
+  <div v-if="pokemon" :class="{ 'selected-card': selected, 'highlighted-card': highlight }" class="pokemon-card">
     <div :style="cardStyle">
       <h3 :style="nameStyle">{{ pokemon.name }}</h3>
       <img :src="pokemon.sprites.front_default" :alt="pokemon.name" :style="imgStyle" />
@@ -13,8 +10,8 @@
       </div>
     </div>
   </div>
-  <div v-else>
-    Loading...
+  <div v-else class="pokemon-card-placeholder">
+    <p>Pokemon not available</p>
   </div>
 </template>
 
@@ -29,11 +26,7 @@ export default {
       type: Boolean,
       default: false
     },
-    isWinner: {
-      type: Boolean,
-      default: false
-    },
-    randomSelected: {
+    highlight: {
       type: Boolean,
       default: false
     }
@@ -50,7 +43,7 @@ export default {
     },
     nameStyle() {
       return {
-        backgroundColor: this.selected ? '#ffcc00' : (this.isWinner ? '#66ff66' : (this.randomSelected ? '#ff6666' : '#000000')), // Selected, Winner, Random Selected, or default color
+        backgroundColor: this.selected ? '#ffcc00' : '#000000', // Selected color or default
         borderTopLeftRadius: '1.5rem',
         borderTopRightRadius: '1.5rem',
         color: 'white',
@@ -86,6 +79,7 @@ export default {
 };
 </script>
 
+
 <style scoped>
 .pokemon-card {
   box-sizing: border-box; /* Ensure border and padding are included in the width */
@@ -109,6 +103,26 @@ export default {
   box-shadow: 0 0 10px #ffcc00; /* Yellow shadow when selected */
   margin: -4px; /* Compensate for the added border width */
 }
+
+.pokemon-card-placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 24.8rem;
+  width: 16rem;
+  background-color: #e0e0e0;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+}
+.pokemon-card-placeholder p {
+  color: #333;
+}
+
+.highlighted-card {
+  border: 4px solid #ffcc00;  /* You can change the color to whatever you prefer */
+  box-shadow: 0 0 10px #ffcc00; /* Optional: adds a glowing effect */
+}
+
 </style>
 
   
