@@ -7,7 +7,7 @@
 
         <div class="name_stats card">
           <div class="card-body">
-            <div id="name_print_stats" class="card-text">{{ userDataActive && userDataActive.username }}</div>
+            <!-- <div id="name_print_stats" class="card-text">{{ userDataActive && userDataActive.username }}</div> -->
             <div id="name_print_stats" class="card-text">{{ userDataActive && userDataActive.pokemon }}</div>
             
             <AvatarPokemon />

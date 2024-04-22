@@ -1,30 +1,34 @@
 <template>
   <div class="general-container">
+    <Logo class="logo"/>
     <h1>LOGIN</h1>
-    <article>
-      <div class="log-lines"><span>Email </span><input type="email" id="email" placeholder=" Enter email" v-model="email"></div>
-      <div class="log-lines"><span>Password </span><input type="password" id="password" placeholder=" Enter Password" v-model="password"></div>
-      <div class="checkbox-div">
-        <input type="checkbox" id="myCheckbox" v-model="agree">
-        <label for="myCheckbox" class="custom-checkbox"></label>
-        <span> By checking this box, I declare that I have read and expressly accepted <a href="#"><i>terms and conditions</i></a> as well as <a href="#"><i>privacy and confidentiality policy</i></a>. </span>
-      </div>
-        <button @click.prevent="guardarDatos" type="submit" id="login" class="disabled" :disabled="!agree">Login</button>
-    
-      <p>If you don't have an account, create one by clicking here </p>
-      <button id="register" @click="gotoRegister">Register</button>
-    </article>
+
+      <article>
+        <div class="log-lines"><span>Email </span><input type="email" id="email" placeholder=" Enter email" v-model="email"></div>
+        <div class="log-lines"><span>Password </span><input type="password" id="password" placeholder=" Enter Password" v-model="password"></div>
+        <div class="checkbox-div">
+          <input type="checkbox" id="myCheckbox" v-model="agree">
+          <label for="myCheckbox" class="custom-checkbox"></label>
+          <span> By checking this box, I declare that I have read and expressly accepted <a href="#"><i>terms and conditions</i></a> as well as <a href="#"><i>privacy and confidentiality policy</i></a>. </span>
+        </div>
+          <button @click.prevent="guardarDatos" type="submit" id="login" class="disabled" :disabled="!agree">Login</button>
+      
+        <p>If you don't have an account, create one by clicking here </p>
+        <button id="register" @click="gotoRegister">Register</button>
+      </article>
+
   </div>
 </template>
 
 <script setup>
 import { useRouter } from 'vue-router';
 import { ref } from 'vue';
+import Logo from '../components/Logo.vue'
 
 const router = useRouter();
 
 const gotoRegister = () => {
-  router.push('/register');
+  router.push({ name: 'RegisterView' });
 };
 
 const email = ref("");
@@ -39,7 +43,7 @@ const guardarDatos = () => {
 };
 
 const gotoPersonalPage = () => {
-  router.push('/personalfile');
+  router.push({ name: 'PersonalView' });
 };
 
 const proveLogin = () => {
@@ -83,16 +87,18 @@ const proveLogin = () => {
     background-color: red;
   }
   .general-container{
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-image: url('/public/autumn-night-illuminated-lantern-tree-yellow-leaf-generated-by-ai.jpg'); 
-    background-size: cover; 
-    background-repeat: no-repeat; 
+    padding-top: 13rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url('/public/autumn-night-illuminated-lantern-tree-yellow-leaf-generated-by-ai.jpg'); 
+  background-size: cover; 
+  background-repeat: no-repeat; 
 
   }
+
   article {
     display: flex;
     flex-direction: column;
