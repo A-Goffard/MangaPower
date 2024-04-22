@@ -183,6 +183,29 @@
         "4",
         "5"
       ]
+    },
+    {
+      "id": "10",
+      "name": "Andres",
+      "birthdate": "1990-01-22",
+      "email": "1234@1234.com",
+      "password": "1234",
+      "pokemon": "Pikachu",
+      "pokemonTrainer": "Minato",
+      "username": "1234",
+      "pokemonLevel": "1",
+      "trainerLevel": "1",
+      "win": 0,
+      "lose": 0,
+      "plays": 0,
+      "winedCardsNumber": 0,
+      "winedCards": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
     }
   ]
 }
