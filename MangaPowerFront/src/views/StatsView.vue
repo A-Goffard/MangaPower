@@ -12,7 +12,7 @@
 <script setup>
 
 import StatsForUser from '../components/StatsForUser.vue'
-import NewDesing from '@/components/NewDesing.vue';
+import NewDesing from '../components/NewDesing.vue';
 
 
 </script>

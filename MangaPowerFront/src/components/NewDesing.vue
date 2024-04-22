@@ -21,67 +21,70 @@
 <script setup>
 
 import { onMounted, ref } from 'vue';
-  import Chart from 'chart.js/auto';
-  import axios from 'axios';
-  import AvatarUser from '../components/AvatarUserStats.vue';
-  import AvatarPokemon from '../components/AvatarPokemonStats.vue';
+import Chart from 'chart.js/auto';
+import axios from 'axios';
+import AvatarUserStats from '../components/AvatarUserStats.vue';
+import AvatarPokemonStats from '../components/AvatarPokemonStats.vue';
 
-  // Datos del usuario activo
-  let userDataActive = ref(null);
-  
-  // Función para obtener los datos del usuario del localStorage
-  const getUsuarioFromLocalStorage = () => {
-    const usuario = JSON.parse(localStorage.getItem('usuario'));
-    if (usuario && usuario.length > 0) {
-      // Si hay datos de usuario en el localStorage, asignar el primer elemento del array a userData
-      userDataActive.value = usuario[0];
-      // Actualizar los datos del gráfico con los valores del usuario
-      /* updateChart() */;
+// Datos del usuario activo
+let userDataActive = ref(null);
+
+// Función para obtener los datos del usuario del localStorage
+const getUsuarioFromLocalStorage = () => {
+  const usuario = JSON.parse(localStorage.getItem('usuario'));
+  if (usuario && usuario.length > 0) {
+    // Si hay datos de usuario en el localStorage, asignar el primer elemento del array a userData
+    userDataActive.value = usuario[0];
+    // Actualizar los datos del gráfico con los valores del usuario
+    /* updateChart() */;
+  }
+};
+// Obtener los datos del usuario del localStorage al montar el componente
+onMounted(getUsuarioFromLocalStorage);
+
+// Inicializar el gráfico
+let chartInstance = null;
+
+onMounted(() => {
+  const MyCanvas = document.querySelector("#graphic").getContext("2d");
+
+  chartInstance = new Chart(MyCanvas, {
+    type: "bar",
+    data: {
+      labels: ["PJ", "PG", "PP"],
+      datasets:[
+        {
+          label: "Estadísticas del jugador",
+          backgroundColor: [
+            'rgb(219, 219, 223)',
+            'rgb(20, 5, 255)',
+            'rgb(255, 5, 5)'
+          ],
+          data: [0, 0, 0] // Valores iniciales, se actualizarán después
+        }
+      ]
     }
-  };
-  // Obtener los datos del usuario del localStorage al montar el componente
-  onMounted(getUsuarioFromLocalStorage);
-
-  // Función para actualizar los datos del gráfico
-  const updateChart = () => {
-    if (!userDataActive.value) return;
-  
-    const plays = userDataActive.value.plays || 0;
-    const wins = userDataActive.value.win || 0;
-    const losses = userDataActive.value.lose || 0;
-  
-    // Actualizar los datos del gráfico
-    chartInstance.data.datasets[0].data = [plays, wins, losses];
-    chartInstance.update();
-  };
-  
-  // Inicializar el gráfico
-  let chartInstance = null;
-  
-  onMounted(() => {
-    const MyCanvas = document.querySelector("#graphic").getContext("2d");
-  
-    chartInstance = new Chart(MyCanvas, {
-      type: "pie",
-      data: {
-        labels: ["PJ", "PG", "PP"],
-        datasets:[
-          {
-            label: "Estadísticas del jugador",
-            backgroundColor: [
-              'rgb(219, 219, 223)',
-              'rgb(20, 5, 255)',
-              'rgb(255, 5, 5)'
-            ],
-            data: [0, 0, 0] // Valores iniciales, se actualizarán después
-          }
-        ]
-      }
-    });
   });
-  
-  // Obtener los datos del usuario del localStorage al montar el componente
-  onMounted(getUsuarioFromLocalStorage);
+
+  // Llamar a la función updateChart después de que chartInstance se haya inicializado
+  updateChart();
+});
+
+// Función para actualizar los datos del gráfico
+const updateChart = () => {
+  if (!userDataActive.value) return;
+
+  const plays = userDataActive.value.plays || 0;
+  const wins = userDataActive.value.win || 0;
+  const losses = userDataActive.value.lose || 0;
+
+  // Actualizar los datos del gráfico
+  chartInstance.data.datasets[0].data = [plays, wins, losses];
+  chartInstance.update();
+};
+
+// Obtener los datos del usuario del localStorage al montar el componente
+onMounted(getUsuarioFromLocalStorage);
   
 </script>
 
@@ -153,7 +156,7 @@ import { onMounted, ref } from 'vue';
 
 .canvaContainer{
   width: 25rem;
-  height: 10rem;
+  height: 9.5rem;
   position: absolute;
   top: 19.5rem;
   left: 52rem;
