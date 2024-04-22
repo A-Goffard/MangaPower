@@ -96,7 +96,7 @@ onMounted(() => {
 }
 
 .pokemonContainer {
- 
+  margin: 11rem;
   display: flex;
   justify-content: flex-start;
   align-items: center;
