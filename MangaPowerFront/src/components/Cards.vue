@@ -706,7 +706,7 @@ h1{
     margin-top: 3rem; ;
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem;
+    gap: 0.5rem;
     justify-content: center;
 }
 button{
