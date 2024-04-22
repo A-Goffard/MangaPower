@@ -1,14 +1,15 @@
 <template>
   <div class="mainGameView">
     <div v-if="showMessage" class="messageContainer">
-      <div class="message">¡Start Battle!</div>
+      <div class="message">¡Comienza la Batalla!</div>
     </div>
 
     <div v-if="showMessage2" class="messageContainer">
-      <div class="message">Select your card</div>
+      <div class="message">Selecciona tu carta</div>
     </div>
 
     <div class="cardsContainer YourCards">
+      <PlayerPoints :points="playerPoints" />
       <!-- Iterar sobre los IDs de los Pokémon seleccionados por el jugador que no están en la batalla -->
       <CardPokemon v-for="pokemonId in filteredSelectedPokemon" :key="pokemonId" :selectedPokemonId="pokemonId" @click="selectPokemon(pokemonId)"/>
     </div>
@@ -19,22 +20,39 @@
     </div>
 
     <div class="cardsContainer PCCards">
+      <PCPoints :points="pcPoints" />
       <!-- Iterar sobre los IDs de los Pokémon de la PC que no están en la batalla -->
       <CardPokemon v-for="pokemonId in filteredPokemonIdsPC" :key="pokemonId" :selectedPokemonId="pokemonId"/>
     </div>
 
-    <button v-if="showGoButton" class="goButton" @click="goBattle">Go!</button>
+    <button v-if="showGoButton" class="goButton" @click="goBattle">¡Adelante!</button>
 
   </div>
 </template>
 
 <script setup>
-// Importa las dependencias necesarias
+// Importar las dependencias necesarias
 import CardPokemon from '../../components/CardPokemon.vue';
+import PlayerPoints from '@/components/game/PlayerPoints.vue';
+import PCPoints from '@/components/game/PCPoints.vue';
 import { ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
 
-// Obtén acceso al router
+// Define variables reactivas para almacenar los puntos del jugador y de la PC
+const playerPoints = ref(0);
+const pcPoints = ref(0);
+
+// Función para actualizar los puntos del jugador
+const updatePlayerPoints = (points) => {
+  playerPoints.value = points;
+};
+
+// Función para actualizar los puntos de la PC
+const updatePCPoints = (points) => {
+  pcPoints.value = points;
+};
+
+// Obtener acceso al enrutador
 const router = useRouter();
 
 // Función para generar un número aleatorio dentro de un rango
@@ -111,7 +129,7 @@ const selectPokemon = (pokemonId) => {
   // Guardar el array en el localStorage
   localStorage.setItem('SelectedBattlePokemon', JSON.stringify(battlePokemon.value));
 
-  // Mostrar el botón "Go!" cuando se selecciona un Pokémon de YourCards
+  // Mostrar el botón "¡Adelante!" cuando se selecciona un Pokémon de YourCards
   showGoButton.value = selectedPokemon.value.length > 0;
 
 };
@@ -121,7 +139,7 @@ const isSelected = (pokemonId) => {
   return selectedPokemon.value.includes(pokemonId);
 };
 
-// Estado para controlar si se muestra el botón "Go!"
+// Estado para controlar si se muestra el botón "¡Adelante!"
 const showGoButton = ref(false);
 
 
@@ -135,7 +153,6 @@ const selectPCPokemon = (pokemonId) => {
   localStorage.setItem('SelectedPCBattlePokemon', JSON.stringify(selectedPCBattlePokemon.value));
 };
 
-// Función para comparar los valores de HP, ataque y defensa de dos Pokémon
 const comparePokemonStats = async () => {
   // Obtener los IDs de los Pokémon en la zona de batalla
   const pokemonIdsInBattle = battlePokemon.value;
@@ -177,15 +194,11 @@ const comparePokemonStats = async () => {
       if (selectedPokemon.value.includes(winningPokemonId)) {
         // El jugador ganó
         console.log("¡Ganaste!");
-        const playerPoints = localStorage.getItem('PlayerPoints') ? JSON.parse(localStorage.getItem('PlayerPoints')) : [];
-        playerPoints.push(2);
-        localStorage.setItem('PlayerPoints', JSON.stringify(playerPoints));
+        playerPoints.value += 2;
       } else {
         // La PC ganó
         console.log("¡La PC ganó!");
-        const pcPoints = localStorage.getItem('PCPoints') ? JSON.parse(localStorage.getItem('PCPoints')) : [];
-        pcPoints.push(2);
-        localStorage.setItem('PCPoints', JSON.stringify(pcPoints));
+        pcPoints.value += 2;
       }
     } else {
       console.log("Hubo un empate.");
@@ -193,6 +206,12 @@ const comparePokemonStats = async () => {
   } catch (error) {
     console.error("Error al comparar los Pokémon:", error);
   }
+
+// Actualizar los puntos en localStorage
+localStorage.setItem('PlayerPoints', playerPoints.value.toString());
+localStorage.setItem('PCPoints', pcPoints.value.toString());
+
+  // Limpiar los arrays y realizar otras operaciones si es necesario
 };
 
 // Función para iniciar la batalla
@@ -228,7 +247,7 @@ const goBattle = () => {
     // Manejar el caso en que el valor almacenado no sea un array
   }
 
-  // Ocultar el botón "Go!" después de agregar la carta del PC
+  // Ocultar el botón "¡Adelante!" después de agregar la carta del PC
   showGoButton.value = false;
 
   setTimeout(comparePokemonStats, 2000);
@@ -244,6 +263,16 @@ const filteredPokemonIdsPC = computed(() => {
   return pokemonIdsPC.value.filter(id => !battlePokemon.value.includes(id));
 });
 
+// Antes de iniciar la batalla, cargar los puntos del jugador y de la PC desde el localStorage:
+const storedPlayerPoints = localStorage.getItem('PlayerPoints');
+if (storedPlayerPoints) {
+  playerPoints.value = JSON.parse(storedPlayerPoints);
+}
+
+const storedPCPoints = localStorage.getItem('PCPoints');
+if (storedPCPoints) {
+  pcPoints.value = JSON.parse(storedPCPoints);
+}
 
 </script>
 
@@ -299,7 +328,6 @@ const filteredPokemonIdsPC = computed(() => {
   padding: 1rem;
   border-radius: 0.5rem;
 }
-
 
 .goButton {
   position: fixed;
