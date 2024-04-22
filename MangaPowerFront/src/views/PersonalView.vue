@@ -45,7 +45,6 @@ const goToWinedCards = () => {
   router.push({ name: 'WinedCardsView' });
 };
 
-
   </script>
     
   <style scoped>
