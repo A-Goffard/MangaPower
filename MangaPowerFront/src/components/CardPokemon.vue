@@ -1,5 +1,5 @@
 <template>
-  <div :class="[pokemonCardClass, { selected: isSelected }]" v-if="pokemon">
+  <div :class="{ pokemonCard: true, selected: isSelected }" v-if="pokemon">
     <!-- Utiliza un método para capitalizar el nombre -->
     <h2>{{ getCapitalizedPokemonName() }}</h2>
     <img :src="pokemon.imageUrl" alt="Imagen del Pokémon">
@@ -57,16 +57,6 @@ const getCapitalizedPokemonName = () => {
     return '';
   }
 };
-
-// Determinar la clase de la carta del Pokémon
-const pokemonCardClass = ref('pokemonCard');
-
-// Cuando el componente se monta, asigna la clase '.BattleCard' si está seleccionado
-onMounted(() => {
-  if (props.isSelected) {
-    pokemonCardClass.value = 'pokemonCard BattleCard';
-  }
-});
 </script>
 
 <style scoped>
@@ -99,8 +89,4 @@ img {
   box-shadow: 0rem 0rem 1rem 0.1rem blue;
 }
 
-.BattleCard {
-  border: 2px solid orange; /* Agrega un borde diferente para las cartas seleccionadas */
-  box-shadow: 0rem 0rem 1rem 0.1rem orange;
-}
 </style>
