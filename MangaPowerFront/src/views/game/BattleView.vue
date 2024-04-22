@@ -97,11 +97,6 @@ if (storedSelectedPokemon) {
 // Array para almacenar los IDs de los Pokémon seleccionados para la batalla
 const battlePokemon = ref([]);
 
-// Estado para controlar si se muestra el botón "Go!"
-const showGoButton = ref(false);
-
-// Estado para controlar si se muestra el botón "Battle!"
-const showBattleButton = ref(false);
 
 const selectPokemon = (pokemonId) => {
   // ... (resto de tu función selectPokemon)
