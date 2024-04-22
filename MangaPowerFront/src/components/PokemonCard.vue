@@ -92,6 +92,7 @@ export default {
 
 .winner-card {
   background-color: #66ff66; /* Winner background color */
+  background: blue
 }
 
 .random-selected-card {

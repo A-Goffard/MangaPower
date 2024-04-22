@@ -1,13 +1,11 @@
 <template>
   <div class="mainGameView">
-
     <div class="button-container">
       <button class="battle-button" @click="startBattle">Start Battle</button>
       <button class="reset-button" @click="resetGame">Reset Game</button>
     </div>
 
     <div class="game-container">
-
       <div class="player-cards">
         <h2>Your Cards</h2>
         <div class="card-container">
@@ -25,7 +23,6 @@
             :highlight="randomComputerCard === pokemon" />
         </div>
       </div>
-
     </div>
 
     <div class="winner-display" v-if="winner">
@@ -33,13 +30,16 @@
       <PokemonCard :pokemon="winner" />
     </div>
 
+    <CardsWon :storeCard="storeCard" />
   </div>
 </template>
-
 
 <script setup>
 import { ref, onMounted } from 'vue';
 import PokemonCard from '../components/PokemonCard.vue';
+import CardsWon from '../components/CardsWon.vue';
+import { cardsWon, storeCard } from '../components/CardsWonStore';  // Importing from CardsWonStore
+
 
 const pokemonList = ref([]);
 const types = [
@@ -50,16 +50,6 @@ const types = [
 
 const mostrarPokemon = (data) => {
   pokemonList.value = data;
-};
-
-const filteredPokemon = (type) => {
-  return pokemonList.value ? pokemonList.value.filter(pokemon =>
-    pokemon.types.some(p => p.type.name === type.toLowerCase()))
-    : [];
-};
-
-const capitalize = (string) => {
-  return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
 const playerCards = ref([]);
@@ -79,10 +69,9 @@ const startBattle = () => {
     return;
   }
 
-  // Highlight computer cards one by one at a velocity of 1 second per card for 10 seconds
   let index = 0;
-  let intervalDuration = 1000; // Start with 1 second interval
-  const totalDuration = 10000; // Total 10 seconds
+  let intervalDuration = 1000;
+  const totalDuration = 10000;
 
   const highlightInterval = setInterval(() => {
     randomComputerCard.value = computerCards.value[index];
@@ -93,11 +82,9 @@ const startBattle = () => {
     }
   }, intervalDuration);
 
-  // Stop highlighting after 10 seconds
   setTimeout(() => {
     clearInterval(highlightInterval);
 
-    // Randomly select a card from the computer cards
     const randomIndex = Math.floor(Math.random() * computerCards.value.length);
     const computerCard = computerCards.value[randomIndex];
     randomComputerCard.value = computerCard;
@@ -107,10 +94,11 @@ const startBattle = () => {
 
     if (playerTotalStats.total > computerTotalStats.total) {
       winner.value = selectedPlayerCard.value;
+      cardsWon.value.push(computerCard);  // Add the computer's card to the cardsWon array
     } else if (playerTotalStats.total < computerTotalStats.total) {
       winner.value = computerCard;
     } else {
-      winner.value = null; // Draw
+      winner.value = null;
     }
 
     console.log('Winner:', winner.value);
@@ -128,14 +116,13 @@ const getTotalStats = (pokemon) => {
   return { total };
 };
 
-
 const resetGame = () => {
   selectedPlayerCard.value = null;
   winner.value = null;
-  pokemonList.value = []; // Clear pokemonList
-  playerCards.value = []; // Clear playerCards
-  computerCards.value = []; // Clear computerCards
-  fetchPokemon(); // Fetch new cards
+  pokemonList.value = [];
+  playerCards.value = [];
+  computerCards.value = [];
+  fetchPokemon();
 };
 
 const fetchPokemon = async () => {
@@ -148,7 +135,10 @@ const fetchPokemon = async () => {
     Promise.all(pokemonPromises)
       .then(detailedPokemon => {
         mostrarPokemon(detailedPokemon);
-        const shuffledPokemon = [...detailedPokemon].sort(() => Math.random() - 0.5);
+
+        const availablePokemon = detailedPokemon.filter(p => !cardsWon.value.some(c => c.name === p.name));
+
+        const shuffledPokemon = [...availablePokemon].sort(() => Math.random() - 0.5);
         playerCards.value = shuffledPokemon.slice(0, 4);
         computerCards.value = shuffledPokemon.slice(4, 8);
       });
@@ -160,9 +150,10 @@ const fetchPokemon = async () => {
 onMounted(() => {
   fetchPokemon();
 });
-
-
 </script>
+
+
+
 
 
 <style scoped>
