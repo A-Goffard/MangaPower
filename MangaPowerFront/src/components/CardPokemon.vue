@@ -57,6 +57,8 @@ const getCapitalizedPokemonName = () => {
     return '';
   }
 };
+
+
 </script>
 
 <style scoped>
