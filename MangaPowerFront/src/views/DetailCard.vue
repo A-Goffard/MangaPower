@@ -61,7 +61,7 @@ onMounted(() => {
 </script>
 
 <style scoped>
-
+/* 
 .container1{
   width: 100%;
     height: 50rem;
@@ -71,7 +71,7 @@ onMounted(() => {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 }
-
+ */
 img{
   height: 30rem;
 }
