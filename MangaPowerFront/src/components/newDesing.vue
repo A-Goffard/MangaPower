@@ -105,7 +105,7 @@ import { onMounted, ref } from 'vue';
 .avatarContainer{
     height: 15rem;
     position: absolute;
-    right: 90rem;
+    right: 100rem;
     top: 18rem;
 }
 .avatar{
