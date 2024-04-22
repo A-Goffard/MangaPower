@@ -15,8 +15,8 @@
   width: min-content;
   padding: 1rem;
   margin: 1rem;
+  background-color: rgb(255, 255, 255, 0.65);
   border-radius: 0.5rem;
-  
 }
 .avatar {
     max-width: 20rem;
