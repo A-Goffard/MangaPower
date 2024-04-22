@@ -97,57 +97,31 @@ if (storedSelectedPokemon) {
 // Array para almacenar los IDs de los Pokémon seleccionados para la batalla
 const battlePokemon = ref([]);
 
-// Función para seleccionar un Pokémon
+// Estado para controlar si se muestra el botón "Go!"
+const showGoButton = ref(false);
+
+// Estado para controlar si se muestra el botón "Battle!"
+const showBattleButton = ref(false);
+
 const selectPokemon = (pokemonId) => {
-  // Si el Pokémon ya está seleccionado, lo deseleccionamos
-  if (battlePokemon.value.includes(pokemonId)) {
-    battlePokemon.value = battlePokemon.value.filter(id => id !== pokemonId);
-  } else {
-    // Si no está seleccionado, lo agregamos al array
-    if (battlePokemon.value.length < 1) {
-      battlePokemon.value.push(pokemonId);
-    } else {
-      // Si ya hay 1 seleccionado, podrías mostrar un mensaje de error o simplemente no hacer nada
-      console.log("No puedes seleccionar más de 1 Pokémon.");
-    }
-  }
-
-  // Guardar el array en el localStorage
-  localStorage.setItem('SelectedBattlePokemon', JSON.stringify(battlePokemon.value));
-
-  // Mostrar el botón "Go!" cuando se selecciona un Pokémon de YourCards
-  showGoButton.value = selectedPokemon.value.length > 0;
-
+  // ... (resto de tu función selectPokemon)
 };
 
-// Función para verificar si un Pokémon está seleccionado
 const isSelected = (pokemonId) => {
   return selectedPokemon.value.includes(pokemonId);
 };
 
-// Estado para controlar si se muestra el botón "Go!"
-const showGoButton = ref(false);
-
 const goBattle = () => {
-  // Si no hay ninguna carta seleccionada de YourCards, salimos de la función
-  if (selectedPokemon.value.length === 0) {
-    return;
-  }
-
-  // Obtener un Pokémon aleatorio de la PC
-  const randomIndex = Math.floor(Math.random() * pokemonIdsPC.length);
-  const randomPokemonId = pokemonIdsPC[randomIndex];
-
-  // Agregar el Pokémon aleatorio de la PC al array battlePokemon
-  battlePokemon.value.push(randomPokemonId);
-
-  // Ocultar el botón "Go!" después de agregar la carta del PC
-  showGoButton.value = false;
-
-  showBattleButton.value = true;
-
-  // Tu lógica para iniciar la batalla aquí
+  // ... (resto de tu función goBattle)
 };
+
+const BattleButton = () => {
+  // ... (resto de tu función BattleButton)
+};
+
+// Exporta las variables y funciones que se necesitan en el template
+export { showMessage, showMessage2, selectedPokemon, battlePokemon, pokemonIdsPC, showGoButton, goBattle, showBattleButton, BattleButton };
+
 
 
 
