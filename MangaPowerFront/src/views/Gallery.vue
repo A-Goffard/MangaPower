@@ -52,7 +52,7 @@
   
   const getAllPokemons = async () => {
 	const allPokemons = [];
-	const totalPokemons = 898; // Este es el número total de Pokémon en la PokéAPI al momento de escribir esto
+	const totalPokemons = 151; // Este es el número total de Pokémon en la PokéAPI al momento de escribir esto
   
 	for (let i = 1; i <= totalPokemons; i++) {
 	  const pokemonData = await fetchPokemonData(i);
