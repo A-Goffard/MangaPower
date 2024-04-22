@@ -154,9 +154,9 @@ import { onMounted, ref } from 'vue';
 .canvaContainer{
   width: 25rem;
   height: 10rem;
-  position: absolute;
+ /*  position: absolute;
   top: 19.5rem;
-  left: 52rem;
+  left: 52rem; */
 }
 
 #graphic{
