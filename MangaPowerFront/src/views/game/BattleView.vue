@@ -25,9 +25,6 @@
 
     <button v-if="showGoButton" class="goButton" @click="goBattle">Go!</button>
 
-    <button v-if="showBattleButton" class="goButton" @click="BattleButton">Battle!</button>
-
-
   </div>
 </template>
 
@@ -156,16 +153,10 @@ const goBattle = () => {
 
   // Ocultar el botón "Go!" después de agregar la carta del PC
   showGoButton.value = false;
-  showBattleButton.value = true;
+
 };
 
-// Estado para controlar si se muestra el botón "BattleButton"
-const showBattleButton = ref(false);
 
-const BattleButton = () => {
-
-
-}
 
 
 </script>
