@@ -93,7 +93,7 @@ import { onMounted, ref } from 'vue';
     background-repeat: no-repeat;
     display: flex;
     justify-content: center;
-    margin-left: 35rem;
+    margin-left: 20rem;
     position: fixed;
     top: 0;
     left: 0;
@@ -163,6 +163,12 @@ import { onMounted, ref } from 'vue';
   max-width: 100%;
   max-height: 100%;
 
+}
+
+/* --------MEDIA QUERIES--------- */
+
+@media screen and (max-width: 1200px){
+  
 }
 
 </style>
