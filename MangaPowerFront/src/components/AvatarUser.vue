@@ -1,23 +1,24 @@
 <template>
 
-          <div class="avatarContainerUser">
-            <img class="avatarUser" :src="userData && `avatar/${userData.pokemonTrainer}.png`" alt="Avatar del entrenador">
+          <div class="avatarContainer">
+            <img class="avatar" :src="userData && `avatar/${userData.pokemonTrainer}.png`" alt="Avatar del entrenador">
           </div>
  
   </template>
 
 <style scoped>
-.avatarContainerUser {
-  display: flex;
+.avatarContainer {
+    display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: min-content;
   padding: 1rem;
   margin: 1rem;
+  background-color: rgb(255, 255, 255, 0.65);
   border-radius: 0.5rem;
-} 
-.avatarUser {
+}
+.avatar {
     max-width: 20rem;
 }
 

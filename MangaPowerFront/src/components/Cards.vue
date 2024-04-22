@@ -1,5 +1,6 @@
 <template>
 <body>
+    <h1>CARDS POKEMON</h1>
     
     <div class="botonesTypes">
         <button class="fire"></button>
@@ -59,6 +60,7 @@ const mostrarPokemon = (data) => {
     const pokemonRock = document.getElementById('CardsRock');
     const pokemonNormal = document.getElementById('CardsNormal');
     const pokemonSteel = document.getElementById('CardsSteel');
+    const pokemonesContainer = document.getElementById('cartasPage');
 
     data.forEach(pokemon => {
         fetch(pokemon.url)
@@ -70,14 +72,13 @@ const mostrarPokemon = (data) => {
                 let hpStat = data.stats.find(stat => stat.stat.name === 'hp').base_stat;
                 let attackStat = data.stats.find(stat => stat.stat.name === 'attack').base_stat;
                 let defenseStat = data.stats.find(stat => stat.stat.name === 'defense').base_stat;
-                
 
                 if (types.includes('fire')) {
                     let typeFire = document.createElement('button');
                     let nameFire = document.createElement('h3');
                     let img = document.createElement('img');
                     let statsList = document.createElement('h6');
-                    
+
                     nameFire.textContent = name;
                     img.src = imageUrl;
 
@@ -667,9 +668,12 @@ const mostrarPokemon = (data) => {
                     pokemonNormal.appendChild(typeNormal);
                 }
             })
+            
             .catch(error => console.log(error));
     });
 }
+
+
 </script>
 
 <style scoped>
@@ -677,25 +681,35 @@ body{
     margin: auto;
     text-align: center;
     align-items: center;
+    background-image: url(/public/pokemonGrass.jpeg);
+}
+h1{
+    padding-top: 2rem;
+    font-size: 3rem;
+    color: white;
+    text-shadow: 2px 2px 2px black;
+    font-weight: 900;
+    text-decoration: underline;
 }
 .cartasPage{
     margin: auto;
-    margin-top: 2rem;
+    margin-top: 2.5rem;
     width: 100rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    
 }
 .botonesTypes{
+    margin-top: 3rem; ;
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
     justify-content: center;
 }
 button{
-    width: 6rem;
-    height: 6rem;
-    border-radius: 50%;
+    width: 7rem;
+    height: 7rem;
     border: none;
     outline: none;
     color: white;
@@ -707,77 +721,104 @@ button{
     background-image: url(/public/typesLogo/fire.png);
     background-repeat: no-repeat;
     background-size: 7rem;
+    height: 2.8rem;
+    border-radius: 1.1rem;
     background-position: center;
 }
 .water{
     background-image: url(/public/typesLogo/water.png);
     background-repeat: no-repeat;
     background-size: 7rem;
-    background-position: center;;
+    height: 2.8rem;
+    border-radius: 1.1rem;
+    background-position: center;
 }
 .grass{
     background-image: url(/public/typesLogo/grass.png);
     background-repeat: no-repeat;
     background-size: 7rem;
+    height: 2.8rem;
+    border-radius: 1.1rem;
     background-position: center;
 }
 .electric{
     background-image: url(/public/typesLogo/electric.png);
     background-repeat: no-repeat;
     background-size: 7rem;
+    height: 2.8rem;
+    border-radius: 1.1rem;
     background-position: center;
 }
 .psychic{
     background-image: url(/public/typesLogo/psychic.png);
     background-repeat: no-repeat;
     background-size: 7rem;
+    height: 2.8rem;
+    border-radius: 1.1rem;
     background-position: center;}
 .fighting{
     background-image: url(/public/typesLogo/fighting.png);
     background-repeat: no-repeat;
-    background-size: 9rem;
+    background-size: 7rem;
+    height: 2.8rem;
+    border-radius: 1.1rem;
     background-position: center;
 }
 .bug{
     background-image: url(/public/typesLogo/bug.png);
     background-repeat: no-repeat;
     background-size: 7rem;
+    height: 2.8rem;
+    border-radius: 1.1rem;
     background-position: center;
 }
 .rock{
     background-image: url(/public/typesLogo/rock.png);
     background-repeat: no-repeat;
-    background-size: 7rem;
     background-position: center;
+    background-size: 7rem;
+    height: 2.8rem;
+    border-radius: 1.1rem;
+    
 }
 .steel{
     background-image: url(/public/typesLogo/steel.png);
     background-repeat: no-repeat;
     background-size: 7rem;
+    height: 2.8rem;
+    border-radius: 1.1rem;
     background-position: center;
 }
 .ground{
     background-image: url(/public/typesLogo/ground.png);
     background-repeat: no-repeat;
     background-size: 7rem;
+    height: 2.8rem;
+    border-radius: 1.1rem;
     background-position: center;
 }
 .flying{
     background-image: url(/public/typesLogo/flying.png);
     background-repeat: no-repeat;
-    background-size: 9rem;
+    background-size: 7rem;
+    height: 2.8rem;
+    border-radius: 1.1rem;
     background-position: center;
 }
 .normal{
     background-image: url(/public/typesLogo/normal.png);
     background-repeat: no-repeat;
     background-size: 7rem;
+    height: 2.8rem;
+    border-radius: 1.1rem;
     background-position: center;
 }
 .poison{
     background-image: url(/public/typesLogo/poison.png);
     background-repeat: no-repeat;
     background-size: 7rem;
+    height: 2.8rem;
+    border-radius: 1.1rem;
     background-position: center;
 }
 </style>

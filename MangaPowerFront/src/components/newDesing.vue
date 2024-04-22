@@ -90,7 +90,7 @@ import { onMounted, ref } from 'vue';
 .globalContainer {
     width: 100vw;
     height: 100vh;
-    background-image: url("/home/alumno/MangaPower/MangaPowerFront/public/images/Stats.png");
+    background-image: url("/public/images/Stats.png");
     background-repeat: no-repeat;
     display: flex;
     justify-content: center;

@@ -1,61 +1,47 @@
 <template>
-    <div class="mainGameView">
+  <div class="mainGameView">
 
-    </div>
-  </template>
-  
+    <button class="start" @click="goToSelectPokemon">Start</button>
 
 
-  <script setup>
-/*
-  // Define a Vue 3 component for the game
-const app = Vue.createApp({
-  data() {
-    return {
-      player1Card: null,
-      player2Card: null,
-      winner: null,
-      pokemonCards: [
-        { name: 'Pikachu', hp: 35, attack: 55, defense: 40 },
-        { name: 'Charmander', hp: 39, attack: 52, defense: 43 },
-        // Add more Pokemon cards here
-      ]
-    };
-  },
-  methods: {
-    // Function to randomly select a card for a player
-    selectRandomCard() {
-      return Math.floor(Math.random() * this.pokemonCards.length);
-    },
-    // Function to start the game
-    startGame() {
-      this.player1Card = this.pokemonCards[this.selectRandomCard()];
-      this.player2Card = this.pokemonCards[this.selectRandomCard()];
-      
-      // Compare stats and determine winner
-      if (this.player1Card.hp > this.player2Card.hp) {
-        this.winner = 'Player 1';
-      } else if (this.player2Card.hp > this.player1Card.hp) {
-        this.winner = 'Player 2';
-      } else {
-        this.winner = 'Draw';
-      }
-    }
-  }
-});
+  </div>
+</template>
 
-// Mount the Vue app to a DOM element
-app.mount('#app');
+<script setup>
 
-*/
-  </script>
-  
+import { useRouter } from 'vue-router';
 
+// Obtener el objeto router
+const router = useRouter();
 
-  <style scoped>
-  .mainGameView {
+// Función para navegar a la vista de selección de Pokémon
+const goToSelectPokemon = () => {
+  router.push('/game/selectcards');
+};
+</script>
+
+<style scoped>
+.mainGameView {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
   height: 100vh;
   background-image: url('/public/GameView/Pokemon_Stadium_2_SSBU\ \(1\).webp');
 }
-  
-  </style>
+
+.start {
+  margin: 0.5rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 0.5rem;
+  background-color: red;
+  width: 20rem;
+  height: 5rem;
+  font-size: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>
