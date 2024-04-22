@@ -24,11 +24,12 @@
     { text: 'Home', name: 'home' },
     { text: 'Login', name: 'LoginView' },
     { text: 'Register', name: 'RegisterView' },
-    { text: 'Personal', name: 'PersonalFile' },
+    { text: 'Personal', name: 'PersonalView' },
     { text: 'Stats', name: 'StatsView' },
     { text: 'Game', name: 'GameView' },
+    { text: 'Pokedex', name: 'PokedexView' },
     { text: 'CardStore', name: 'CardStore' },
-    { text: 'About', name: 'About' }
+    { text: 'About', name: 'AboutView' }
   ]);
   
   const toggleMenu = () => {
@@ -69,7 +70,8 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    margin-top: 8rem;
+    margin-top: 9rem;
+    margin-left: 1.5rem;
   }
   
   #menu ul li {
