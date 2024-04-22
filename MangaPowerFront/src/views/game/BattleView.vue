@@ -111,8 +111,7 @@ const isSelected = (pokemonId) => {
   return selectedPokemon.value.includes(pokemonId);
 };
 
-// Estado para controlar si se muestra el botón "Go!"
-const showGoButton = ref(false);
+
 
 
 // Definir el array para almacenar los IDs de los Pokémon seleccionados por la PC para la batalla
@@ -145,8 +144,7 @@ const goBattle = () => {
   showBattleButton.value = true;
 };
 
-// Estado para controlar si se muestra el botón "BattleButton"
-const showBattleButton = ref(false);
+
 
 const BattleButton = () => {
 
