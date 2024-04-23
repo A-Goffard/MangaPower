@@ -158,7 +158,7 @@ const comparePokemonStats = async () => {
   const pokemonIdsInBattle = battlePokemon.value;
 
   // Verificar que haya al menos dos Pokémon en la batalla para comparar
-  if (pokemonIdsInBattle.length < 2) {
+  if (pokemonIdsInBattle.length < 3) {
     console.log("Debe haber al menos dos Pokémon en la batalla para comparar.");
     return;
   }
