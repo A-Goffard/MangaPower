@@ -67,8 +67,8 @@ const maxPokemonId = 150;
 // Array para almacenar los IDs de los Pokémon de la PC
 const pokemonIdsPC = ref([]);
 
-// Generar 5 números aleatorios únicos dentro del rango de IDs de Pokémon para la PC
-while (pokemonIdsPC.value.length < 5) {
+// Generar 3 números aleatorios únicos dentro del rango de IDs de Pokémon para la PC
+while (pokemonIdsPC.value.length < 3) {
   const randomId = getRandomNumber(minPokemonId, maxPokemonId);
   if (!pokemonIdsPC.value.includes(randomId)) {
     pokemonIdsPC.value.push(randomId);
@@ -100,12 +100,12 @@ setTimeout(() => {
 }, 6000);
 
 // Array para almacenar los IDs de los Pokémon seleccionados por el jugador
-const selectedPokemon = ref([]);
+const selectedPokemon3 = ref([]);
 
 // Obtener los IDs de los Pokémon seleccionados por el jugador desde el localStorage
-const storedSelectedPokemon = localStorage.getItem('selectedPokemon');
+const storedSelectedPokemon = localStorage.getItem('selectedPokemon3');
 if (storedSelectedPokemon) {
-  selectedPokemon.value = JSON.parse(storedSelectedPokemon);
+  selectedPokemon3.value = JSON.parse(storedSelectedPokemon);
 }
 
 // Array para almacenar los IDs de los Pokémon seleccionados para la batalla
@@ -130,13 +130,13 @@ const selectPokemon = (pokemonId) => {
   localStorage.setItem('SelectedBattlePokemon', JSON.stringify(battlePokemon.value));
 
   // Mostrar el botón "¡Adelante!" cuando se selecciona un Pokémon de YourCards
-  showGoButton.value = selectedPokemon.value.length > 0;
+  showGoButton.value = selectedPokemon3.value.length > 0;
 
 };
 
 // Función para verificar si un Pokémon está seleccionado
 const isSelected = (pokemonId) => {
-  return selectedPokemon.value.includes(pokemonId);
+  return selectedPokemon3.value.includes(pokemonId);
 };
 
 // Estado para controlar si se muestra el botón "¡Adelante!"
@@ -151,12 +151,6 @@ const selectedPCBattlePokemon = ref([]);
 const selectPCPokemon = (pokemonId) => {
   selectedPCBattlePokemon.value.push(pokemonId);
   localStorage.setItem('SelectedPCBattlePokemon', JSON.stringify(selectedPCBattlePokemon.value));
-};
-
-// Función para actualizar y guardar los IDs de los Pokémon seleccionados en YourCards
-const updateAndSaveSelectedPokemon = () => {
-  const updatedSelectedPokemon = selectedPokemon.value.filter(id => !battlePokemon.value.includes(id));
-  localStorage.setItem('selectedPokemon2', JSON.stringify(updatedSelectedPokemon));
 };
 
 const comparePokemonStats = async () => {
@@ -197,7 +191,7 @@ const comparePokemonStats = async () => {
     // Determinar el ganador y realizar las acciones correspondientes
     if (winningIndex !== -1) {
       const winningPokemonId = pokemonIdsInBattle[winningIndex];
-      if (selectedPokemon.value.includes(winningPokemonId)) {
+      if (selectedPokemon3.value.includes(winningPokemonId)) {
         // El jugador ganó
         console.log("¡Ganaste!");
         playerPoints.value += 2;
@@ -221,6 +215,12 @@ const comparePokemonStats = async () => {
   }
 
   // Limpiar los arrays y realizar otras operaciones si es necesario
+};
+
+// Función para actualizar y guardar los IDs de los Pokémon seleccionados en YourCards
+const updateAndSaveSelectedPokemon = () => {
+const updatedSelectedPokemon = selectedPokemon3.value.filter(id => !battlePokemon.value.includes(id));
+localStorage.setItem('selectedPokemon4', JSON.stringify(updatedSelectedPokemon));
 };
 
 // Función para iniciar la batalla
@@ -261,13 +261,13 @@ const goBattle = () => {
 
   setTimeout(comparePokemonStats, 2000);
 
-    // Redirigir a la vista Battle2View después de la comparación
-    router.push({ name: 'Battle2View' });
+  // Redirigir a la vista Battle2View después de la comparación
+  router.push({ name: 'Battle4View' });
 };
 
 // Array para almacenar los IDs de los Pokémon seleccionados por el jugador que no están en la batalla
 const filteredSelectedPokemon = computed(() => {
-  return selectedPokemon.value.filter(id => !battlePokemon.value.includes(id));
+  return selectedPokemon3.value.filter(id => !battlePokemon.value.includes(id));
 });
 
 // Array para almacenar los IDs de los Pokémon de la PC que no están en la batalla
@@ -287,7 +287,6 @@ if (storedPCPoints) {
 }
 
 </script>
-
 
 
 

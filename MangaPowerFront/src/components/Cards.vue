@@ -672,8 +672,6 @@ const mostrarPokemon = (data) => {
             .catch(error => console.log(error));
     });
 }
-
-
 </script>
 
 <style scoped>

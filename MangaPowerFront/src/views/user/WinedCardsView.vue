@@ -1,10 +1,9 @@
 <template>
   <div class="mainGameView">
     <Logo class="logo"/>
-      <div class="pokemonContainer">
-      <div v-for="(pokemonIdString, index) in winedPokemonIds" :key="index" :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
-        <CardPokemon :selectedPokemonId="parseInt(pokemonIdString)" />
-      </div>
+    <div class="pokemonContainer">
+      <!-- Iterar sobre el array de IDs de Pokémon y renderizar múltiples instancias de CardPokemon -->
+      <CardPokemon v-for="pokemonIdString in winedPokemonIds" :key="pokemonIdString" :selectedPokemonId="parseInt(pokemonIdString)" />
     </div>
   </div>
 </template>
@@ -66,20 +65,6 @@ onMounted(() => {
     router.push({ name: 'LoginView' });
   }
 });
-
-// Define una referencia para el índice actual del carrusel
-const currentIndex = ref(0);
-
-// Función para avanzar al siguiente Pokémon en el carrusel
-const nextSlide = () => {
-  currentIndex.value = (currentIndex.value + 1) % winedPokemonIds.value.length;
-};
-
-// Establece un intervalo para cambiar automáticamente las diapositivas cada 5 segundos
-let intervalId;
-onMounted(() => {
-  intervalId = setInterval(nextSlide, 2500);
-});
 </script>
 
 <style scoped>
@@ -94,20 +79,13 @@ onMounted(() => {
   background-image: url('/public/backgrounds/Backgroundacuarela.jpg');
   background-attachment: fixed;
 }
-
 .pokemonContainer {
   margin: 11rem;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  overflow: hidden; /* Oculta el contenido que se desborda */
-  white-space: nowrap; /* Evita que las diapositivas se envuelvan */
+  flex-wrap: wrap;
+  padding: 1rem;
+  width: 85%;
 }
-
-.pokemonContainer > div {
-  flex: 0 0 auto; /* Evita que las diapositivas se ajusten */
-  width: 40%; /* Ajusta el tamaño de cada diapositiva */
-  transition: transform 0.5s ease; /* Agrega una transición suave */
-}
-
 </style>
