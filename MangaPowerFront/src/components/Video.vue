@@ -27,7 +27,7 @@ function playVideo() {
 .video-container {
   position: relative;
   width: 100%;
-  padding-bottom: 100%; 
+  padding-bottom: 50%; 
   overflow: hidden;
 
   max-height: 100vh; 

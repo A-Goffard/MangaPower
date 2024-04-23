@@ -1,21 +1,23 @@
 <template>
     <div class="container_global">
+
+      <!-- inicia la creación de las cards -->
       
         <div id="name_print_stats" class="card-text">{{ userDataActive && userDataActive.username }}</div>
       
       <div class="containerStats">
 
         <div class="name_stats card">
-          <div class="card-body">
-            <!-- <div id="name_print_stats" class="card-text">{{ userDataActive && userDataActive.username }}</div> -->
-            <div id="name_print_stats" class="card-text">{{ userDataActive && userDataActive.pokemon }}</div>
-            
-            <AvatarPokemon />
+
+          <AvatarPokemon />
+          
+            <div id="name_print_stats" class="card-text">{{ userDataActive && userDataActive.username }}</div>   
             <div class="card-text">Pokemon Level: {{ userDataActive && userDataActive.pokemonLevel }}</div>
-          </div>
+
         </div>
+      </div>  
         <div class="avatar_stats card">
-          <div class="card-body">
+          <div class="cardBodyAvatar">
             <div id="name_print_stats" class="card-text">{{ userDataActive && userDataActive.pokemonTrainer }}</div>
             <AvatarUser />
             <div class="card-text">Trainer Level: {{ userDataActive && userDataActive.trainerLevel }}</div>
@@ -31,7 +33,7 @@
       <div class="informationTittle">
         <h2>PJ "Partidas jugadas" // PG "Partidas ganadas" // PP "Partidas perdidas"</h2>
       </div>
-    </div>
+    
   </template>
   
   <script setup>
@@ -101,17 +103,27 @@
   <style scoped>
   /* Estilos Bootstrap */
   .container_global {
+    background-image: url("http://localhost:3000/images/Batalla_Pokemon.jpg");
     background-size: cover;
     background-position: center;
-    height:100vh;
+    height: 100vh;
   }
   
   .containerStats {
-    width: 90%;
+    width: 80%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     margin: 0 auto;
+
+  }
+
+  .cardBodyPokemon{
+    border: 0.1rem solid red;
+  }
+
+  .cardBodyAvatar{
+    border: 0.1rem solid red;
   }
   
   .containerStats .card {
@@ -131,11 +143,13 @@
   }
   
   .card-body {
-    width: 30rem;
-    height: 20rem;
+    width: 22rem;
+    height: 2rem;
     background-color: transparent;
     padding: 1rem;
-
+    border: 0.1rem solid black;
+    box-shadow: 1rem 1rem 1rem rgba(0, 0, 255, 0.5);
+    overflow: hidden;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -143,6 +157,7 @@
     margin: 0 auto;
     padding: 0;
     opacity: 1;
+    border-radius: 0.5rem;
   }
 
   .card-title {
@@ -150,12 +165,12 @@
   }
 
   .card-text{
-    color: white;
+    color: black;
   }
 
 .name_stats.card{
     
-    height: auto;
+    
   } 
 
 .informationTittle h2{
