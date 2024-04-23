@@ -14,6 +14,11 @@ import PokedexView from '../views/PokedexView.vue'
 
 import SelectView from '../views/game/SelectView.vue'
 import BattleView from '../views/game/BattleView.vue'
+import Battle2View from '../views/game/Battle2View.vue'
+import Battle3View from '../views/game/Battle3View.vue'
+import Battle4View from '../views/game/Battle4View.vue'
+import Battle5View from '../views/game/Battle5View.vue'
+import Battle6View from '../views/game/Battle6View.vue'
 
 import WinedCardsView from '../views/user/WinedCardsView.vue'
 
@@ -92,6 +97,31 @@ const routes = [
     path: '/game/battle',
     name: 'BattleView',
     component: BattleView
+  },
+  {
+    path: '/game/battle2',
+    name: 'Battle2View',
+    component: Battle2View
+  },
+  {
+    path: '/game/battle3',
+    name: 'Battle3View',
+    component: Battle3View
+  },
+  {
+    path: '/game/battle4',
+    name: 'Battle4View',
+    component: Battle4View
+  },
+  {
+    path: '/game/battle5',
+    name: 'Battle5View',
+    component: Battle5View
+  },
+  {
+    path: '/game/battle6',
+    name: 'Battle6View',
+    component: Battle6View
   }
 ]
 

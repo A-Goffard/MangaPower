@@ -19,8 +19,8 @@
 import { onMounted, ref } from 'vue';
   import Chart from 'chart.js/auto';
   import axios from 'axios';
-  import AvatarUser from '../components/AvatarUser.vue';
-  import AvatarPokemon from '../components/AvatarPokemon.vue';
+  import AvatarUser from './AvatarUser.vue';
+  import AvatarPokemon from './AvatarPokemon.vue';
 
   // Datos del usuario activo
   let userDataActive = ref(null);

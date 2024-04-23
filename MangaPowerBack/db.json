@@ -11,16 +11,23 @@
       "username": "Alky",
       "pokemonLevel": "1",
       "trainerLevel": "1",
-      "win": 5,
-      "lose": 5,
+      "win": 7,
+      "lose": 3,
       "plays": 10,
-      "winedCardsNumber": 0,
+      "winedCardsNumber": 7,
       "winedCards": [
         "1",
         "2",
         "3",
         "4",
-        "5"
+        "5",
+        "45",
+        "102",
+        "73",
+        "87",
+        "51",
+        "27",
+        "89"
       ]
     },
     {
