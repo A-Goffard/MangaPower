@@ -152,6 +152,12 @@
     selectedPCBattlePokemon.value.push(pokemonId);
     localStorage.setItem('SelectedPCBattlePokemon', JSON.stringify(selectedPCBattlePokemon.value));
   };
+
+    // Función para actualizar y guardar los IDs de los Pokémon seleccionados en YourCards
+    const updateAndSaveSelectedPokemon = () => {
+  const updatedSelectedPokemon = selectedPokemon4.value.filter(id => !battlePokemon.value.includes(id));
+  localStorage.setItem('selectedPokemon5', JSON.stringify(updatedSelectedPokemon));
+};
   
   const comparePokemonStats = async () => {
     // Obtener los IDs de los Pokémon en la zona de batalla
@@ -216,12 +222,6 @@
   
     // Limpiar los arrays y realizar otras operaciones si es necesario
   };
-  
-// Función para actualizar y guardar los IDs de los Pokémon seleccionados en YourCards
-const updateAndSaveSelectedPokemon = () => {
-const updatedSelectedPokemon = selectedPokemon4.value.filter(id => !battlePokemon.value.includes(id));
-localStorage.setItem('selectedPokemon5', JSON.stringify(updatedSelectedPokemon));
-};
   
   // Función para iniciar la batalla
   const goBattle = () => {
@@ -325,19 +325,19 @@ localStorage.setItem('selectedPokemon5', JSON.stringify(updatedSelectedPokemon))
   }
   
   .PCCards {
-    background-color: rgba(255, 195, 126, 0.8);
+
     padding: 1rem;
     border-radius: 0.5rem;
   }
   
   .BattleArea {
-    background-color: rgba(233, 126, 255, 0.8);
+
     padding: 1rem;
     border-radius: 0.5rem;
   }
   
   .YourCards {
-    background-color: rgba(126, 203, 255, 0.8);
+
     padding: 1rem;
     border-radius: 0.5rem;
   }
