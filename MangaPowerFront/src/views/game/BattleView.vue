@@ -1,5 +1,5 @@
 <template>
-  <div class="mainGameView">
+ <div class="mainGameView">
     <div v-if="showMessage" class="messageContainer">
       <div class="message">¡Start Battle!</div>
     </div>
@@ -27,6 +27,10 @@
 
     <button v-if="showBattleButton" class="goButton" @click="BattleButton">Battle!</button>
 
+    <!-- Mostrar solo la carta ganadora en el centro -->
+    <div v-if="battlePokemon.length === 1" class="cardsContainer WinnerCard">
+      <CardPokemon :selectedPokemonId="battlePokemon[0]" />
+    </div>
 
   </div>
 </template>
@@ -100,23 +104,83 @@ const battlePokemon = ref([]);
 // Estado para controlar si se muestra el botón "Go!"
 const showGoButton = ref(false);
 
-// Estado para controlar si se muestra el botón "Battle!"
+// Estado para controlar si se muestra el botón "BattleButton"
 const showBattleButton = ref(false);
-
-const selectPokemon = (pokemonId) => {
-  // ... (resto de tu función selectPokemon)
-};
-
-const isSelected = (pokemonId) => {
-  return selectedPokemon.value.includes(pokemonId);
-};
-
-
-
 
 // Definir el array para almacenar los IDs de los Pokémon seleccionados por la PC para la batalla
 const selectedPCBattlePokemon = ref([]);
 
+
+
+
+// Función para determinar la carta ganadora
+const determineWinner = () => {
+  if (battlePokemon.value.length === 2) {
+    const pokemon1Data = getPokemonData(battlePokemon.value[0]);
+    const pokemon2Data = getPokemonData(battlePokemon.value[1]);
+
+    // Calculate the total stats for each Pokémon
+    const totalStats1 = pokemon1Data.stats.hp + pokemon1Data.stats.attack + pokemon1Data.stats.defense;
+    const totalStats2 = pokemon2Data.stats.hp + pokemon2Data.stats.attack + pokemon2Data.stats.defense;
+
+    // Determine the winner based on the total stats
+    if (totalStats1 > totalStats2) {
+      battlePokemon.value = [battlePokemon.value[0]];
+    } else if (totalStats2 > totalStats1) {
+      battlePokemon.value = [battlePokemon.value[1]];
+    } else {
+      // If all stats are equal, handle the tie by comparing HP
+      if (pokemon1Data.stats.hp > pokemon2Data.stats.hp) {
+        battlePokemon.value = [battlePokemon.value[0]];
+      } else if (pokemon2Data.stats.hp > pokemon1Data.stats.hp) {
+        battlePokemon.value = [battlePokemon.value[1]];
+      } else {
+        // If both Pokémon have the same HP, handle the tie by randomly selecting a winner
+        console.log("Tie");
+        const winner = Math.random() < 0.5 ? battlePokemon.value[0] : battlePokemon.value[1];
+        battlePokemon.value = [winner];
+      }
+    }
+
+    // Update the state to show the "Go!" button again
+    showGoButton.value = true;
+    showBattleButton.value = false;
+  }
+};
+
+
+
+
+
+
+
+// Función para seleccionar un Pokémon
+const selectPokemon = (pokemonId) => {
+  // Si el Pokémon ya está seleccionado, lo deseleccionamos
+  if (battlePokemon.value.includes(pokemonId)) {
+    battlePokemon.value = battlePokemon.value.filter(id => id !== pokemonId);
+  } else {
+    // Si no está seleccionado, lo agregamos al array
+    if (battlePokemon.value.length < 1) {
+      battlePokemon.value.push(pokemonId);
+    } else {
+      // Si ya hay 1 seleccionado, podrías mostrar un mensaje de error o simplemente no hacer nada
+      console.log("No puedes seleccionar más de 1 Pokémon.");
+    }
+  }
+
+  // Guardar el array en el localStorage
+  localStorage.setItem('SelectedBattlePokemon', JSON.stringify(battlePokemon.value));
+
+  // Mostrar el botón "Go!" cuando se selecciona un Pokémon de YourCards
+  showGoButton.value = selectedPokemon.value.length > 0;
+
+};
+
+// Función para verificar si un Pokémon está seleccionado
+const isSelected = (pokemonId) => {
+  return selectedPokemon.value.includes(pokemonId);
+};
 
 // Función para seleccionar un Pokémon de la PC
 const selectPCPokemon = (pokemonId) => {
@@ -144,15 +208,30 @@ const goBattle = () => {
   showBattleButton.value = true;
 };
 
+// Función para obtener datos del Pokémon (deberás implementar esta función)
+const getPokemonData = (pokemonId) => {
+  // Aquí puedes implementar la lógica para obtener los datos del Pokémon desde una API o desde el localStorage
+  // Por ahora, retorna un objeto de ejemplo
+  return {
+    id: pokemonId,
+    name: `Pokemon ${pokemonId}`,
+    stats: {
+      hp: getRandomNumber(20, 100),
+      attack: getRandomNumber(10, 50),
+      defense: getRandomNumber(10, 50),
+    },
+    // Otros datos del Pokémon...
+  };
+};
 
-
+// Actualizar la función BattleButton para determinar la carta ganadora
 const BattleButton = () => {
-
-
-}
-
+  determineWinner();
+};
 
 </script>
+
+
 
 <style scoped>
 .mainGameView {
@@ -218,5 +297,13 @@ const BattleButton = () => {
   border-radius: 0.5rem;
   background-color: red;
   font-size: 3rem;
+}
+
+.WinnerCard {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
 }
 </style>

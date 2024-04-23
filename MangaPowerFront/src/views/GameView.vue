@@ -4,9 +4,9 @@
     <button class="start" @click="goToSelectPokemon">Start</button>
 
 
+    <CardsWon :storeCard="storeCard" />
   </div>
 </template>
-
 
 <script setup>
 
@@ -20,6 +20,9 @@ const goToSelectPokemon = () => {
   router.push('/game/selectcards');
 };
 </script>
+
+
+
 
 
 <style scoped>
