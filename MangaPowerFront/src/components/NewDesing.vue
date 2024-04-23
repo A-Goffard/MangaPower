@@ -1,11 +1,13 @@
 <template>
 
     <div class="globalContainer">
+
+      <div class="statsContainer">
       
         <AvatarPokemonStats />
 
         <div class="card-text">Pokemon Level: {{ userDataActive && userDataActive.pokemonLevel }}</div>
-
+        <div class="card-text-trainer">Trainer Level: {{ userDataActive && userDataActive.trainerLevel }}</div>
         <div id="name_print_stats" class="card-text">{{ userDataActive && userDataActive.username }}</div>
 
         <AvatarUserStats />
@@ -13,6 +15,8 @@
           <div class="canvaContainer">
             <canvas id="graphic" width="100%" height="100%"></canvas>
           </div>
+
+        </div>
 
     </div>
 
@@ -30,13 +34,13 @@ import AvatarPokemonStats from '../components/AvatarPokemonStats.vue';
 let userDataActive = ref(null);
 
 // Función para obtener los datos del usuario del localStorage
+
 const getUsuarioFromLocalStorage = () => {
   const usuario = JSON.parse(localStorage.getItem('usuario'));
   if (usuario && usuario.length > 0) {
     // Si hay datos de usuario en el localStorage, asignar el primer elemento del array a userData
     userDataActive.value = usuario[0];
-    // Actualizar los datos del gráfico con los valores del usuario
-    /* updateChart() */;
+    
   }
 };
 // Obtener los datos del usuario del localStorage al montar el componente
@@ -91,7 +95,14 @@ onMounted(getUsuarioFromLocalStorage);
 <style>
 
 .globalContainer {
+   
     width: 100vw;
+    height: 100vh;
+    background-image: url('/public/autumn-night-illuminated-lantern-tree-yellow-leaf-generated-by-ai.jpg');
+}
+
+.statsContainer{
+  width: 80vw;
     height: 100vh;
     background-image: url("/public/images/Stats.png");
     background-repeat: no-repeat;
@@ -102,7 +113,6 @@ onMounted(getUsuarioFromLocalStorage);
     top: 0;
     left: 0;
     position: relative;
-
 }
 .avatarPokemon{
     width: 10rem;
@@ -127,15 +137,29 @@ onMounted(getUsuarioFromLocalStorage);
     color: aliceblue;
     font-weight: 800;
     position: absolute;
-    right: 92rem;
-    top: 33rem;
+    right: 70rem;
+    top: 34rem;
 
+}
+
+.card-text-trainer{
+    width: 10rem;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    color: aliceblue;
+    font-weight: 800;
+    position: absolute;
+    right: 70rem;
+    top: 32rem;
 }
 
 #name_print_stats{
     color: aliceblue;
     position: absolute;
-    right: 97rem; 
+    right: 73rem; 
     top: 51.5rem;  
     font-size: 2rem; 
 }
@@ -143,14 +167,14 @@ onMounted(getUsuarioFromLocalStorage);
 .avatarContainerUser{
     height: 15rem;
     position: absolute;
-    right: 104.5rem;
+    right: 80.5rem;
     top: -3rem;    
 }
 
 .avatarContainerPokemon{
     height: 15rem;
     position: absolute;
-    right: 90rem;
+    right: 68rem;
     top: 18rem;
 }
 
