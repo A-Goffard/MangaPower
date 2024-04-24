@@ -326,19 +326,19 @@ if (storedPCPoints) {
 }
 
 .PCCards {
-  background-color: rgba(255, 195, 126, 0.8);
+
   padding: 1rem;
   border-radius: 0.5rem;
 }
 
 .BattleArea {
-  background-color: rgba(233, 126, 255, 0.8);
+
   padding: 1rem;
   border-radius: 0.5rem;
 }
 
 .YourCards {
-  background-color: rgba(126, 203, 255, 0.8);
+
   padding: 1rem;
   border-radius: 0.5rem;
 }

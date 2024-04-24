@@ -152,6 +152,11 @@
     selectedPCBattlePokemon.value.push(pokemonId);
     localStorage.setItem('SelectedPCBattlePokemon', JSON.stringify(selectedPCBattlePokemon.value));
   };
+
+  // Función para actualizar y guardar los IDs de los Pokémon seleccionados en YourCards
+  const updateAndSaveSelectedPokemon = () => {
+  const updatedSelectedPokemon = selectedPokemon5.value.filter(id => !battlePokemon.value.includes(id));
+  };
   
   const comparePokemonStats = async () => {
     // Obtener los IDs de los Pokémon en la zona de batalla
@@ -329,19 +334,19 @@
   }
   
   .PCCards {
-    background-color: rgba(255, 195, 126, 0.8);
+
     padding: 1rem;
     border-radius: 0.5rem;
   }
   
   .BattleArea {
-    background-color: rgba(233, 126, 255, 0.8);
+
     padding: 1rem;
     border-radius: 0.5rem;
   }
   
   .YourCards {
-    background-color: rgba(126, 203, 255, 0.8);
+
     padding: 1rem;
     border-radius: 0.5rem;
   }

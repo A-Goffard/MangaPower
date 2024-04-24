@@ -2,26 +2,26 @@
   <div class="mainDivHome">
     <Logo class="logo"/>
     <div class="about-page">
-      <h1>Bienvenido a Pokémon Cards Adventure</h1>
+      <h1>Welcome to Pokémon Cards Adventure</h1>
       <div class="section">
-        <h2>Descubre el emocionante mundo de las cartas Pokémon</h2>
-        <p>En Pokémon Cards Adventure, te sumergirás en un universo lleno de emoción, estrategia y diversión. Conviértete en un entrenador Pokémon, colecciona cartas, construye tu mazo y desafía a otros entrenadores para demostrar quién es el mejor.</p>
+        <h2>Discover the exciting world of Pokémon cards.</h2>
+        <p>In Pokémon Cards Adventure, you will immerse yourself in a universe full of excitement, strategy and fun. Become a Pokémon trainer, collect cards, build your deck and challenge other trainers to prove who is the best.</p>
       </div>
       <div class="section">
-        <h2>Explora los orígenes de las cartas Pokémon</h2>
-        <p>Aprende sobre la rica historia de las cartas Pokémon, desde sus humildes comienzos en 1996 hasta su evolución en la actualidad. Descubre cómo las cartas Pokémon se han convertido en una parte icónica de la cultura pop, capturando la imaginación de millones de personas en todo el mundo.</p>
+        <h2>Explore the origins of Pokémon cards</h2>
+        <p>Learn about the rich history of Pokémon cards, from their humble beginnings in 1996 to their evolution today. Discover how Pokémon cards have become an iconic part of pop culture, capturing the imagination of millions of people around the world.</p>
       </div>
       <div class="section">
-        <h2>Conoce a los personajes icónicos</h2>
-        <p>Desde Pikachu hasta Charizard, conoce a tus Pokémon favoritos y descubre sus poderes únicos. Aprende sobre los entrenadores legendarios, como Ash Ketchum y Misty, que han dejado una marca indeleble en la historia de Pokémon.</p>
+        <h2>Meet the iconic characters</h2>
+        <p>From Pikachu to Charizard, meet your favorite Pokémon and discover their unique powers. Learn about legendary trainers, like Ash Ketchum and Misty, who have left an indelible mark on Pokémon history.</p>
       </div>
       <div class="section">
-        <h2>Únete a la comunidad</h2>
-        <p>¡Conéctate con otros entrenadores Pokémon de todo el mundo! Participa en torneos, intercambia cartas y comparte estrategias en nuestra vibrante comunidad en línea. Haz nuevos amigos y disfruta de la camaradería que solo los fans de Pokémon pueden ofrecer.</p>
+        <h2>Join the community</h2>
+        <p>Connect with other Pokémon trainers from around the world! Participate in tournaments, trade cards, and share strategies in our vibrant online community. Make new friends and enjoy the camaraderie that only Pokémon fans can offer.</p>
       </div>
       <div class="section">
-        <h2>Embárcate en una aventura inolvidable</h2>
-        <p>Desde los paisajes serenos de Pueblo Paleta hasta las emocionantes batallas en la Liga Pokémon, Pokémon Cards Adventure te llevará en un viaje épico que nunca olvidarás. ¿Estás listo para empezar tu viaje hacia la grandeza?</p>
+        <h2>Embark on an unforgettable adventure</h2>
+        <p>From the serene landscapes of Pallet Town to the exciting battles in the Pokémon League, Pokémon Cards Adventure will take you on an epic journey you'll never forget. Are you ready to start your journey to greatness?</p>
       </div>
     </div>
   
