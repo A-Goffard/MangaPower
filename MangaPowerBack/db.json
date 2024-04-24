@@ -236,6 +236,29 @@
         "4",
         "5"
       ]
+    },
+    {
+      "id": "11",
+      "name": "Perico",
+      "birthdate": "1999-11-11",
+      "email": "q@aaaaa",
+      "password": "123",
+      "pokemon": "Charmander",
+      "pokemonTrainer": "Koruko",
+      "username": "Pepe",
+      "pokemonLevel": "1",
+      "trainerLevel": "1",
+      "win": 0,
+      "lose": 0,
+      "plays": 0,
+      "winedCardsNumber": 0,
+      "winedCards": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
     }
   ]
 }
